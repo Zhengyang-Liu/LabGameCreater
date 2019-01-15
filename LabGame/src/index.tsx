@@ -1,11 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import Hello from './components/Hello';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css';
+import './index.css';
 
 ReactDOM.render(
-  <Hello name="TypeScript" enthusiasmLevel={10} />,
-  document.getElementById('root')!
-);
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+    , document.getElementById('root'));
+
 registerServiceWorker();
