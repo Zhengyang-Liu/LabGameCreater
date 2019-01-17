@@ -8,6 +8,7 @@
     "bootstrap": "^4.2.1",
     "font-awesome": "^4.7.0",
     "react": "^16.7.0",
+    "react-dnd": "^7.0.2",
     "react-dom": "^16.7.0",
     "react-popper": "^1.3.2",
     "react-router-dom": "^4.2.2",

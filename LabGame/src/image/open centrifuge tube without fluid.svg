@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="96.761917mm"
+   height="115.10636mm"
+   viewBox="0 0 342.85719 407.85718"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="open centrifuge tube without fluid.svg"
+   inkscape:export-filename="C:\Users\Jason Meurlin\Tube1.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.2049479"
+     inkscape:cx="194.24189"
+     inkscape:cy="167.44513"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showborder="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-74.285717,-89.505023)">
+    <g
+       id="g3356"
+       transform="translate(391.42858,-74.285714)"
+       style="opacity:0.93999999" />
+    <g
+       id="g3511"
+       transform="matrix(0.43956048,0,0,0.47307377,219.96863,-52.858765)"
+       style="opacity:0.7">
+      <path
+         sodipodi:nodetypes="cccscccc"
+         inkscape:connector-curvature="0"
+         id="rect3336"
+         d="m 153.57144,438.07649 0,539.9991 0.81836,0 c -0.21685,44.68451 98.6529,185.00091 134.18164,185.00091 35.52874,0 134.39848,-140.3164 134.18164,-185.00091 l 0.81836,0 0,-539.9991 z"
+         style="opacity:0.93999999;fill:#cccccc" />
+      <path
+         sodipodi:nodetypes="sssss"
+         inkscape:connector-curvature="0"
+         id="path3352"
+         d="m 448.57144,423.07649 c 0,27.61424 -70.05648,50 -160,50 -89.94352,0 -160,-22.38576 -160,-50 0,-27.61424 70.05648,-50 160,-50 89.94352,0 160,22.38576 160,50 z"
+         style="opacity:0.93999999;fill:#999999" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect3360"
+         d="m 160.14286,586.64795 142.71429,0 0,22.85714 -142.71429,0 z"
+         style="opacity:0.93999999;fill:#999999" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="rect3362"
+         d="m 160.14286,712.36224 137,0 0,22.85715 -137,0 z"
+         style="opacity:0.93999999;fill:#999999" />
+      <ellipse
+         ry="34.285713"
+         rx="130"
+         cy="420.93359"
+         cx="287.14285"
+         id="path3507"
+         style="opacity:1;fill:#cccccc" />
+    </g>
+    <path
+       style="opacity:0.92000002;fill:#999999"
+       d="m 279.74303,140.67753 c -18.08024,0.61663 -35.63338,7.1174 -53.13466,12.69458 -12.62624,-6.6838 -26.18936,-9.09698 -39.60963,-10.39966 -0.32826,10.93148 7.62664,20.19339 15.42211,17.57483 8.5382,0.46661 18.80141,0.41996 26.00225,4.73035 2.45068,-0.96478 7.42483,-3.4888 11.24593,-3.75287 12.93073,-1.63163 25.96245,-1.26594 38.89931,-2.37755 4.36261,0.23878 6.92932,-4.96987 6.42359,-10.57386 0.0542,-4.03279 -1.90568,-8.59294 -5.2489,-7.89582 z"
+       id="rect3518"
+       inkscape:connector-curvature="0" />
+    <ellipse
+       style="opacity:1;fill:#999999"
+       id="path3524"
+       ry="19.598772"
+       rx="64.050247"
+       cy="153.7079"
+       cx="138.33597" />
+    <rect
+       style="opacity:1;fill:#8d8d99;fill-opacity:1"
+       id="rect3542"
+       width="99.21508"
+       height="66.230331"
+       x="89.356308"
+       y="89.50502"
+       ry="16.682076"
+       rx="31.869843" />
+  </g>
+</svg>
