@@ -1,22 +1,26 @@
 import * as React from 'react';
-import {Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem, Button } from 'reactstrap';
 
-interface State{
+interface State {
 
 }
 
-interface Props{
+interface Props {
 
 }
 
 class ToolBox extends React.Component<Props, State>{
-    constructor(props: Props){
+    constructor(props: Props) {
         super(props);
     }
 
-    render(){
-        return(
-            <div/>
+    render() {
+        return (
+            <div className="btn-group-vertical" role="group" aria-label="Basic example">
+                <Button type="button" className="btn btn-secondary">Left</Button>
+                <Button type="button" className="btn btn-secondary">Middle</Button>
+                <Button type="button" className="btn btn-secondary">Right</Button>
+            </div>
         )
     }
 }
