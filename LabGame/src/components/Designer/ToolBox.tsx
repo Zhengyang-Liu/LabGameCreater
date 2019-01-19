@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Nav, NavItem, Button } from 'reactstrap';
+import { checkPropTypes } from 'prop-types';
 
 interface State {
 
@@ -14,12 +15,20 @@ class ToolBox extends React.Component<Props, State>{
         super(props);
     }
 
+    makeToolButtons(params: any) {
+        const tools = params.tools.map((tool: any) => {
+            return (
+                <Button type="button" className="btn btn-secondary">
+                    <img src={tool.imagePath}></img >
+                </Button>
+            );
+        })
+    };
+
     render() {
         return (
             <div className="btn-group-vertical" role="group" aria-label="Basic example">
-                <Button type="button" className="btn btn-secondary">Left</Button>
-                <Button type="button" className="btn btn-secondary">Middle</Button>
-                <Button type="button" className="btn btn-secondary">Right</Button>
+                {this.makeToolButtons}
             </div>
         )
     }
