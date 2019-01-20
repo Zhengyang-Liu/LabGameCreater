@@ -17,21 +17,22 @@ const ReactableChild = reactable(Pipette)
 class Scene extends React.Component<State, State>{
     constructor(props: State) {
         super(props);
-        this.state = {
-            x: props.x,
-            y: props.y,
-            width: props.width,
-            height: props.height,
-            angle: props.angle
-        };
     }
+
+    state = {
+        x: this.props.x,
+        y: this.props.y,
+        width: this.props.width,
+        height: this.props.height,
+        angle: this.props.angle
+    };
 
     doubled = false
     handleDragMove = (e) => {
         const { dx, dy } = e
         this.setState(state => ({
-            x: this.state.x + dx,
-            y: this.state.y + dy,
+            x: state.x + dx,
+            y: state.y + dy,
         }))
     }
     handleDoubleTap = (e) => {
@@ -65,6 +66,19 @@ class Scene extends React.Component<State, State>{
     render() {
         return (
             <div>
+                <ReactableChild
+                    draggable
+                    gesturable
+                    resizable={{
+                        edges: { left: true, right: true, bottom: true, top: true }
+                    }}
+                    onDragMove={this.handleDragMove}
+                    onDoubleTap={this.handleDoubleTap}
+                    onGestureMove={this.handleGestureMove}
+                    onResizeMove={this.handleResizeMove}
+                    {...this.state}
+                ></ReactableChild>
+
                 <ReactableChild
                     draggable
                     gesturable
