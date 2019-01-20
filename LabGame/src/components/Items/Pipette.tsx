@@ -1,7 +1,15 @@
 import * as React from 'react';
 import reactable from 'reactablejs'
 
-class Pipette extends React.Component<any, any>
+interface Transfrom {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    angle: number,
+}
+
+class PipetteImage extends React.Component<any, any>
 {
     constructor(props: any) {
         super(props);
@@ -10,7 +18,6 @@ class Pipette extends React.Component<any, any>
     render() {
         return (
             <div style={{
-                fontSize: '30px',
                 position: 'relative',
                 left: this.props.x,
                 top: this.props.y,
@@ -25,6 +32,42 @@ class Pipette extends React.Component<any, any>
         );
     }
 }
-const Reactable = reactable(Pipette)
+
+const ReactableChild = reactable(PipetteImage)
+
+class Pipette extends React.Component<any, Transfrom> {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            x: 0,
+            y: 0,
+            width: 50,
+            height: 140,
+            angle: 0,
+        }
+    }
+    handleDragMove = (e) => {
+        const { dx, dy } = e
+        this.setState(state => ({
+            x: state.x + dx,
+            y: state.y + dy,
+        }))
+    }
+
+    render() {
+        return (
+            <ReactableChild
+                draggable
+                resizable={{
+                    edges: { left: true, right: true, bottom: true, top: true }
+                }}
+                onDragMove={this.handleDragMove}
+                {...this.state}
+            />
+        )
+    }
+}
+
 export default Pipette;
 

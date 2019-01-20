@@ -1,96 +1,31 @@
 import * as React from 'react';
 import Pipette from 'src/components/items/Pipette'
 import * as ReactDOM from 'react-dom'
-import reactable from 'reactablejs'
+
 
 interface State {
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    angle: number,
+    Items: any[]
 }
 
-const ReactableChild = reactable(Pipette)
-
-
-class Scene extends React.Component<State, State>{
-    constructor(props: State) {
+class Scene extends React.Component<any, State>{
+    constructor(props: any) {
         super(props);
-    }
-
-    state = {
-        x: this.props.x,
-        y: this.props.y,
-        width: this.props.width,
-        height: this.props.height,
-        angle: this.props.angle
-    };
-
-    doubled = false
-    handleDragMove = (e) => {
-        const { dx, dy } = e
-        this.setState(state => ({
-            x: state.x + dx,
-            y: state.y + dy,
-        }))
-    }
-    handleDoubleTap = (e) => {
-        this.setState(prev => ({
-            width: this.doubled ? prev.width / 2 : prev.width * 2,
-            height: this.doubled ? prev.height / 2 : prev.height * 2,
-        }))
-        this.doubled = !this.doubled
-    }
-    handleGestureMove = (e) => {
-        const { da } = e
-        this.setState(state => ({
-            angle: state.angle + da
-        }))
-    }
-    handleResizeMove = (e) => {
-        const { width, height } = e.rect
-        const { left, top } = e.deltaRect
-
-
-        this.setState(state => {
-            return {
-                x: state.x + left,
-                y: state.y + top,
-                width,
-                height
-            }
-        })
+        const pipette1 = new Pipette(null);
+        const pipette2 = new Pipette(null);
+        this.state = {
+            Items: [pipette1, pipette2]
+        }
     }
 
     render() {
+        const items = this.state.Items.map((item) => {
+            return (
+               <Pipette></Pipette>  
+            );
+        })
         return (
             <div>
-                <ReactableChild
-                    draggable
-                    gesturable
-                    resizable={{
-                        edges: { left: true, right: true, bottom: true, top: true }
-                    }}
-                    onDragMove={this.handleDragMove}
-                    onDoubleTap={this.handleDoubleTap}
-                    onGestureMove={this.handleGestureMove}
-                    onResizeMove={this.handleResizeMove}
-                    {...this.state}
-                ></ReactableChild>
-
-                <ReactableChild
-                    draggable
-                    gesturable
-                    resizable={{
-                        edges: { left: true, right: true, bottom: true, top: true }
-                    }}
-                    onDragMove={this.handleDragMove}
-                    onDoubleTap={this.handleDoubleTap}
-                    onGestureMove={this.handleGestureMove}
-                    onResizeMove={this.handleResizeMove}
-                    {...this.state}
-                ></ReactableChild>
+               {items}
             </div>
         )
     }
