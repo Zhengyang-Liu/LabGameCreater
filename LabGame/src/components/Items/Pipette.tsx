@@ -1,5 +1,6 @@
 import * as React from 'react';
 import reactable from 'reactablejs'
+import Tool from './Tool'
 
 interface Transfrom {
     x: number,
@@ -35,7 +36,7 @@ class PipetteImage extends React.Component<any, any>
 
 const ReactableChild = reactable(PipetteImage)
 
-class Pipette extends React.Component<any, Transfrom> {
+class Pipette extends Tool {
 
     constructor(props: any) {
         super(props);
@@ -53,6 +54,10 @@ class Pipette extends React.Component<any, Transfrom> {
             x: state.x + dx,
             y: state.y + dy,
         }))
+    }
+
+    saveData(){
+        return this.state;
     }
 
     render() {
