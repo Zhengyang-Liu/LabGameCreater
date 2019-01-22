@@ -37,7 +37,6 @@ class PipetteImage extends React.Component<any, any>
 const ReactableChild = reactable(PipetteImage)
 
 class Pipette extends Tool {
-
     constructor(props: any) {
         super(props);
         this.state = {

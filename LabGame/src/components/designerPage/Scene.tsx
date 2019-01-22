@@ -1,8 +1,11 @@
 import * as React from 'react';
-import Pipette from 'src/components/items/Pipette'
 import * as ReactDOM from 'react-dom'
 import Tool from '../items/Tool'
+import Pipette from '../items/Pipette'
 
+function RenderItem({ item }) {
+    return (<div><Pipette/></div >);
+}
 
 interface State {
     Items: any[]
@@ -14,11 +17,10 @@ class Scene extends React.Component<any, State>{
 
     constructor(props: any) {
         super(props);
-        
-        const pipette1 = <Pipette />
-        const pipette2 = <Pipette />
-        //this.items.push(pipette1);
-        
+
+        const pipette1 = new Pipette(null);
+        const pipette2 = new Pipette(null);
+
         this.state = {
             Items: [pipette1, pipette2]
         }
@@ -32,7 +34,7 @@ class Scene extends React.Component<any, State>{
         this.save();
         return (
             <div>
-               {this.state.Items.map(item => <div>{item}</div>)}
+                {/* {this.state.Items.map(item => <div>{item}</div>)} */}
             </div>
         )
     }

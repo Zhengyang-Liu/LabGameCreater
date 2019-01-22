@@ -21,7 +21,7 @@ class Designer extends React.Component<any, any>
                         <ToolBox tools={this.props.tools} />
                     </div>
                     <div className="col-6">
-                        <Scene x={0} y={0} width={400} height={400} angle={0} />
+                        <Scene scene = {this.props.scene} />
                     </div>
                     <div className="col-3">
                         <PropertyGrid />

@@ -6,17 +6,17 @@ import Playground from './Playground';
 import Designer from './designerPage/Designer'
 
 interface mainState {
-    tools: any;
+    scene: any;
 }
 
 const mapStateToProps = (state: mainState) => {
     return {
-        tools: state.tools
+        scene: state.scene
     }
 }
 
 interface Props {
-    tools: []
+    scene: []
     sceneSetting: {
         x: number,
         y: number,
@@ -38,7 +38,7 @@ class Main extends React.Component<Props>{
                 <Header />
                 <Switch>
                     <Route path="/playground" component={Playground} />
-                    <Route path="/designer" component={() => <Designer tools={this.props.tools} />} />
+                    <Route path="/designer" component={() => <Designer scene={this.props.scene} />} />
                     <Route exact path="/contactus" />} />
                 </Switch>
             </div>

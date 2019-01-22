@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Tools } from './Tools'
+import { items } from './Items'
 import { SceneSetting } from '../shared/SceneSetting'
 
 import thunk from 'redux-thunk';
@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            tools: Tools,
+            scene: items,
         }),
         applyMiddleware(thunk, logger)
     );
