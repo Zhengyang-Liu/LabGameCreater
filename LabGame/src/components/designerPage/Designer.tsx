@@ -5,9 +5,10 @@ import Scene from './Scene';
 
 interface Props {
     tools: []
+    scene: []
 }
 
-class Designer extends React.Component<any, any>
+class Designer extends React.Component<Props, any>
 {
     constructor(props: Props) {
         super(props);

@@ -1,15 +1,12 @@
-export const Items = 
+export const ITEMS = 
 [
-    // {
-    //     name: "pipette",
-    //     img: "/images/pipette without fluid.svg"
-    // },
-    // {
-    //     name: "container",
-    //     img: "/images/container with fluid.svg"
-    // },
-    // {
-    //     name: "tube",
-    //     img: "/images/open centrifuge tube without fluid.svg"
-    // },
+    {
+        id: 0,
+        name: "p1"
+    },
+    {
+        id: 1,
+        name: "p2"
+    }
 ]
+

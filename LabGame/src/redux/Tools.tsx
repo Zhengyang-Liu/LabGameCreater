@@ -1,13 +1,13 @@
 import * as ActionTypes from './ActionTypes';
-import {ITEMS} from '../shared/items'
+import {TOOLS} from '../shared/tools'
 
-export const items = (state = {
-    items: ITEMS
+export const tools = (state = {
+    tools: TOOLS
 }, action: any) => {
     switch (action.type) {
-        case ActionTypes.Add_Item:
+        case ActionTypes.ADD_TOOL:
             var item = action.payload;
-            return state.items.concat(item)
+            return state.tools.concat(item)
         default:
             return state;
     }

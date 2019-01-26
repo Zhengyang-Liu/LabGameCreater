@@ -4,37 +4,47 @@ import Tool from '../items/Tool'
 import Pipette from '../items/Pipette'
 
 function RenderItem({ item }) {
-    return (<div><Pipette/></div >);
+    return (<div><Pipette /></div >);
 }
 
 interface State {
-    Items: any[]
+    items: any[]
 }
 
-class Scene extends React.Component<any, State>{
+interface Props {
+    scene: any[]
+}
 
-    items: Array<Tool> = []
+class Scene extends React.Component<Props, State>{
 
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props);
 
-        const pipette1 = new Pipette(null);
-        const pipette2 = new Pipette(null);
+        // const pipette1 = new Pipette(null);
+        // const pipette2 = new Pipette(null);
 
         this.state = {
-            Items: [pipette1, pipette2]
+            items: this.props.scene
         }
     }
 
     save() {
-        console.log(this.state.Items.map(item => item.saveDate()));
+        console.log(this.state.items.map(item => item.saveDate()));
     }
 
     render() {
+
+        const items = this.state.items.map((item) => {
+            return (
+                <RenderItem item={item}></RenderItem>
+
+            );
+        });
+
         this.save();
         return (
             <div>
-                {/* {this.state.Items.map(item => <div>{item}</div>)} */}
+                {items}
             </div>
         )
     }

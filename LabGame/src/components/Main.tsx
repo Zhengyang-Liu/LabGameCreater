@@ -7,23 +7,19 @@ import Designer from './designerPage/Designer'
 
 interface mainState {
     scene: any;
+    tools: any;
 }
 
 const mapStateToProps = (state: mainState) => {
     return {
-        scene: state.scene
+        scene: state.scene,
+        tools: state.tools
     }
 }
 
 interface Props {
     scene: []
-    sceneSetting: {
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-        angle: number,
-    }
+    tools: []
 }
 
 class Main extends React.Component<Props>{
@@ -38,7 +34,7 @@ class Main extends React.Component<Props>{
                 <Header />
                 <Switch>
                     <Route path="/playground" component={Playground} />
-                    <Route path="/designer" component={() => <Designer scene={this.props.scene} />} />
+                    <Route path="/designer" component={() => <Designer scene={this.props.scene} tools={this.props.tools}/>} />
                     <Route exact path="/contactus" />} />
                 </Switch>
             </div>
