@@ -29,7 +29,7 @@ class Scene extends React.Component<Props, State>{
     }
 
     save() {
-        console.log(this.state.items.map(item => item.saveDate()));
+        console.log(this.state.items);
     }
 
     render() {

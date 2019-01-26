@@ -4,8 +4,8 @@ import PropertyGrid from './PropertyGrid';
 import Scene from './Scene';
 
 interface Props {
-    tools: []
-    scene: []
+    tools: any
+    scene: any
 }
 
 class Designer extends React.Component<Props, any>
@@ -19,10 +19,10 @@ class Designer extends React.Component<Props, any>
             <div className="container">
                 <div className="row">
                     <div className="col-3">
-                        <ToolBox tools={this.props.tools} />
+                        <ToolBox tools={this.props.tools.tools} />
                     </div>
                     <div className="col-6">
-                        <Scene scene = {this.props.scene} />
+                        <Scene scene = {this.props.scene.items} />
                     </div>
                     <div className="col-3">
                         <PropertyGrid />

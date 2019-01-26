@@ -22,7 +22,7 @@ class ToolBox extends React.Component<Props, State>{
                     <img width="100%" height="100%" src={tool.img}></img > {tool.name}
                 </Button>
             );
-        })
+        });
 
         return (
             <div className="btn-group-vertical" role="group" aria-label="Basic example">
