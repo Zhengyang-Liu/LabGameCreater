@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Header from './Header';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { addItem } from '../redux/ActionCreators'
 import { connect } from 'react-redux';
 import Playground from './Playground';
 import Designer from './designerPage/Designer'
@@ -17,6 +18,10 @@ const mapStateToProps = (state: mainState) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    addItem: (type) => dispatch(addItem(type))
+})
+
 interface Props {
     scene: []
     tools: []
@@ -24,7 +29,7 @@ interface Props {
 
 class Main extends React.Component<Props>{
 
-    constructor(props: Props) {
+    constructor(props: any) {
         super(props);
     }
 
@@ -42,4 +47,4 @@ class Main extends React.Component<Props>{
     }
 }
 
-export default withRouter(connect<mainState, any, any>(mapStateToProps)(Main))
+export default withRouter(connect<mainState, any, any>(mapStateToProps, mapDispatchToProps)(Main))

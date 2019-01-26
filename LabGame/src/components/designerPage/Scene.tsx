@@ -1,12 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom'
 import Tool from '../items/Tool'
-import {COMPONENTS} from '../../shared/ComponentDictionary'
+import { connect } from 'react-redux';
+import { COMPONENTS } from '../../shared/ComponentDictionary'
+import { addItem } from '../../redux/ActionCreators'
 
 function RenderItem({ item }) {
     var item: any = React.createElement(COMPONENTS[item.type])
     return (item);
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    addItem: (type) => dispatch(addItem(type))
+})
 
 interface State {
     items: any[]
@@ -51,4 +57,4 @@ class Scene extends React.Component<Props, State>{
     }
 }
 
-export default Scene;
+export default connect<any, any, any>(mapDispatchToProps)(Scene);
