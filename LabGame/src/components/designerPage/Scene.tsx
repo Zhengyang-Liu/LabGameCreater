@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom'
 import Tool from '../items/Tool'
-import Pipette from '../items/Pipette'
+import {COMPONENTS} from '../../shared/ComponentDictionary'
 
 function RenderItem({ item }) {
-    return (<div><Pipette /></div >);
+    var item: any = React.createElement(COMPONENTS[item.type])
+    return (item);
 }
 
 interface State {
