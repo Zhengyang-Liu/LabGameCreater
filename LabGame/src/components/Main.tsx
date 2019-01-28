@@ -4,7 +4,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { addItem } from '../redux/ActionCreators'
 import { connect } from 'react-redux';
 import Playground from './Playground';
-import Designer from './designerPage/Designer'
+import Designer from './Designer'
 
 interface mainState {
     scene: any;
@@ -39,7 +39,7 @@ class Main extends React.Component<Props>{
                 <Header />
                 <Switch>
                     <Route path="/playground" component={Playground} />
-                    <Route path="/designer" component={() => <Designer scene={this.props.scene} tools={this.props.tools}/>} />
+                    <Route path="/designer" component={Designer} />
                     <Route exact path="/contactus" />} />
                 </Switch>
             </div>

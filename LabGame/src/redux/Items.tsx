@@ -1,13 +1,16 @@
 import * as ActionTypes from './ActionTypes';
-import {ITEMS} from '../shared/items'
+import { ITEMS } from '../shared/items'
 
-export const items = (state = {
-    items: ITEMS
-}, action: any) => {
+export const items = (state = ITEMS
+    , action: any) => {
     switch (action.type) {
         case ActionTypes.Add_Item:
-            var item = action.payload;
-            return state.items.concat(item)
+            var item = {
+                id: 321,
+                type: action.payload,
+                name: 'test'
+            }
+            return state.concat(item)
         default:
             return state;
     }

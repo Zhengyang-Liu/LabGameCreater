@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            scene: items,
+            items: items,
             tools: tools
         }),
         applyMiddleware(thunk, logger)

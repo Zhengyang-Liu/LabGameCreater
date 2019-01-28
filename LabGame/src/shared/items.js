@@ -2,12 +2,12 @@ export const ITEMS =
 [
     {
         id: 0,
-        type: "Pipette",
+        type: "pipette",
         name: "p1"
     },
     {
         id: 1,
-        type: "Pipette",
+        type: "pipette",
         name: "p2"
     }
 ]
