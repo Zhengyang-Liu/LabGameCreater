@@ -2,11 +2,9 @@ import * as React from 'react';
 import reactable from 'reactablejs'
 import Tool from './Tool'
 
-interface Transfrom {
+interface transfrom {
     x: number,
     y: number,
-    width: number,
-    height: number,
     angle: number,
 }
 
@@ -37,15 +35,9 @@ class PipetteImage extends React.Component<any, any>
 const ReactableChild = reactable(PipetteImage)
 
 class Pipette extends Tool {
-    constructor(props: any) {
+    constructor(props: transfrom) {
         super(props);
-        this.state = {
-            x: 0,
-            y: 0,
-            width: 50,
-            height: 140,
-            angle: 0,
-        }
+        this.state = props;
     }
     handleDragMove = (e) => {
         const { dx, dy } = e
@@ -55,17 +47,10 @@ class Pipette extends Tool {
         }))
     }
 
-    saveData(){
-        return this.state;
-    }
-
     render() {
         return (
             <ReactableChild
                 draggable
-                resizable={{
-                    edges: { left: true, right: true, bottom: true, top: true }
-                }}
                 onDragMove={this.handleDragMove}
                 {...this.state}
             />

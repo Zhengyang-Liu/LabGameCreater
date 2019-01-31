@@ -8,7 +8,12 @@ export const items = (state = ITEMS
             var item = {
                 id: 321,
                 type: action.payload,
-                name: 'test'
+                name: 'test',
+                transform: {
+                    x: 0,
+                    y: 0,
+                    angle: 0
+                }
             }
             return state.concat(item)
         default:

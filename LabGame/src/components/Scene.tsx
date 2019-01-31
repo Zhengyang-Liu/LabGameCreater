@@ -2,7 +2,7 @@ import * as React from 'react';
 import { COMPONENTS } from '../shared/ComponentDictionary'
 
 function RenderItem({ item }) {
-    var item: any = React.createElement(COMPONENTS[item.type])
+    var item: any = React.createElement(COMPONENTS[item.type], item.transform)
     return (item);
 }
 
