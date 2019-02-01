@@ -1,9 +1,13 @@
 import { connect } from 'react-redux';
 import Scene from '../components/Scene'
+import { fetchItems } from '../redux/ActionCreators'
 
 const mapStateToProps = state => ({
-    items: state.items
+    scene: state.scene
 })
 
+const mapDispatchToProps = (dispatch) => ({
+    fetchItems: () => { dispatch(fetchItems()) }
+})
 
-export default connect(mapStateToProps)(Scene);
+export default connect(mapStateToProps, mapDispatchToProps)(Scene);

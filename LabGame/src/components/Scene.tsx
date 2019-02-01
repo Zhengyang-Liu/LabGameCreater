@@ -6,12 +6,25 @@ function RenderItem({ item }) {
     return (item);
 }
 
-const Scene = ({ items }) => (
-    <div>
-        {items.map((item) =>
-            <RenderItem item={item}></RenderItem>
-        )}
-    </div>
-)
+
+class Scene extends React.Component<any, any> {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.fetchItems();
+    }
+
+    render() {
+        return (
+            <div>
+                {this.props.scene.items.map((item) =>
+                    <RenderItem item={item}></RenderItem>
+                )}
+            </div>
+        )
+    }
+}
 
 export default (Scene);

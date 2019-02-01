@@ -1,7 +1,8 @@
 import * as ActionTypes from './ActionTypes';
-import { ITEMS } from '../shared/items'
 
-export const items = (state = ITEMS
+export const Scene = (state = {
+    items: new Array<any>()
+}
     , action: any) => {
     switch (action.type) {
         case ActionTypes.Add_Item:
@@ -15,7 +16,9 @@ export const items = (state = ITEMS
                     angle: 0
                 }
             }
-            return state.concat(item)
+            return state.items.concat(item);
+        case ActionTypes.ADD_ITEMS:
+            return { ...state, items: action.payload }
         default:
             return state;
     }
