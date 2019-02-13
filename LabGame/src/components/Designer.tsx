@@ -3,12 +3,9 @@ import ToolBox from '../container/ToolBox';
 import Scene from '../container/Scene';
 import PropertyGrid from './PropertyGrid';
 
-interface Props {
-}
-
-class Designer extends React.Component<any, any>
+class Designer extends React.Component
 {
-    constructor(props: Props) {
+    constructor(props) {
         super(props);
     }
 

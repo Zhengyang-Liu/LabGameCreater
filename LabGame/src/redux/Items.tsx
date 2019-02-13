@@ -1,12 +1,13 @@
 import * as ActionTypes from './ActionTypes';
+import { ItemData } from './../interfaces'
 
 export const Scene = (state = {
-    items: new Array<any>()
+    items: new Array<ItemData>()
 }
-    , action: any) => {
+    , action) => {
     switch (action.type) {
         case ActionTypes.Add_Item:
-            var item = {
+            let item: ItemData = {
                 id: 321,
                 type: action.payload,
                 name: 'test',
@@ -16,7 +17,7 @@ export const Scene = (state = {
                     angle: 0
                 }
             }
-            return state.items.concat(item);
+            return {...state, items: state.items.concat(item)};
         case ActionTypes.ADD_ITEMS:
             return { ...state, items: action.payload }
         default:

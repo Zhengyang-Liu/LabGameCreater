@@ -2,12 +2,16 @@ import * as React from 'react';
 import { COMPONENTS } from '../shared/ComponentDictionary'
 
 function RenderItem({ item }) {
-    var item: any = React.createElement(COMPONENTS[item.type], item.transform)
-    return (item);
+    let reactElement = React.createElement(COMPONENTS[item.type], item.transform)
+    return (reactElement);
 }
 
+interface SceneProps{
+    fetchItems: Function,
+    scene: any
+}
 
-class Scene extends React.Component<any, any> {
+class Scene extends React.Component<SceneProps> {
     constructor(props) {
         super(props);
     }
