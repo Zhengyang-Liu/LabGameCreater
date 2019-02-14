@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Scene from '../components/Scene'
+import Scene from '../components/designer/Scene'
 import { fetchItems } from '../redux/ActionCreators'
 
 const mapStateToProps = state => ({

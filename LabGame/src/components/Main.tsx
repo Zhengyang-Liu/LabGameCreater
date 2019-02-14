@@ -4,7 +4,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { addItem } from '../redux/ActionCreators'
 import { connect } from 'react-redux';
 import Playground from './Playground';
-import Designer from './Designer'
+import Designer from './designer/Designer'
 
 interface mainState {
     scene: any;

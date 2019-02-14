@@ -10,3 +10,7 @@ export interface Transfrom {
     y: number,
     angle: number
 }
+
+export interface Scene {
+    
+}

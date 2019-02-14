@@ -1,10 +1,10 @@
 import * as React from 'react';
-import ToolBox from '../container/ToolBox';
-import Scene from '../container/Scene';
-import PropertyGrid from './PropertyGrid';
+import ToolBox from '../../container/ToolBox';
+import Scene from '../../container/Scene';
+import PropertyGrid from '../PropertyGrid';
+import Menu from './Menu';
 
-class Designer extends React.Component
-{
+class Designer extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -13,11 +13,14 @@ class Designer extends React.Component
         return (
             <div className="container">
                 <div className="row">
+                    <Menu></Menu>
+                </div>
+                <div className="row">
                     <div className="col-3">
-                        <ToolBox/>
+                        <ToolBox />
                     </div>
                     <div className="col-6">
-                        <Scene/>
+                        <Scene />
                     </div>
                     <div className="col-3">
                         <PropertyGrid />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { COMPONENTS } from '../shared/ComponentDictionary'
+import { COMPONENTS } from '../../shared/ComponentDictionary'
 
 function RenderItem({ item }) {
     let reactElement = React.createElement(COMPONENTS[item.type], item.transform)

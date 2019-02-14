@@ -1,6 +1,6 @@
 import { addItem } from '../redux/ActionCreators'
 import { connect } from 'react-redux';
-import ToolBox from '../components/ToolBox'
+import ToolBox from '../components/designer/ToolBox'
 
 
 const mapDispatchToProps = dispatch => ({

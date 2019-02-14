@@ -19,7 +19,7 @@ export const Scene = (state = {
             }
             return {...state, items: state.items.concat(item)};
         case ActionTypes.ADD_ITEMS:
-            return { ...state, items: action.payload }
+            return { ...state, items: action.payload };
         default:
             return state;
     }
