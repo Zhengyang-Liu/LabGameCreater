@@ -27,7 +27,11 @@ export const Scene = (state = {
                 }
             });
             return { ...state, items: action.payload };
-        
+        case ActionTypes.REMOVE_ITEM:
+            state.items = state.items.filter(function (item: ItemData) {
+                return item.id != action.payload;
+            })
+            return { ...state};
         default:
             return state;
     }

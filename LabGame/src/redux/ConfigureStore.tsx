@@ -10,8 +10,8 @@ export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             scene: Scene,
-            tools: tools
-            //selectedItem: selectedItem
+            tools: tools,
+            selectedItem: selectedItem
         }),
         applyMiddleware(thunk, logger)
     );

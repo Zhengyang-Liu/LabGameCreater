@@ -48,7 +48,12 @@ export const saveScene = (scene) => ({
     payload: scene
 })
 
-// export const selectItem = (itemId) => ({
-//     type: ActionTypes.SELECT_ITEM,
-//     payload: itemId
-// })
+export const selectItem = (itemId: number) => ({
+    type: ActionTypes.SELECT_ITEM,
+    payload: itemId
+})
+
+export const removeItem = (itemId: number) => ({
+    type: ActionTypes.REMOVE_ITEM,
+    payload: itemId
+})

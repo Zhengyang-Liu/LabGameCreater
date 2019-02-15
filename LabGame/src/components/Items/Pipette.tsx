@@ -2,7 +2,7 @@ import * as React from 'react';
 import reactable from 'reactablejs'
 import Tool from './Tool'
 import { connect } from 'react-redux';
-// import { selectItem } from '../../redux/ActionCreators'
+import { selectItem } from '../../redux/ActionCreators'
 
 interface transform {
     x: number,
@@ -17,13 +17,13 @@ class PipetteImage extends React.Component<any, any>
     }
 
     handleClick() {
-        alert("Click");
+        this.props.selectItem(this.props.id);
     }
 
     render() {
         return (
             <div
-                // onClick={() => selectItem(this.props.id)}
+                onClick={() => this.handleClick()}
                 style={{
                     position: 'relative',
                     left: this.props.transform.x,
@@ -67,9 +67,9 @@ class Pipette extends Tool {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//     selectItem: (itemId: number) => { dispatch(selectItem(itemId)) }
-// })
+const mapDispatchToProps = (dispatch) => ({
+    selectItem: (itemId: number) => dispatch(selectItem(itemId))
+})
 
-export default Pipette;
+export default connect(null, mapDispatchToProps)(Pipette);
 

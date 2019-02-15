@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
-export const selectedItem = (state = { selectedItem: 0 }, action: any) => {
+export const selectedItem = (state =  0, action: any) => {
     switch (action.type) {
         case ActionTypes.SELECT_ITEM:
             state = action.payload;
