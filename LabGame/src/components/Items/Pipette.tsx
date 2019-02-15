@@ -1,6 +1,8 @@
 import * as React from 'react';
 import reactable from 'reactablejs'
 import Tool from './Tool'
+import { connect } from 'react-redux';
+// import { selectItem } from '../../redux/ActionCreators'
 
 interface transfrom {
     x: number,
@@ -14,19 +16,24 @@ class PipetteImage extends React.Component<any, any>
         super(props);
     }
 
+    handleClick() {
+        alert("Click");
+    }
+
     render() {
         return (
-            <div style={{
-                position: 'relative',
-                left: this.props.x,
-                top: this.props.y,
-                width: this.props.width,
-                height: this.props.height,
-                background: 'grey',
-                transform: `rotate(${this.props.angle}deg)`,
-            }}
+            <div
+                // onClick={() => selectItem(this.props.id)}
+                style={{
+                    position: 'relative',
+                    left: this.props.x,
+                    top: this.props.y,
+                    display: "inline-block",
+                    background: 'transparent',
+                    transform: `rotate(${this.props.angle}deg)`,
+                }}
                 ref={this.props.getRef}>
-                <img src="/images/pipette without fluid.svg" height={100} width={100} />
+                <img src="/images/pipette without fluid.svg" height={300} />
             </div>
         );
     }
@@ -57,6 +64,10 @@ class Pipette extends Tool {
         )
     }
 }
+
+// const mapDispatchToProps = (dispatch) => ({
+//     selectItem: (itemId: number) => { dispatch(selectItem(itemId)) }
+// })
 
 export default Pipette;
 

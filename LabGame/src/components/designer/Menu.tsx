@@ -3,17 +3,21 @@ import { Button } from 'reactstrap'
 import { connect } from 'react-redux';
 import { baseUrl } from '../../shared/baseUrl'
 
-class Menu extends React.Component {
-    constructor(props: any) {
+interface SceneProps{
+    scene: any
+}
+
+class Menu extends React.Component<SceneProps> {
+    constructor(props: SceneProps) {
         super(props)
     }
 
     saveScene() {
-        console.log(JSON.stringify(this.props));
+        console.log(JSON.stringify(this.props.scene));
 
-        fetch(baseUrl + 'scenes', {
-            method: "POST",
-            body: JSON.stringify(this.props),
+        fetch(baseUrl+'scene', {
+            method: "PUT",
+            body: JSON.stringify(this.props.scene),
             headers: {
                 "Content-Type": "application/json"
             },
