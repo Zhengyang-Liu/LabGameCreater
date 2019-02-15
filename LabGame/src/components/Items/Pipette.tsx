@@ -4,7 +4,7 @@ import Tool from './Tool'
 import { connect } from 'react-redux';
 // import { selectItem } from '../../redux/ActionCreators'
 
-interface transfrom {
+interface transform {
     x: number,
     y: number,
     angle: number,
@@ -26,11 +26,11 @@ class PipetteImage extends React.Component<any, any>
                 // onClick={() => selectItem(this.props.id)}
                 style={{
                     position: 'relative',
-                    left: this.props.x,
-                    top: this.props.y,
+                    left: this.props.transform.x,
+                    top: this.props.transform.y,
                     display: "inline-block",
                     background: 'transparent',
-                    transform: `rotate(${this.props.angle}deg)`,
+                    transform: `rotate(${this.props.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
                 <img src="/images/pipette without fluid.svg" height={300} />
@@ -42,15 +42,17 @@ class PipetteImage extends React.Component<any, any>
 const ReactableChild = reactable(PipetteImage)
 
 class Pipette extends Tool {
-    constructor(props: transfrom) {
+    constructor(props: transform) {
         super(props);
         this.state = props;
     }
     handleDragMove = (e) => {
-        const { dx, dy } = e
-        this.setState(state => ({
-            x: state.x + dx,
-            y: state.y + dy,
+        const { dx, dy } = e;
+        this.setState(state =>({
+            transform: {
+                x: state.transform.x + dx,
+                y: state.transform.y + dy,
+            }
         }))
     }
 

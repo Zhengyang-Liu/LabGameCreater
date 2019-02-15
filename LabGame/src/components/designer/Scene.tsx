@@ -2,11 +2,11 @@ import * as React from 'react';
 import { COMPONENTS } from '../../shared/ComponentDictionary'
 
 function RenderItem({ item }) {
-    let reactElement = React.createElement(COMPONENTS[item.type], item.transform)
+    let reactElement = React.createElement(COMPONENTS[item.type], item)
     return (reactElement);
 }
 
-interface SceneProps{
+interface SceneProps {
     fetchItems: Function,
     scene: any
 }
