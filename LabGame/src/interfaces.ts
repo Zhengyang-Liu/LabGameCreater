@@ -2,15 +2,11 @@ export interface ItemData {
     id: number,
     type: string,
     name: string,
-    transform: Transfrom
+    transform: Transform
 }
 
-export interface Transfrom {
+export interface Transform {
     x: number,
     y: number,
     angle: number
-}
-
-export interface Scene {
-    
 }

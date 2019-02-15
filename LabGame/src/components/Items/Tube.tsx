@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators'
 import { Transform } from '../../interfaces'
 
-class ContainerImage extends React.Component<any, any>
+
+class TubeImage extends React.Component<any, any>
 {
     constructor(props: any) {
         super(props);
@@ -28,16 +29,15 @@ class ContainerImage extends React.Component<any, any>
                     transform: `rotate(${this.props.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={200} />
+                <img src="/images/open centrifuge tube without fluid.svg" height={100} />
             </div>
         );
     }
 }
 
-const ReactableChild = reactable(ContainerImage)
+const ReactableChild = reactable(TubeImage)
 
-
-class Container extends Tool {
+class Tube extends Tool {
     constructor(props: Transform) {
         super(props);
         this.state = props;
@@ -67,5 +67,5 @@ const mapDispatchToProps = (dispatch) => ({
     selectItem: (itemId: number) => dispatch(selectItem(itemId))
 })
 
-export default connect(null, mapDispatchToProps)(Container);
+export default connect(null, mapDispatchToProps)(Tube);
 

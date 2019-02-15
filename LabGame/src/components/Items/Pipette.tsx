@@ -3,12 +3,7 @@ import reactable from 'reactablejs'
 import Tool from './Tool'
 import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators'
-
-interface transform {
-    x: number,
-    y: number,
-    angle: number,
-}
+import { Transform } from '../../interfaces'
 
 class PipetteImage extends React.Component<any, any>
 {
@@ -42,13 +37,13 @@ class PipetteImage extends React.Component<any, any>
 const ReactableChild = reactable(PipetteImage)
 
 class Pipette extends Tool {
-    constructor(props: transform) {
+    constructor(props: Transform) {
         super(props);
         this.state = props;
     }
     handleDragMove = (e) => {
         const { dx, dy } = e;
-        this.setState(state =>({
+        this.setState(state => ({
             transform: {
                 x: state.transform.x + dx,
                 y: state.transform.y + dy,
