@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ToolBox from '../../container/ToolBox';
 import Scene from '../../container/Scene';
-import PropertyGrid from './PropertyGrid';
+import PropertyPanel from './PropertyPanel';
 import Menu from './Menu';
 
 class Designer extends React.Component {
@@ -16,14 +16,14 @@ class Designer extends React.Component {
                     <Menu></Menu>
                 </div>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-2 border">
                         <ToolBox />
                     </div>
-                    <div className="col-6">
+                    <div className="col-7 border">
                         <Scene />
                     </div>
-                    <div className="col-3">
-                        <PropertyGrid />
+                    <div className="col-3 border">
+                        <PropertyPanel/>
                     </div>
                 </div>
             </div>

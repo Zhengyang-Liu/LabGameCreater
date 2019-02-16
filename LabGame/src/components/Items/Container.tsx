@@ -1,9 +1,8 @@
 import * as React from 'react';
-import reactable from 'reactablejs'
-import Tool from './Tool'
+import reactable from 'reactablejs';
 import { connect } from 'react-redux';
-import { selectItem } from '../../redux/ActionCreators'
-import { Transform } from '../../interfaces'
+import { selectItem } from '../../redux/ActionCreators';
+import { Transform } from '../../interfaces';
 
 class ContainerImage extends React.Component<any, any>
 {
@@ -40,15 +39,15 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ReactableChild = reactable(connect(null, mapDispatchToProps)(ContainerImage));
 
-class Container extends Tool {
-    constructor(props: Transform) {
+class Container extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.state = {
             x: this.props.item.transform.x,
             y: this.props.item.transform.y
         }
     }
-    
+
     handleDragMove = (e) => {
         const { dx, dy } = e;
         this.props.item.transform.x +=dx;

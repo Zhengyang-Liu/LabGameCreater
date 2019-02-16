@@ -47,7 +47,7 @@ class Header extends React.Component<Props, State> {
                         </Collapse>
                     </div>
                 </Navbar>
-                <Jumbotron>
+                {/* <Jumbotron>
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
@@ -56,7 +56,7 @@ class Header extends React.Component<Props, State> {
                             </div>
                         </div>
                     </div>
-                </Jumbotron>
+                </Jumbotron> */}
             </>
         );
     }

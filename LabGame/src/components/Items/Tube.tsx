@@ -1,6 +1,5 @@
 import * as React from 'react';
-import reactable from 'reactablejs'
-import Tool from './Tool'
+import reactable from 'reactablejs';
 import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators'
 import { Transform } from '../../interfaces'
@@ -41,7 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ReactableChild = reactable(connect(null, mapDispatchToProps)(TubeImage));
 
-class Tube extends Tool {
+class Tube extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
     }

@@ -8,6 +8,7 @@
     "@types/reactstrap": "^6.4.4",
     "@types/redux-logger": "^3.0.6",
     "bootstrap": "^4.2.1",
+    "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
     "mongoose": "^5.4.4",
     "office-ui-fabric-react": "^6.128.0",

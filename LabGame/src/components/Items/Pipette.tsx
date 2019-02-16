@@ -1,9 +1,7 @@
 import * as React from 'react';
-import reactable from 'reactablejs'
-import Tool from './Tool'
+import reactable from 'reactablejs';
 import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators'
-import { Transform } from '../../interfaces'
 
 class PipetteImage extends React.Component<any, any>
 {
@@ -40,8 +38,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ReactablePipette = reactable(connect(null, mapDispatchToProps)(PipetteImage));
 
-class Pipette extends Tool {
-    constructor(props: Transform) {
+class Pipette extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.state = props;
     }
