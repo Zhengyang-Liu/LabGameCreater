@@ -35,21 +35,22 @@ class TubeImage extends React.Component<any, any>
     }
 }
 
-const ReactableChild = reactable(TubeImage)
+const mapDispatchToProps = (dispatch) => ({
+    selectItem: (itemId: number) => dispatch(selectItem(itemId))
+})
+
+const ReactableChild = reactable(connect(null, mapDispatchToProps)(TubeImage));
 
 class Tube extends Tool {
-    constructor(props: Transform) {
+    constructor(props: any) {
         super(props);
-        this.state = props;
     }
+
     handleDragMove = (e) => {
         const { dx, dy } = e;
-        this.setState(state => ({
-            transform: {
-                x: state.transform.x + dx,
-                y: state.transform.y + dy,
-            }
-        }))
+        this.props.item.transform.x +=dx;
+        this.props.item.transform.y +=dy;
+        this.forceUpdate();
     }
 
     render() {
@@ -57,15 +58,11 @@ class Tube extends Tool {
             <ReactableChild
                 draggable
                 onDragMove={this.handleDragMove}
-                {...this.state}
+                {...this.props.item}
             />
         )
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    selectItem: (itemId: number) => dispatch(selectItem(itemId))
-})
-
-export default connect(null, mapDispatchToProps)(Tube);
+export default Tube;
 

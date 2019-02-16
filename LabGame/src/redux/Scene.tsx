@@ -12,7 +12,7 @@ export const Scene = (state = {
             let item: ItemData = {
                 id: ++id,
                 type: action.payload,
-                name: 'test',
+                name: action.payload + id,
                 transform: {
                     x: 0,
                     y: 0,
