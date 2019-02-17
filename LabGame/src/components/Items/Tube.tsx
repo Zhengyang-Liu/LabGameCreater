@@ -2,10 +2,17 @@ import * as React from 'react';
 import reactable from 'reactablejs';
 import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators'
-import { Transform } from '../../interfaces'
+import * as types from '../../types'
 
+type State = {}
+type Props = {
+    selectItem: Function,
+    transform: types.Transform,
+    id: number,
+    getRef: string
+}
 
-class TubeImage extends React.Component<any, any>
+class TubeImage extends React.Component<Props, State>
 {
     constructor(props: any) {
         super(props);

@@ -4,22 +4,36 @@ import { removeItem } from '../../redux/ActionCreators'
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import * as types from '../../types';
 
-class PropertyPanel extends React.Component<any, any> {
+interface Props {
+    scene: types.Scene,
+    selectedItem: number,
+    removeItem: Function
+}
+
+interface State {
+    activeTab: string
+}
+
+class PropertyPanel extends React.Component<Props, State>{
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             activeTab: '1'
         };
     }
 
-    handleClick() {
-        this.props.removeItem(this.props.selecteditem);
+    handleClick = () => {
+        this.props.removeItem(this.props.selectedItem);
     }
 
-    toggle(tab) {
+    handleItemChange = (event) => {
+        this.props.scene.objective.item = event.target.value;
+    }
+
+    toggle = (tab) => {
         if (this.state.activeTab !== tab) {
             this.setState({
                 activeTab: tab
@@ -27,7 +41,12 @@ class PropertyPanel extends React.Component<any, any> {
         }
     }
 
-    render() {
+    render = () => {
+        const items = this.props.scene.items.map(item => {
+            return (
+                <option>{item.name}</option>
+            );
+        })
         return (
             <div>
                 <Row>
@@ -67,7 +86,10 @@ class PropertyPanel extends React.Component<any, any> {
                             <Control.select
                                 model=".item"
                                 className="form-control"
-                            ></Control.select>
+                                onChange={this.handleItemChange}
+                            >
+                                {items}
+                            </Control.select>
                         </FormGroup>
                         <FormGroup className="FormGroup">
                             <Label>Property</Label>
@@ -106,8 +128,9 @@ class PropertyPanel extends React.Component<any, any> {
     }
 }
 
-const mapStateToProps = state => ({
-    selecteditem: state.selectedItem
+const mapStateToProps = (state) => ({
+    selectedItem: state.selectedItem,
+    scene: state.scene
 })
 
 const mapDispatchToProps = (dispatch) => ({

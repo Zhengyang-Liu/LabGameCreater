@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Scene } from './Scene'
+import { scene } from './Scene'
 import { tools } from './Tools'
 import { selectedItem } from './SelectedItem'
 
@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            scene: Scene,
+            scene: scene,
             tools: tools,
             selectedItem: selectedItem
         }),

@@ -1,15 +1,29 @@
 import * as ActionTypes from './ActionTypes';
-import { ItemData } from '../interfaces'
+import { Item } from '../types'
 
-let id = 0;
+let id = -1;
 
-export const Scene = (state = {
-    items: new Array<ItemData>()
-}
-    , action) => {
+export const scene = (state = {
+    items: new Array<Item>(),
+    objective: {
+        item: '',
+        description: '',
+        property: Object
+    }
+}, action) => {
     switch (action.type) {
+        case ActionTypes.LOAD_SCENE:
+            state = action.payload;
+            return state;
         case ActionTypes.Add_ITEM:
-            let item: ItemData = {
+            if (id == -1) {
+                state.items.forEach(element => {
+                    if (element.id > id) {
+                        id = element.id
+                    }
+                });
+            }
+            let item: Item = {
                 id: ++id,
                 type: action.payload,
                 name: action.payload + id,
@@ -20,18 +34,11 @@ export const Scene = (state = {
                 }
             }
             return { ...state, items: state.items.concat(item) };
-        case ActionTypes.ADD_ITEMS:
-            action.payload.forEach(element => {
-                if (element.id > id) {
-                    id = element.id
-                }
-            });
-            return { ...state, items: action.payload };
         case ActionTypes.REMOVE_ITEM:
-            state.items = state.items.filter(function (item: ItemData) {
+            state.items = state.items.filter(function (item: Item) {
                 return item.id != action.payload;
             })
-            return { ...state};
+            return { ...state };
         default:
             return state;
     }

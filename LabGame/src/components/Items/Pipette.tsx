@@ -2,10 +2,18 @@ import * as React from 'react';
 import reactable from 'reactablejs';
 import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators'
+import * as types from '../../types'
 
-class PipetteImage extends React.Component<any, any>
+type State = {}
+type Props = {
+    selectItem: Function,
+    transform: types.Transform,
+    id: number,
+    getRef: string
+}
+class PipetteImage extends React.Component<Props, State>
 {
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props);
     }
 
@@ -41,7 +49,6 @@ const ReactablePipette = reactable(connect(null, mapDispatchToProps)(PipetteImag
 class Pipette extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = props;
     }
     handleDragMove = (e) => {
         const { dx, dy } = e;
@@ -55,7 +62,7 @@ class Pipette extends React.Component<any, any> {
             <ReactablePipette
                 draggable
                 onDragMove={this.handleDragMove}
-                {...this.state.item}
+                {...this.props.item}
             />
         )
     }

@@ -3,7 +3,7 @@ import { Button } from 'reactstrap'
 import { connect } from 'react-redux';
 import { baseUrl } from '../../shared/baseUrl'
 
-interface SceneProps{
+interface SceneProps {
     scene: any
 }
 
@@ -12,10 +12,10 @@ class Menu extends React.Component<SceneProps> {
         super(props)
     }
 
-    saveScene() {
+    saveScene = () => {
         console.log(JSON.stringify(this.props.scene));
 
-        fetch(baseUrl+'scene', {
+        fetch(baseUrl + 'scene', {
             method: "PUT",
             body: JSON.stringify(this.props.scene),
             headers: {

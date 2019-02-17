@@ -11,13 +11,12 @@ export const addItem = (type: string) => ({
     payload: type
 })
 
-export const addItems = (items) => ({
-    type: ActionTypes.ADD_ITEMS,
-    payload: items
-});
+export const loadScene = (scene) => ({
+    type: ActionTypes.LOAD_SCENE,
+    payload: scene
+})
 
-
-export const fetchItems = () => (dispatch) => {
+export const fetchScene = () => (dispatch) => {
     return fetch(baseUrl + 'scene')
         .then(response => {
             if (response.ok) {
@@ -33,8 +32,7 @@ export const fetchItems = () => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        //todo
-        .then(scene => dispatch(addItems(scene.items)))
+        .then(scene => dispatch(loadScene(scene)))
         .catch(error => dispatch(itemsFailed(error.message)));
 }
 
