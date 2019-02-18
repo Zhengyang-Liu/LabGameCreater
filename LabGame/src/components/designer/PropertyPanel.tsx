@@ -13,7 +13,7 @@ interface Props {
 }
 
 interface State {
-    activeTab: string
+    activeTab: string,
 }
 
 class PropertyPanel extends React.Component<Props, State>{
@@ -21,7 +21,7 @@ class PropertyPanel extends React.Component<Props, State>{
         super(props);
 
         this.state = {
-            activeTab: '1'
+            activeTab: '1',
         };
     }
 
@@ -31,6 +31,18 @@ class PropertyPanel extends React.Component<Props, State>{
 
     handleItemChange = (event) => {
         this.props.scene.objective.item = event.target.value;
+    }
+
+    handleDescriptionChange = (event) => {
+        this.props.scene.objective.description = event.target.value;
+    }
+
+    handlePropertyNameChange = (event) => {
+        this.props.scene.objective.property.name = event.target.value;
+    }
+
+    handlePropertyValueChange = (event) => {
+        this.props.scene.objective.property.value = event.target.value;
     }
 
     toggle = (tab) => {
@@ -78,20 +90,21 @@ class PropertyPanel extends React.Component<Props, State>{
                             </Button>
                         </FormGroup>
                     </TabPane>
-                    <TabPane tabId="2">
-                        <Label>Object</Label>
 
+                    <TabPane tabId="2">
+                        <h4>Objective Setttings</h4>
                         <FormGroup>
                             <Label>Item</Label>
                             <Control.select
                                 model=".item"
                                 className="form-control"
                                 onChange={this.handleItemChange}
+                                defaultValue={this.props.scene.objective.item}
                             >
                                 {items}
                             </Control.select>
                         </FormGroup>
-                        <FormGroup className="FormGroup">
+                        <FormGroup>
                             <Label>Property</Label>
                             <Row>
                                 <Col md={{ size: 5 }}>
@@ -99,14 +112,16 @@ class PropertyPanel extends React.Component<Props, State>{
                                         model=".propertyName"
                                         className="form-control"
                                         placeholder="Name"
+                                        onChange={this.handlePropertyNameChange}
                                     ></Control.text>
                                 </Col>
                                 <strong>:</strong>
                                 <Col md={{ size: 6 }}>
                                     <Control.text
-                                        model=".propertyContent"
+                                        model=".propertyValue"
                                         className="form-control"
-                                        placeholder="Content"
+                                        placeholder="Value"
+                                        onChange={this.handlePropertyValueChange}
                                     ></Control.text>
                                 </Col>
                             </Row>
@@ -118,6 +133,7 @@ class PropertyPanel extends React.Component<Props, State>{
                                 model=".description"
                                 className="form-control"
                                 placeholder="description of the object"
+                                onChange={this.handleDescriptionChange}
                             ></Control.text>
                         </FormGroup>
                     </TabPane>

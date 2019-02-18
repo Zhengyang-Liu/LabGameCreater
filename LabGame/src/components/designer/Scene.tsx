@@ -11,19 +11,15 @@ function RenderItem({ item }) {
 }
 
 interface SceneProps {
-    fetchItems: Function,
+    fetchScene: Function,
     scene: any
 }
 
 class Scene extends React.Component<SceneProps> {
     constructor(props) {
         super(props);
+        this.props.fetchScene();
     }
-
-    componentDidMount() {
-        this.props.fetchItems();
-    }
-
     render() {
         return (
             <div>

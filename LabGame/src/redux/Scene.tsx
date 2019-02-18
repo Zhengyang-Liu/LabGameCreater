@@ -8,10 +8,26 @@ export const scene = (state = {
     objective: {
         item: '',
         description: '',
-        property: Object
+        property: {
+            name: '',
+            value: ''
+        }
     }
 }, action) => {
     switch (action.type) {
+        case ActionTypes.NEW_SCENE:
+            state = {
+                items: new Array<Item>(),
+                objective: {
+                    item: '',
+                    description: '',
+                    property: {
+                        name: '',
+                        value: ''
+                    }
+                }
+            }
+            return state;
         case ActionTypes.LOAD_SCENE:
             state = action.payload;
             return state;

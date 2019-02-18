@@ -19,5 +19,10 @@ export type Scene = {
 export type Objective = {
     item: string,
     description: string,
-    property: object
+    property: Property
+}
+
+export type Property = {
+    name: string,
+    value: string
 }

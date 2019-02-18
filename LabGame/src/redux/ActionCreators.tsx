@@ -11,6 +11,10 @@ export const addItem = (type: string) => ({
     payload: type
 })
 
+export const newScene = () => ({
+    type: ActionTypes.NEW_SCENE
+})
+ 
 export const loadScene = (scene) => ({
     type: ActionTypes.LOAD_SCENE,
     payload: scene

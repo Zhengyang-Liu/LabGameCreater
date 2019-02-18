@@ -2,13 +2,15 @@ import * as React from 'react'
 import { Button } from 'reactstrap'
 import { connect } from 'react-redux';
 import { baseUrl } from '../../shared/baseUrl'
+import { newScene } from '../../redux/ActionCreators'
 
-interface SceneProps {
-    scene: any
+interface Props {
+    scene: any,
+    newScene: Function
 }
 
-class Menu extends React.Component<SceneProps> {
-    constructor(props: SceneProps) {
+class Menu extends React.Component<Props> {
+    constructor(props: Props) {
         super(props)
     }
 
@@ -28,7 +30,7 @@ class Menu extends React.Component<SceneProps> {
     render() {
         return (
             <div className="btn-group" role="group" aria-label="Basic example">
-                <Button type="button" className="btn btn-default">
+                <Button type="button" className="btn btn-default" onClick={() => this.props.newScene()}>
                     New Scene
         </Button>
                 <Button type="button" className="btn btn-default" onClick={() => this.saveScene()}>
@@ -44,9 +46,12 @@ class Menu extends React.Component<SceneProps> {
 }
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     scene: state.scene
 })
 
+const mapDispatchToProps = (dispatch) => ({
+    newScene: () => dispatch(newScene())
+})
 
-export default connect(mapStateToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

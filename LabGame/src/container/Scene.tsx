@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchItems: () => { dispatch(fetchScene()) }
+    fetchScene: () => { dispatch(fetchScene()) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scene);
