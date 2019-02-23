@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 import { fetchScene } from '../../redux/ActionCreators';
 import  * as Types from '../../types';
-import { COMPONENTS } from '../../shared/ComponentDictionary';
+import { ComponentDictionary } from './items/ComponentDictionary';
 
 function RenderItem({ item }) {
     let props = {
         item: item,
         key: item.id
     }
-    let reactElement = React.createElement(COMPONENTS[item.type], props)
+    let reactElement = React.createElement(ComponentDictionary[item.type], props)
     return reactElement;
 }
 

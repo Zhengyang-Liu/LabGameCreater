@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
-import { selectItem } from '../../redux/ActionCreators';
-import * as Types from '../../types';
+import { selectItem } from '../../../redux/ActionCreators';
+import * as Types from '../../../types';
 
 type State = {}
 type Props = {
@@ -12,17 +12,17 @@ type Props = {
     getRef: string
 }
 
-class TubeImage extends React.Component<Props, State>
+class ContainerImage extends React.Component<Props, State>
 {
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props);
     }
 
-    handleClick() {
+    handleClick = () => {
         this.props.selectItem(this.props.item);
     }
 
-    render() {
+    render = () => {
         return (
             <div
                 onClick={() => this.handleClick()}
@@ -35,7 +35,7 @@ class TubeImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/open centrifuge tube without fluid.svg" height={100} />
+                <img src="/images/container with fluid.svg" height={200} />
             </div>
         );
     }
@@ -45,17 +45,21 @@ const mapDispatchToProps = (dispatch) => ({
     selectItem: (item: Types.Item) => dispatch(selectItem(item))
 })
 
-const ReactableChild = reactable(connect(null, mapDispatchToProps)(TubeImage));
+const ReactableChild = reactable(connect(null, mapDispatchToProps)(ContainerImage));
 
-class Tube extends React.Component<any, any> {
+class Container extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
+        this.state = {
+            x: this.props.item.transform.x,
+            y: this.props.item.transform.y
+        }
     }
 
     handleDragMove = (e) => {
         const { dx, dy } = e;
-        this.props.item.transform.x += dx;
-        this.props.item.transform.y += dy;
+        this.props.item.transform.x +=dx;
+        this.props.item.transform.y +=dy;
         this.forceUpdate();
     }
 
@@ -64,11 +68,11 @@ class Tube extends React.Component<any, any> {
             <ReactableChild
                 draggable
                 onDragMove={this.handleDragMove}
-                item={this.props.item}
+                item = {this.props.item}
             />
         )
     }
 }
 
-export default Tube;
+export default Container;
 

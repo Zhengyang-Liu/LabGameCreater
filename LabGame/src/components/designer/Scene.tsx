@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { COMPONENTS } from '../../shared/ComponentDictionary';
+import { ComponentDictionary } from './items/ComponentDictionary';
 import * as Types from '../../types';
 
 function RenderItem({ item }) {
@@ -8,7 +8,7 @@ function RenderItem({ item }) {
         item: item,
         key: item.id
     }
-    let reactElement = React.createElement(COMPONENTS[item.type], props)
+    let reactElement = React.createElement(ComponentDictionary[item.type], props)
     return reactElement;
 }
 

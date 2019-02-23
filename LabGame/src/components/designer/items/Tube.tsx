@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
-import { selectItem } from '../../redux/ActionCreators';
-import * as Types from '../../types';
+import { selectItem } from '../../../redux/ActionCreators';
+import * as Types from '../../../types';
 
 type State = {}
 type Props = {
@@ -11,17 +11,18 @@ type Props = {
     item: Types.Item
     getRef: string
 }
-class PipetteImage extends React.Component<Props, State>
+
+class TubeImage extends React.Component<Props, State>
 {
-    constructor(props: Props) {
+    constructor(props: any) {
         super(props);
     }
 
-    handleClick = () => {
+    handleClick() {
         this.props.selectItem(this.props.item);
     }
 
-    render = () => {
+    render() {
         return (
             <div
                 onClick={() => this.handleClick()}
@@ -34,7 +35,7 @@ class PipetteImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/pipette without fluid.svg" height={300} />
+                <img src="/images/open centrifuge tube without fluid.svg" height={100} />
             </div>
         );
     }
@@ -44,12 +45,13 @@ const mapDispatchToProps = (dispatch) => ({
     selectItem: (item: Types.Item) => dispatch(selectItem(item))
 })
 
-const ReactablePipette = reactable(connect(null, mapDispatchToProps)(PipetteImage));
+const ReactableChild = reactable(connect(null, mapDispatchToProps)(TubeImage));
 
-class Pipette extends React.Component<any, any> {
+class Tube extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
     }
+
     handleDragMove = (e) => {
         const { dx, dy } = e;
         this.props.item.transform.x += dx;
@@ -59,7 +61,7 @@ class Pipette extends React.Component<any, any> {
 
     render() {
         return (
-            <ReactablePipette
+            <ReactableChild
                 draggable
                 onDragMove={this.handleDragMove}
                 item={this.props.item}
@@ -68,5 +70,5 @@ class Pipette extends React.Component<any, any> {
     }
 }
 
-export default Pipette;
+export default Tube;
 
