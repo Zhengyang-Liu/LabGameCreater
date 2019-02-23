@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
+import { fetchScene } from '../../redux/ActionCreators';
+import  * as Types from '../../types';
 import { COMPONENTS } from '../../shared/ComponentDictionary';
-import * as Types from '../../types';
 
 function RenderItem({ item }) {
     let props = {
@@ -17,21 +19,31 @@ interface Props {
     scene: Types.Scene
 }
 
-class Scene extends React.Component<Props> {
+
+class PlaygroundScene extends React.Component<Props> {
     constructor(props) {
         super(props);
         this.props.fetchScene();
+
     }
-    
-    render() {
+
+    render = () => {
         return (
-            <div>
+            <div className="container">
                 {this.props.scene.items.map((item) =>
                     <RenderItem item={item}></RenderItem>
                 )}
             </div>
-        )
+        );
     }
 }
 
-export default (Scene);
+const mapStateToProps = state => ({
+    scene: state.scene
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchScene: () => { dispatch(fetchScene()) }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaygroundScene);

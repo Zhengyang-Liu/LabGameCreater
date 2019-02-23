@@ -1,15 +1,16 @@
 import * as React from 'react';
-import ToolBox from '../../container/ToolBox';
+
 import Scene from '../../container/Scene';
-import PropertyPanel from './PropertyPanel/PropertyPanel';
+import ToolBox from '../../container/ToolBox';
 import Menu from './Menu';
+import PropertyPanel from './propertyPanel/PropertyPanel';
 
 class Designer extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    render() {
+    render = () => {
         return (
             <div className="container">
                 <div className="row">
@@ -23,7 +24,7 @@ class Designer extends React.Component {
                         <Scene />
                     </div>
                     <div className="col-3 border">
-                        <PropertyPanel/>
+                        <PropertyPanel />
                     </div>
                 </div>
             </div>

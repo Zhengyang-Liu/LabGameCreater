@@ -5,30 +5,9 @@ import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { addItem } from '../redux/ActionCreators';
 import Designer from './designer/Designer';
 import Header from './Header';
-import Playground from './Playground';
+import Playground from './playground/Playground';
 
-interface mainState {
-    scene: any;
-    tools: any;
-}
-
-const mapStateToProps = (state: mainState) => {
-    return {
-        scene: state.scene,
-        tools: state.tools
-    }
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    addItem: (type) => dispatch(addItem(type))
-})
-
-interface Props {
-    scene: []
-    tools: []
-}
-
-class Main extends React.Component<Props>{
+class Main extends React.Component{
 
     constructor(props: any) {
         super(props);
@@ -48,4 +27,4 @@ class Main extends React.Component<Props>{
     }
 }
 
-export default withRouter(connect<mainState, any, any>(mapStateToProps, mapDispatchToProps)(Main))
+export default withRouter(Main)
