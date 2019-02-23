@@ -1,6 +1,6 @@
 import { Item } from '../types';
 import * as ActionTypes from './ActionTypes';
-
+import { ItemPropertyDictionary } from './ItemPropertyDictionary';
 let id = -1;
 
 export const scene = (state = {
@@ -47,7 +47,8 @@ export const scene = (state = {
                     x: 0,
                     y: 0,
                     angle: 0
-                }
+                },
+                property: ItemPropertyDictionary[action.payload]
             }
             return { ...state, items: state.items.concat(item) };
         case ActionTypes.REMOVE_ITEM:

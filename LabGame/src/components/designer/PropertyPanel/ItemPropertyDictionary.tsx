@@ -1,5 +1,10 @@
-import PipetteProperty from './PipetteProperty'
+import PipettePropertyPanel from './PipettePropertyPanel'
+import ContainerPropertyPanel from './ContainerPropertyPanel'
+import TubePropertyPanel from './TubePropertyPanel'
+
 
 export const ItemPropertyPanelDictionary = {
-    "pipette": PipetteProperty
+    'pipette': PipettePropertyPanel,
+    'container': ContainerPropertyPanel,
+    'tube': TubePropertyPanel
 };

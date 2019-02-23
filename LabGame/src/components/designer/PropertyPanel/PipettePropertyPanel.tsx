@@ -5,26 +5,31 @@ import { Col, FormGroup, Label, Row } from 'reactstrap';
 import * as Types from '../../../types';
 
 interface Props {
-    element: Types.Item
+    selectedItem: Types.Item
 }
 
-class PipetteProperty extends React.Component<Props> {
+class PipettePropertyPanel extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
+    }
+
+    handleLiquidChanged = (event) => {
+        this.props.selectedItem.property.liquid = event.target.value;
     }
 
     render = () => {
         return (
             <FormGroup>
-                <Label>Property</Label>
+                <Label>Liquid</Label>
                 <Control.text
                     model=".propertyName"
                     className="form-control"
                     placeholder="Name"
+                    onChange={this.handleLiquidChanged}
                 ></Control.text>
             </FormGroup>
         )
     }
 }
 
-export default PipetteProperty;
+export default PipettePropertyPanel;

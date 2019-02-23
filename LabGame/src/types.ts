@@ -2,7 +2,8 @@ export type Item = {
     id: number,
     type: string,
     name: string,
-    transform: Transform
+    transform: Transform,
+    property: any
 }
 
 export type Transform = {
