@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { COMPONENTS } from '../../shared/ComponentDictionary'
+import * as types from './../../types'
 
 function RenderItem({ item }) {
     let props = {
@@ -7,15 +8,15 @@ function RenderItem({ item }) {
         key: item.id
     }
     let reactElement = React.createElement(COMPONENTS[item.type], props)
-    return (reactElement);
+    return reactElement;
 }
 
-interface SceneProps {
+interface Props {
     fetchScene: Function,
-    scene: any
+    scene: types.Scene
 }
 
-class Scene extends React.Component<SceneProps> {
+class Scene extends React.Component<Props> {
     constructor(props) {
         super(props);
         this.props.fetchScene();

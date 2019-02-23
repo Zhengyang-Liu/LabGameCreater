@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes'
 import { baseUrl } from '../shared/baseUrl';
+import * as Types from '../types'
 
 export const importTools = (tools: any) => ({
     type: ActionTypes.IMPORT_TOOLS,
@@ -50,9 +51,9 @@ export const saveScene = (scene) => ({
     payload: scene
 })
 
-export const selectItem = (itemId: number) => ({
+export const selectItem = (item: Types.Item) => ({
     type: ActionTypes.SELECT_ITEM,
-    payload: itemId
+    payload: item
 })
 
 export const removeItem = (itemId: number) => ({

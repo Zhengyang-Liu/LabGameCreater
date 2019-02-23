@@ -2,13 +2,12 @@ import * as React from 'react';
 import reactable from 'reactablejs';
 import { connect } from 'react-redux';
 import { selectItem } from '../../redux/ActionCreators';
-import * as types from '../../types'
+import * as Types from '../../types'
 
 type State = {}
 type Props = {
     selectItem: Function,
-    transform: types.Transform,
-    id: number,
+    item: Types.Item
     getRef: string
 }
 
@@ -18,21 +17,21 @@ class ContainerImage extends React.Component<Props, State>
         super(props);
     }
 
-    handleClick() {
-        this.props.selectItem(this.props.id);
+    handleClick = () => {
+        this.props.selectItem(this.props.item);
     }
 
-    render() {
+    render = () => {
         return (
             <div
                 onClick={() => this.handleClick()}
                 style={{
                     position: 'relative',
-                    left: this.props.transform.x,
-                    top: this.props.transform.y,
+                    left: this.props.item.transform.x,
+                    top: this.props.item.transform.y,
                     display: "inline-block",
                     background: 'transparent',
-                    transform: `rotate(${this.props.transform.angle}deg)`,
+                    transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
                 <img src="/images/container with fluid.svg" height={200} />
@@ -42,7 +41,7 @@ class ContainerImage extends React.Component<Props, State>
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    selectItem: (itemId: number) => dispatch(selectItem(itemId))
+    selectItem: (item: Types.Item) => dispatch(selectItem(item))
 })
 
 const ReactableChild = reactable(connect(null, mapDispatchToProps)(ContainerImage));
@@ -68,7 +67,7 @@ class Container extends React.Component<any, any> {
             <ReactableChild
                 draggable
                 onDragMove={this.handleDragMove}
-                {...this.props.item}
+                item = {this.props.item}
             />
         )
     }

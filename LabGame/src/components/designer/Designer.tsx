@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ToolBox from '../../container/ToolBox';
 import Scene from '../../container/Scene';
-import PropertyPanel from './PropertyPanel';
+import PropertyPanel from './PropertyPanel/PropertyPanel';
 import Menu from './Menu';
 
 class Designer extends React.Component {
