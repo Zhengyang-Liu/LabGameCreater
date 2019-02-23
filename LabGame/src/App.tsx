@@ -1,8 +1,10 @@
-import * as React from 'react';
-import Main from './components/Main';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+
+import * as React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
+import Main from './components/Main';
 import { ConfigureStore } from './redux/ConfigureStore';
 
 const store = ConfigureStore();

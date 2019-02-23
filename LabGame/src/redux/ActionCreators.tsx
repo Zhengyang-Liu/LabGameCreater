@@ -1,6 +1,6 @@
-import * as ActionTypes from './ActionTypes'
 import { baseUrl } from '../shared/baseUrl';
-import * as Types from '../types'
+import * as Types from '../types';
+import * as ActionTypes from './ActionTypes';
 
 export const importTools = (tools: any) => ({
     type: ActionTypes.IMPORT_TOOLS,

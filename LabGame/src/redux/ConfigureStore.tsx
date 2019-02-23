@@ -1,10 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { scene } from './Scene'
-import { tools } from './Tools'
-import { selectedItem } from './SelectedItem'
-
-import thunk from 'redux-thunk';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+
+import { scene } from './Scene';
+import { selectedItem } from './SelectedItem';
+import { tools } from './Tools';
 
 export const ConfigureStore = () => {
     const store = createStore(

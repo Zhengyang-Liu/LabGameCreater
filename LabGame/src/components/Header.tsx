@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, ModalHeader, Modal, ModalBody } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { Collapse, Nav, Navbar, NavbarToggler, NavItem } from 'reactstrap';
 
 interface State{
     isNavOpen: boolean;

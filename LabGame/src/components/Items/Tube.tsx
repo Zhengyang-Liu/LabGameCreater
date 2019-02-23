@@ -1,8 +1,9 @@
 import * as React from 'react';
-import reactable from 'reactablejs';
 import { connect } from 'react-redux';
-import { selectItem } from '../../redux/ActionCreators'
-import * as Types from '../../types'
+import reactable from 'reactablejs';
+
+import { selectItem } from '../../redux/ActionCreators';
+import * as Types from '../../types';
 
 type State = {}
 type Props = {

@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { FormGroup, Label, Row, Col } from 'reactstrap';
 import { Control } from 'react-redux-form';
-import * as types from '../../../types';
+import { Col, FormGroup, Label, Row } from 'reactstrap';
 
-interface Props{
-    element: types.Item
+import * as Types from '../../../types';
+
+interface Props {
+    element: Types.Item
 }
 
 class PipetteProperty extends React.Component<Props> {
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props);
     }
 

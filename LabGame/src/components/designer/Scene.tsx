@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { COMPONENTS } from '../../shared/ComponentDictionary'
-import * as types from './../../types'
+
+import { COMPONENTS } from '../../shared/ComponentDictionary';
+import * as types from '../../types';
 
 function RenderItem({ item }) {
     let props = {

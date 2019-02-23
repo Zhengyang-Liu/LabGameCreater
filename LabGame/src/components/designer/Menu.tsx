@@ -1,8 +1,9 @@
-import * as React from 'react'
-import { Button } from 'reactstrap'
+import * as React from 'react';
 import { connect } from 'react-redux';
-import { baseUrl } from '../../shared/baseUrl'
-import { newScene } from '../../redux/ActionCreators'
+import { Button } from 'reactstrap';
+
+import { newScene } from '../../redux/ActionCreators';
+import { baseUrl } from '../../shared/baseUrl';
 
 interface Props {
     scene: any,

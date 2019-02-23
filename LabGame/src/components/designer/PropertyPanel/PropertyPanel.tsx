@@ -1,11 +1,15 @@
-import * as React from 'react';
-import { FormGroup, TabContent, TabPane, Nav, NavItem, NavLink, Button, Label, Row, Col } from 'reactstrap';
-import { removeItem } from '../../../redux/ActionCreators'
-import { connect } from 'react-redux';
 import classnames from 'classnames';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Control } from 'react-redux-form';
+import {
+    Button, Col, FormGroup, Label, Nav, NavItem, NavLink, Row, TabContent, TabPane
+} from 'reactstrap';
+
+import { removeItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
-import SceneProperty from './SceneProperty';
-import { ItemPropertyPanelDictionary } from './ItemPropertyDictionary'
+import { ItemPropertyPanelDictionary } from './ItemPropertyDictionary';
+import SceneProperty from './ScenePropertyPanel';
 
 interface Props {
     scene: Types.Scene,
@@ -39,11 +43,33 @@ class PropertyPanel extends React.Component<Props, State>{
     }
 
     renderItemPropertyPanel = (item) => {
-        let props = {
-            item: item
+        if (item != null) {
+            let namePanel =
+                <FormGroup>
+                    <Label>Item Name</Label>
+                    <Control.text
+                        model=".propertyName"
+                        className="form-control"
+                        placeholder="Name"
+                    ></Control.text>
+                </FormGroup>
+            let removeButton =
+                <FormGroup>
+                    <Button
+                        onClick={() => this.handleClick()} type="button" className="btn btn-default" >
+                        Remove
+                    </Button>
+                </FormGroup>
+
+            let props = {
+                item: item
+            }
+            let itemPropertyPanel = React.createElement(ItemPropertyPanelDictionary[item.type], props);
+            return <div>{namePanel}{itemPropertyPanel}{removeButton}</div>;
         }
-        let itemPropertyPanel = React.createElement(ItemPropertyPanelDictionary[item.type], props);
-        return itemPropertyPanel;
+        else {
+            return null;
+        }
     }
 
     render = () => {
@@ -72,11 +98,7 @@ class PropertyPanel extends React.Component<Props, State>{
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
                         <FormGroup>
-                            {/* {this.renderItemPropertyPanel(this.props.selectedItem)} */}
-                            <Button
-                                onClick={() => this.handleClick()} type="button" className="btn btn-default" >
-                                Remove
-                            </Button>
+                            {this.renderItemPropertyPanel(this.props.selectedItem)}
                         </FormGroup>
                     </TabPane>
                     <TabPane tabId="2">

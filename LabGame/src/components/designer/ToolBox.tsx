@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button } from 'reactstrap'
+import * as React from 'react';
+import { Button } from 'reactstrap';
 
 const ToolBox = ({ tools, addItem }) => (
     <div className="btn-group-vertical" role="group" aria-label="Basic example">

@@ -1,5 +1,5 @@
+import { Item } from '../types';
 import * as ActionTypes from './ActionTypes';
-import { Item } from '../types'
 
 let id = -1;
 

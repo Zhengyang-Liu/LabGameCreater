@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Header from './Header';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { addItem } from '../redux/ActionCreators'
 import { connect } from 'react-redux';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+
+import { addItem } from '../redux/ActionCreators';
+import Designer from './designer/Designer';
+import Header from './Header';
 import Playground from './Playground';
-import Designer from './designer/Designer'
 
 interface mainState {
     scene: any;
