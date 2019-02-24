@@ -5,21 +5,19 @@ import reactable from 'reactablejs';
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 
-type State = {}
-type Props = {
+type ImageProps = {
     selectItem: Function,
-    item: Types.Item
+    item: Types.Item,
     getRef: string
 }
 
-class TubeImage extends React.Component<Props, State>
+class TubeImage extends React.Component<ImageProps>
 {
     constructor(props: any) {
         super(props);
     }
 
     handleClick() {
-        this.props.selectItem(this.props.item);
     }
 
     render() {
@@ -41,14 +39,16 @@ class TubeImage extends React.Component<Props, State>
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    selectItem: (item: Types.Item) => dispatch(selectItem(item))
-})
+const ReactableChild = reactable(TubeImage);
 
-const ReactableChild = reactable(connect(null, mapDispatchToProps)(TubeImage));
+interface Props {
+    item: Types.Item,
+    selectedItem: Types.Item,
+    selectItem: Function,
+}
 
-class Tube extends React.Component<any, any> {
-    constructor(props: any) {
+class Tube extends React.Component<Props> {
+    constructor(props: Props) {
         super(props);
     }
 
@@ -57,18 +57,33 @@ class Tube extends React.Component<any, any> {
         this.props.item.transform.x += dx;
         this.props.item.transform.y += dy;
         this.forceUpdate();
+        this.props.selectItem(this.props.item);
+    }
+
+    handleDrop = (e) => {
+        alert(this.props.selectedItem);
     }
 
     render() {
         return (
             <ReactableChild
                 draggable
+                dropzone
                 onDragMove={this.handleDragMove}
+                onDrop={this.handleDrop}
                 item={this.props.item}
             />
         )
     }
 }
 
-export default Tube;
+const mapStateToProps = (state) => ({
+    selectedItem: state.selectedItem
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    selectItem: (item: Types.Item) => dispatch(selectItem(item))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tube);
 

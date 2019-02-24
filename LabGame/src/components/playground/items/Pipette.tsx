@@ -5,20 +5,26 @@ import reactable from 'reactablejs';
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 
-type State = {}
-type Props = {
-    selectItem: Function,
-    item: Types.Item
+type ImageProps = {
+    item: Types.Item,
     getRef: string
 }
-class PipetteImage extends React.Component<Props, State>
+class PipetteImage extends React.Component<ImageProps>
 {
-    constructor(props: Props) {
+    constructor(props: ImageProps) {
         super(props);
     }
 
     handleClick = () => {
-        this.props.selectItem(this.props.item);
+    }
+
+    getImageSource = () => {
+        switch (this.props.item.property.liquid) {
+            case 'water':
+                return "/images/pipette with fluid.svg";
+            default:
+                return "/images/pipette without fluid.svg";
+        }
     }
 
     render = () => {
@@ -34,33 +40,38 @@ class PipetteImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/pipette without fluid.svg" height={300} />
+                <img src={this.getImageSource()} height={300} />
             </div>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    selectItem: (item: Types.Item) => dispatch(selectItem(item))
-})
+const ReactablePipette = reactable(PipetteImage);
 
-const ReactablePipette = reactable(connect(null, mapDispatchToProps)(PipetteImage));
+interface Props {
+    item: Types.Item,
+    selectedItem: Types.Item,
+    selectItem: Function,
+}
 
-class Pipette extends React.Component<any, any> {
-    constructor(props: any) {
+class Pipette extends React.Component<Props> {
+    constructor(props: Props) {
         super(props);
     }
+
     handleDragMove = (e) => {
         const { dx, dy } = e;
         this.props.item.transform.x += dx;
         this.props.item.transform.y += dy;
         this.forceUpdate();
+        this.props.selectItem(this.props.item);
     }
 
     render() {
         return (
             <ReactablePipette
                 draggable
+                overlap={0.01}
                 onDragMove={this.handleDragMove}
                 item={this.props.item}
             />
@@ -68,5 +79,13 @@ class Pipette extends React.Component<any, any> {
     }
 }
 
-export default Pipette;
+const mapStateToProps = (state) => ({
+    selectedItem: state.selectedItem
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    selectItem: (item: Types.Item) => dispatch(selectItem(item))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pipette);
 

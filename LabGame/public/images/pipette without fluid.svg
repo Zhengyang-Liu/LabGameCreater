@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="61mm"
-   height="279mm"
-   viewBox="0 0 216.14162 988.58276"
+   width="28.222227mm"
+   height="268.39008mm"
+   viewBox="0 0 99.999965 950.98854"
    id="svg2"
    version="1.1"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -28,16 +28,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5171875"
-     inkscape:cx="194.11822"
-     inkscape:cy="249.3365"
+     inkscape:zoom="0.73141358"
+     inkscape:cx="-618.28147"
+     inkscape:cy="506.07902"
      inkscape:document-units="px"
      inkscape:current-layer="g4910"
      showgrid="false"
      showborder="true"
      inkscape:window-width="1920"
      inkscape:window-height="1137"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -56,117 +56,33 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-63.779525)">
+     transform="translate(-38.003284,-69.550849)">
     <g
-       transform="scale(0.86675332,1.1537308)"
+       transform="matrix(0.86675332,0,0,1.1537308,1057.4555,-119.20408)"
        style="font-style:normal;font-weight:normal;font-size:23.84299278px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text3383" />
     <g
-       transform="scale(0.88607221,1.1285762)"
+       transform="matrix(0.88607221,0,0,1.1285762,1057.4555,-119.20408)"
        style="font-style:normal;font-weight:normal;font-size:23.87731552px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text3387" />
     <g
-       transform="scale(0.79831422,1.2526396)"
+       transform="matrix(0.79831422,0,0,1.2526396,1057.4555,-119.20408)"
        style="font-style:normal;font-weight:normal;font-size:16.61532402px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text3391" />
     <g
-       transform="scale(0.89550678,1.1166861)"
+       transform="matrix(0.89550678,0,0,1.1166861,1057.4555,-119.20408)"
        style="font-style:normal;font-weight:normal;font-size:24.55151176px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text3363" />
     <g
-       transform="scale(0.88333885,1.1320684)"
+       transform="matrix(0.88333885,0,0,1.1320684,1057.4555,-119.20408)"
        style="font-style:normal;font-weight:normal;font-size:23.80365753px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text3367" />
-    <rect
-       style="opacity:0.62420002;fill:#4d4d4d;fill-opacity:0"
-       id="rect4762"
-       width="97"
-       height="115"
-       x="30.046688"
-       y="193.02928" />
-    <rect
-       style="opacity:0.62420002;fill:#808080;fill-opacity:0"
-       id="rect4764"
-       width="147"
-       height="106"
-       x="3"
-       y="140.04802" />
-    <rect
-       style="opacity:1;fill:#808080;fill-opacity:0"
-       id="rect4766"
-       width="143"
-       height="163"
-       x="30.046688"
-       y="193.02928" />
-    <rect
-       style="opacity:1;fill:#4d4d4d;fill-opacity:0"
-       id="rect4768"
-       width="183"
-       height="193"
-       x="11.046688"
-       y="180.02928" />
-    <rect
-       style="opacity:1;fill:#4d4d4d;fill-opacity:0"
-       id="rect4770"
-       width="99"
-       height="104"
-       x="62.046688"
-       y="353.02927" />
-    <rect
-       style="opacity:1;fill:#4d4d4d;fill-opacity:0"
-       id="rect4772"
-       width="28"
-       height="70"
-       x="-6.9533114"
-       y="401.02927" />
-    <rect
-       style="opacity:1;fill:#000000;fill-opacity:0"
-       id="rect4774"
-       width="185"
-       height="71"
-       x="48.046688"
-       y="440.02927" />
-    <rect
-       style="opacity:0.97000002;fill:#cf8000;fill-opacity:0"
-       id="rect4778"
-       width="292"
-       height="254"
-       x="-1000"
-       y="142.36221" />
-    <rect
-       style="opacity:0.97000002;fill:#cf8000;fill-opacity:0"
-       id="rect4782"
-       width="238"
-       height="250"
-       x="-616"
-       y="48.362209" />
-    <rect
-       style="opacity:0.97000002;fill:#cf8000;fill-opacity:0"
-       id="rect4784"
-       width="128"
-       height="164"
-       x="-472"
-       y="232.36221" />
-    <rect
-       style="opacity:0.97000002;fill:#cf8000;fill-opacity:0"
-       id="rect4786"
-       width="256"
-       height="232"
-       x="-934"
-       y="344.36221" />
-    <rect
-       style="opacity:0.97000002;fill:#000000;fill-opacity:0"
-       id="rect4788"
-       width="504"
-       height="194"
-       x="-1088"
-       y="492.36221" />
     <g
        id="g4910"
-       transform="translate(199.76955,-495.14865)"
+       transform="translate(-880.07114,-396.24331)"
        style="display:inline">
       <g
-         transform="translate(-43.828293,27.848447)"
+         transform="translate(1013.6272,-91.355629)"
          id="g4871">
         <g
            transform="matrix(0.89714993,0,0,1.1146409,-45.552776,496.78846)"
@@ -381,8 +297,8 @@
       </g>
       <rect
          ry="32.653446"
-         y="635.19666"
-         x="-124.72286"
+         y="493.49258"
+         x="930.33795"
          height="226.98128"
          width="74.953316"
          id="rect4908"

@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="105mm"
-   height="121mm"
-   viewBox="0 0 372.04703 428.73991"
+   width="96.761978mm"
+   height="115.10644mm"
+   viewBox="0 0 342.85721 407.85722"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="open centrifuge tube with fluid.svg">
   <defs
      id="defs4" />
@@ -26,14 +26,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="-67.531654"
-     inkscape:cy="171.50813"
+     inkscape:cx="-79.569739"
+     inkscape:cy="158.32715"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="837"
-     inkscape:window-x="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -52,7 +52,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-623.62236)">
+     transform="translate(-11.285698,-632.14789)">
     <g
        id="g3511-7"
        transform="matrix(0.43956048,0,0,0.47307377,156.96861,489.78411)"
@@ -61,7 +61,7 @@
          sodipodi:nodetypes="cccscccc"
          inkscape:connector-curvature="0"
          id="rect3336-1"
-         d="m 153.57144,438.07649 0,539.9991 0.81836,0 c -0.21685,44.68451 98.6529,185.00091 134.18164,185.00091 35.52874,0 134.39848,-140.3164 134.18164,-185.00091 l 0.81836,0 0,-539.9991 z"
+         d="m 153.57144,438.07649 v 539.9991 h 0.81836 c -0.21685,44.68451 98.6529,185.00091 134.18164,185.00091 35.52874,0 134.39848,-140.3164 134.18164,-185.00091 h 0.81836 v -539.9991 z"
          style="opacity:0.93999999;fill:#cccccc" />
       <path
          sodipodi:nodetypes="sssss"
@@ -73,13 +73,13 @@
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
          id="rect3360-6"
-         d="m 160.14286,586.64795 142.71429,0 0,22.85714 -142.71429,0 z"
+         d="m 160.14286,586.64795 h 142.71429 v 22.85714 H 160.14286 Z"
          style="opacity:0.93999999;fill:#999999" />
       <path
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
          id="rect3362-2"
-         d="m 160.14286,712.36224 137,0 0,22.85715 -137,0 z"
+         d="m 160.14286,712.36224 h 137 v 22.85715 h -137 z"
          style="opacity:0.93999999;fill:#999999" />
       <ellipse
          ry="34.285713"
@@ -112,7 +112,7 @@
        rx="31.869843" />
     <path
        style="opacity:0.54000005;fill:#008080;fill-opacity:1"
-       d="m 284.68189,789.72932 c 27.27636,0 49.23531,12.80348 49.23531,28.70734 l 0,134.70497 c 0,15.9039 -21.95895,64.94607 -49.23531,64.94607 -27.27636,0 -49.2353,-49.04217 -49.2353,-64.94607 l 0,-134.70497 c 0,-15.90386 21.95894,-28.70734 49.2353,-28.70734 z"
+       d="m 284.68189,789.72932 c 27.27636,0 49.23531,12.80348 49.23531,28.70734 v 134.70497 c 0,15.9039 -21.95895,64.94607 -49.23531,64.94607 -27.27636,0 -49.2353,-49.04217 -49.2353,-64.94607 V 818.43666 c 0,-15.90386 21.95894,-28.70734 49.2353,-28.70734 z"
        id="rect6211"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="sssssss" />

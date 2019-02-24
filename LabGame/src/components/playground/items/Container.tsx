@@ -5,21 +5,18 @@ import reactable from 'reactablejs';
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 
-type State = {}
-type Props = {
-    selectItem: Function,
+type ImageProps = {
     item: Types.Item
     getRef: string
 }
 
-class ContainerImage extends React.Component<Props, State>
+class ContainerImage extends React.Component<ImageProps>
 {
-    constructor(props: Props) {
+    constructor(props: ImageProps) {
         super(props);
     }
 
     handleClick = () => {
-        this.props.selectItem(this.props.item);
     }
 
     render = () => {
@@ -35,20 +32,22 @@ class ContainerImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={200} />
+                <img src="/images/container with fluid.svg" height={100} />
             </div>
         );
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    selectItem: (item: Types.Item) => dispatch(selectItem(item))
-})
+const ReactableChild = reactable(ContainerImage);
 
-const ReactableChild = reactable(connect(null, mapDispatchToProps)(ContainerImage));
+interface Props {
+    item: Types.Item,
+    selectedItem: Types.Item,
+    selectItem: Function,
+}
 
-class Container extends React.Component<any, any> {
-    constructor(props: any) {
+class Container extends React.Component<Props> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             x: this.props.item.transform.x,
@@ -58,21 +57,53 @@ class Container extends React.Component<any, any> {
 
     handleDragMove = (e) => {
         const { dx, dy } = e;
-        this.props.item.transform.x +=dx;
-        this.props.item.transform.y +=dy;
+        this.props.item.transform.x += dx;
+        this.props.item.transform.y += dy;
         this.forceUpdate();
+        this.props.selectItem(this.props.item);
+    }
+
+    handleDrop = (e) => {
+        let keys = Object.keys(e.relatedTarget)
+        let reactEventHandlerKey = '';
+        for (let element of keys) {
+            if (element.includes("__reactEventHandlers")) {
+                reactEventHandlerKey = element;
+                break;
+            }
+        }
+
+        switch (this.props.selectedItem.type) {
+            case 'pipette':
+                if (this.props.item.property.liquid != 'none') {
+                    this.props.selectedItem.property.liquid = this.props.item.property.liquid;
+                }
+        }
+
+        let dropObject = e.relatedTarget[reactEventHandlerKey].children._owner;
+        dropObject.setState();
     }
 
     render() {
         return (
             <ReactableChild
                 draggable
+                dropzone
                 onDragMove={this.handleDragMove}
-                item = {this.props.item}
+                onDrop={this.handleDrop}
+                item={this.props.item}
             />
         )
     }
 }
 
-export default Container;
+const mapStateToProps = (state) => ({
+    selectedItem: state.selectedItem
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    selectItem: (item: Types.Item) => dispatch(selectItem(item))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
 
