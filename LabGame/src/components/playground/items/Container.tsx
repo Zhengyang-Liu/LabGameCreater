@@ -64,31 +64,22 @@ class Container extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        let keys = Object.keys(e.relatedTarget)
-        let reactEventHandlerKey = '';
-        for (let element of keys) {
-            if (element.includes("__reactEventHandlers")) {
-                reactEventHandlerKey = element;
-                break;
-            }
-        }
-
         switch (this.props.selectedItem.type) {
             case 'pipette':
                 if (this.props.item.property.liquid != 'none') {
                     this.props.selectedItem.property.liquid = this.props.item.property.liquid;
                 }
         }
-
-        let dropObject = e.relatedTarget[reactEventHandlerKey].children._owner;
-        dropObject.setState();
+        this.forceUpdate();
     }
 
     render() {
         return (
             <ReactableChild
                 draggable
-                dropzone
+                dropzone={{
+                    overlap: 0.01
+                }}
                 onDragMove={this.handleDragMove}
                 onDrop={this.handleDrop}
                 item={this.props.item}

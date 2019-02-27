@@ -4,6 +4,7 @@ import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
+import { store } from '../../../App';
 
 type ImageProps = {
     item: Types.Item,
@@ -50,6 +51,7 @@ const ReactablePipette = reactable(PipetteImage);
 
 interface Props {
     item: Types.Item,
+    property: Types.Property,
     selectedItem: Types.Item,
     selectItem: Function,
 }
@@ -63,15 +65,23 @@ class Pipette extends React.Component<Props> {
         const { dx, dy } = e;
         this.props.item.transform.x += dx;
         this.props.item.transform.y += dy;
-        this.forceUpdate();
         this.props.selectItem(this.props.item);
+        this.forceUpdate();
+    }
+
+    componentDidMount() {
+        store.subscribe(this.handleChange.bind(this))
+    }
+
+    handleChange() {
+        this.forceUpdate()
     }
 
     render() {
         return (
             <ReactablePipette
+                id="yes-drop"
                 draggable
-                overlap={0.01}
                 onDragMove={this.handleDragMove}
                 item={this.props.item}
             />

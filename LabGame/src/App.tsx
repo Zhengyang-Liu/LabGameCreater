@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Main from './components/Main';
 import { ConfigureStore } from './redux/ConfigureStore';
 
-const store = ConfigureStore();
+export const store = ConfigureStore();
 
 class App extends React.Component {
   public render() {

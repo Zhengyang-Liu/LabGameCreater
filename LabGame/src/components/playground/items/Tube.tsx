@@ -17,13 +17,17 @@ class TubeImage extends React.Component<ImageProps>
         super(props);
     }
 
-    handleClick() {
+    getImageSource = () => {
+        switch (this.props.item.property.liquid) {
+            case 'water':
+                return "/images/open centrifuge tube with fluid.svg";
+            default:
+                return "/images/open centrifuge tube without fluid.svg";
+        }
     }
-
     render() {
         return (
             <div
-                onClick={() => this.handleClick()}
                 style={{
                     position: 'relative',
                     left: this.props.item.transform.x,
@@ -33,7 +37,7 @@ class TubeImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/open centrifuge tube without fluid.svg" height={100} />
+                <img src={this.getImageSource()} height={100} />
             </div>
         );
     }
@@ -61,14 +65,19 @@ class Tube extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        alert(this.props.selectedItem);
+        if (this.props.selectedItem.property.liquid != "none" && this.props.item.property.liquid == "none") {
+            this.props.item.property.liquid = this.props.selectedItem.property.liquid;
+        }
+        this.forceUpdate();
     }
 
     render() {
         return (
             <ReactableChild
                 draggable
-                dropzone
+                dropzone={{
+                    overlap: 0.01,
+                }}
                 onDragMove={this.handleDragMove}
                 onDrop={this.handleDrop}
                 item={this.props.item}
