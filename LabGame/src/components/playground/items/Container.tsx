@@ -4,6 +4,7 @@ import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
+import { selectedElement } from 'src/redux/SelectedItem';
 
 type ImageProps = {
     item: Types.Item
@@ -43,6 +44,7 @@ const ReactableChild = reactable(ContainerImage);
 interface Props {
     item: Types.Item,
     selectedItem: Types.Item,
+    selectedElement: any,
     selectItem: Function,
 }
 
@@ -71,6 +73,7 @@ class Container extends React.Component<Props> {
                 }
         }
         this.forceUpdate();
+        this.props.selectedElement.update();
     }
 
     render() {
@@ -89,7 +92,8 @@ class Container extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => ({
-    selectedItem: state.selectedItem
+    selectedItem: state.selectedItem,
+    selectedElement: state.selectedElement
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -3,7 +3,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import { scene } from './Scene';
-import { selectedItem } from './SelectedItem';
+import { selectedItem, selectedElement } from './SelectedItem';
 import { tools } from './Tools';
 
 export const ConfigureStore = () => {
@@ -11,7 +11,8 @@ export const ConfigureStore = () => {
         combineReducers({
             scene: scene,
             tools: tools,
-            selectedItem: selectedItem
+            selectedItem: selectedItem,
+            selectedElement: selectedElement
         }),
         applyMiddleware(thunk, logger)
     );

@@ -9,3 +9,13 @@ export const selectedItem = (state =  null, action: any) => {
             return state;
     }
 }
+
+export const selectedElement = (state =  null, action: any) => {
+    switch (action.type) {
+        case ActionTypes.SELECT_ELEMENT:
+            state = action.payload;
+            return state;
+        default:
+            return state;
+    }
+}

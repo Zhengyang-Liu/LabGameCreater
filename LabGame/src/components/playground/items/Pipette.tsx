@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import { selectElement } from '../../../redux/ActionCreators';
+
 import * as Types from '../../../types';
 import { store } from '../../../App';
 
@@ -54,6 +56,7 @@ interface Props {
     property: Types.Property,
     selectedItem: Types.Item,
     selectItem: Function,
+    selectElement: Function,
 }
 
 class Pipette extends React.Component<Props> {
@@ -66,6 +69,11 @@ class Pipette extends React.Component<Props> {
         this.props.item.transform.x += dx;
         this.props.item.transform.y += dy;
         this.props.selectItem(this.props.item);
+        this.props.selectElement(this);
+        this.forceUpdate();
+    }
+
+    public update = () => {
         this.forceUpdate();
     }
 
@@ -94,7 +102,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    selectItem: (item: Types.Item) => dispatch(selectItem(item))
+    selectItem: (item: Types.Item) => dispatch(selectItem(item)),
+    selectElement: (element: any) => dispatch(selectElement(element))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pipette);

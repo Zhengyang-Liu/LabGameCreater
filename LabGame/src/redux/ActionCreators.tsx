@@ -56,6 +56,11 @@ export const selectItem = (item: Types.Item) => ({
     payload: item
 })
 
+export const selectElement = (element: any) => ({
+    type: ActionTypes.SELECT_ELEMENT,
+    payload: element
+})
+
 export const removeItem = (itemId: number) => ({
     type: ActionTypes.REMOVE_ITEM,
     payload: itemId
