@@ -2,14 +2,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchScene } from '../../redux/ActionCreators';
-import * as Types from '../../types';
+import  * as Types from '../../types';
 import { ComponentDictionary } from './items/ComponentDictionary';
 
 function RenderItem({ item }) {
-    let reactElement = React.createElement(ComponentDictionary[item.type], {
+    let props = {
         item: item,
         key: item.id
-    })
+    }
+    let reactElement = React.createElement(ComponentDictionary[item.type], props)
     return reactElement;
 }
 
@@ -30,7 +31,7 @@ class PlaygroundScene extends React.Component<Props> {
         return (
             <div className="container">
                 {this.props.scene.items.map((item) =>
-                    <RenderItem item={item} key={item.id}></RenderItem>
+                    <RenderItem item={item}></RenderItem>
                 )}
             </div>
         );
