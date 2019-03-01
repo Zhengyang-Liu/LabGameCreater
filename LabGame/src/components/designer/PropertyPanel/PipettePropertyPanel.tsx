@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Control } from 'react-redux-form';
-import { Col, FormGroup, Label, Row } from 'reactstrap';
+import { FormGroup, Label } from 'reactstrap';
 
 import * as Types from '../../../types';
+import { LiquidList } from './LiquidList';
 
 interface Props {
     selectedItem: Types.Item
@@ -18,15 +19,20 @@ class PipettePropertyPanel extends React.Component<Props> {
     }
 
     render = () => {
+        const liquidList = LiquidList.map(item => {
+            return (
+                <option>{item}</option>
+            );
+        })
         return (
             <FormGroup>
                 <Label>Liquid</Label>
-                <Control.text
+                <Control.select
                     model=".propertyName"
                     className="form-control"
                     placeholder="Name"
                     onChange={this.handleLiquidChanged}
-                ></Control.text>
+                >{liquidList}</Control.select>
             </FormGroup>
         )
     }

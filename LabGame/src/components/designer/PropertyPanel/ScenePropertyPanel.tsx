@@ -37,7 +37,7 @@ class SceneProperty extends React.Component<Props, any> {
         })
         return (
             <div>
-                <h4>Objective Setttings</h4>
+                <h4>Objective Settings</h4>
                 <FormGroup>
                     <Label>Item</Label>
                     <Control.select

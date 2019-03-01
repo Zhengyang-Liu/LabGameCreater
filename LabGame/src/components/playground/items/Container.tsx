@@ -4,7 +4,6 @@ import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
-import { selectedElement } from 'src/redux/SelectedItem';
 
 type ImageProps = {
     item: Types.Item
@@ -33,7 +32,7 @@ class ContainerImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={100} />
+                <img src="/images/container with fluid.svg" height={170} />
             </div>
         );
     }

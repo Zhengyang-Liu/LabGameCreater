@@ -35,7 +35,7 @@ class ContainerImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={200} />
+                <img src="/images/container with fluid.svg" height={170} />
             </div>
         );
     }
