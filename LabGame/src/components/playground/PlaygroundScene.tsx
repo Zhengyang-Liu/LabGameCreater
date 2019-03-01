@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { setInterval } from 'timers';
 
 import { fetchScene } from '../../redux/ActionCreators';
 import * as Types from '../../types';
 import Instruction from './Instruction';
 import { ComponentDictionary } from './items/ComponentDictionary';
-import { setInterval } from 'timers';
 
 function RenderItem({ item }) {
     let props = {
@@ -53,7 +53,7 @@ class PlaygroundScene extends React.Component<Props, State> {
             let objectivePropertyValue = this.props.scene.objective.property.value;
             let itemPropertyValue = item.property[objectivePropertyName];
             if (this.props.scene.objective.item == item.name && itemPropertyValue == objectivePropertyValue) {
-                alert("You Did It!");
+                this.showSuccess();
                 this.setState({
                     winState: true
                 })
@@ -61,8 +61,7 @@ class PlaygroundScene extends React.Component<Props, State> {
         })
     }
 
-    updateItems = () => {
-
+    showSuccess = () => {
     }
 
     render = () => {

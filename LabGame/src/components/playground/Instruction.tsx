@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Card, CardHeader, CardText } from 'reactstrap';
 
 type Props = {
     text: string
@@ -12,7 +13,11 @@ class Instruction extends React.Component<Props>
 
     render = () => {
         return (
-            <h3>{this.props.text}</h3>
+            <Card
+                className="border-info mb-3 rounded-0"
+            >
+                <CardHeader>{this.props.text}</CardHeader>
+            </Card>
         )
     }
 }
