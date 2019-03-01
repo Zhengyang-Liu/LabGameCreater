@@ -62,6 +62,7 @@ class PlaygroundScene extends React.Component<Props, State> {
     }
 
     showSuccess = () => {
+        alert("YOU DID IT!")
     }
 
     render = () => {
