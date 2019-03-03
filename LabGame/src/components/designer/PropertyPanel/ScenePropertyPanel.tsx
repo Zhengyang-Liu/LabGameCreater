@@ -41,7 +41,7 @@ class SceneProperty extends React.Component<Props, any> {
                 <FormGroup>
                     <Label>Item</Label>
                     <Control.select
-                        model=".item"
+                        model="sceneInfo.scene.objective.item"
                         className="form-control"
                         onChange={this.handleItemChange}
                         defaultValue={this.props.scene.objective.item}
@@ -54,7 +54,7 @@ class SceneProperty extends React.Component<Props, any> {
                     <Row>
                         <Col md={{ size: 5 }}>
                             <Control.text
-                                model=".propertyName"
+                                model="sceneInfo.scene.objective.property.name"
                                 className="form-control"
                                 placeholder="Name"
                                 onChange={this.handlePropertyNameChange}
@@ -63,7 +63,7 @@ class SceneProperty extends React.Component<Props, any> {
                         <strong>:</strong>
                         <Col md={{ size: 6 }}>
                             <Control.text
-                                model=".propertyValue"
+                                model="sceneInfo.scene.objective.property.value"
                                 className="form-control"
                                 placeholder="Value"
                                 onChange={this.handlePropertyValueChange}
@@ -75,7 +75,7 @@ class SceneProperty extends React.Component<Props, any> {
                 <FormGroup>
                     <Label>Description</Label>
                     <Control.text
-                        model=".description"
+                        model="sceneInfo.scene.objective.description"
                         className="form-control"
                         placeholder="description of the object"
                         onChange={this.handleDescriptionChange}

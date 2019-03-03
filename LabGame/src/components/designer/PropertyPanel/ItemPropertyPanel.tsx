@@ -30,7 +30,7 @@ class ItemPropertyPanel extends React.Component<Props> {
             <FormGroup>
                 <Label>Item Name</Label>
                 <Control.text
-                    model=".propertyName"
+                    model="selectedItem.name"
                     className="form-control"
                     placeholder="Name"
                     onChange={this.handleNameChange}

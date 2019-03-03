@@ -22,7 +22,7 @@ class PipettePropertyPanel extends React.Component<Props> {
             <FormGroup>
                 <Label>Liquid</Label>
                 <Control.text
-                    model=".propertyName"
+                    model="selectedItem.property.liquid"
                     className="form-control"
                     placeholder="Name"
                     onChange={this.handleLiquidChanged}
