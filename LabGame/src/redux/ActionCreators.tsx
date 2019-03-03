@@ -15,13 +15,15 @@ export const addItem = (type: string) => ({
 export const newScene = () => ({
     type: ActionTypes.NEW_SCENE
 })
- 
+
 export const loadScene = (scene) => ({
     type: ActionTypes.LOAD_SCENE,
     payload: scene
 })
 
 export const fetchScene = () => (dispatch) => {
+    dispatch(loadingScene());
+
     return fetch(baseUrl + 'scene')
         .then(response => {
             if (response.ok) {
@@ -44,6 +46,10 @@ export const fetchScene = () => (dispatch) => {
 export const itemsFailed = (errmess) => ({
     type: ActionTypes.ITEMS_FAILED,
     payload: errmess
+})
+
+export const loadingScene = () => ({
+    type: ActionTypes.LOADING_SCENE,
 })
 
 export const saveScene = (scene) => ({

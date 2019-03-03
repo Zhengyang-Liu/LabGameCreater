@@ -81,7 +81,7 @@ class PlaygroundScene extends React.Component<Props, State> {
 }
 
 const mapStateToProps = state => ({
-    scene: state.scene
+    scene: state.sceneInfo.scene,
 })
 
 const mapDispatchToProps = (dispatch) => ({

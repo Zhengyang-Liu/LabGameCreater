@@ -1,45 +1,53 @@
-import { Item } from '../types';
+import * as Types from '../types';
 import * as ActionTypes from './ActionTypes';
 import { ItemPropertyDictionary } from './ItemPropertyDictionary';
+
 let id = -1;
 
-export const scene = (state = {
-    items: new Array<Item>(),
-    objective: {
-        item: '',
-        description: '',
-        property: {
-            name: '',
-            value: ''
+export const sceneInfo = (state = {
+    scene: {
+        items: new Array<Types.Item>(),
+        objective: {
+            item: '',
+            description: '',
+            property: {
+                name: '',
+                value: ''
+            }
         }
-    }
+    },
+    isLoading: true
 }, action) => {
     switch (action.type) {
         case ActionTypes.NEW_SCENE:
             state = {
-                items: new Array<Item>(),
-                objective: {
-                    item: '',
-                    description: '',
-                    property: {
-                        name: '',
-                        value: ''
+                scene: {
+                    items: new Array<Types.Item>(),
+                    objective: {
+                        item: '',
+                        description: '',
+                        property: {
+                            name: '',
+                            value: ''
+                        }
                     }
-                }
+                },
+                isLoading: false
             }
             return state;
         case ActionTypes.LOAD_SCENE:
-            state = action.payload;
-            return state;
+            return { ...state, scene: action.payload, isLoading: false };
+        case ActionTypes.LOADING_SCENE:
+            return { ...state, isLoading: true }
         case ActionTypes.Add_ITEM:
             if (id == -1) {
-                state.items.forEach(element => {
+                state.scene.items.forEach(element => {
                     if (element.id > id) {
                         id = element.id
                     }
                 });
             }
-            let item: Item = {
+            let item: Types.Item = {
                 id: ++id,
                 type: action.payload,
                 name: action.payload + id,
@@ -50,9 +58,14 @@ export const scene = (state = {
                 },
                 property: ItemPropertyDictionary[action.payload]
             }
-            return { ...state, items: state.items.concat(item) };
+            return {
+                ...state, scene: {
+                    items: state.scene.items.concat(item),
+                    objective: state.scene.objective
+                }, isLoading: false
+            };
         case ActionTypes.REMOVE_ITEM:
-            state.items = state.items.filter(function (item: Item) {
+            state.scene.items = state.scene.items.filter(function (item: Types.Item) {
                 return item.id != action.payload;
             })
             return { ...state };

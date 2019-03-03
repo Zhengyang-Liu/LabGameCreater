@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
+
+import { addItem } from '../../redux/ActionCreators';
 
 const ToolBox = ({ tools, addItem }) => (
     <div className="btn-group-vertical" role="group" aria-label="Basic example">
@@ -12,4 +15,17 @@ const ToolBox = ({ tools, addItem }) => (
     </div>
 )
 
-export default ToolBox
+
+const mapDispatchToProps = dispatch => ({
+    addItem: (name: string) => dispatch(addItem(name))
+})
+
+const mapStateToProps = state => ({
+    tools: state.tools
+})
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps)
+    (ToolBox);

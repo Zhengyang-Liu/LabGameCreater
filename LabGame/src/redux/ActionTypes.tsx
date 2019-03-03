@@ -8,4 +8,5 @@ export const SELECT_ITEM = "SELECT_ITEM";
 export const INIT_OBJECTIVE = "INIT_OBJECTIVE"
 export const LOAD_SCENE = "LOAD_SCENE"
 export const NEW_SCENE = "NEW_SCENE"
+export const LOADING_SCENE = "LOADING_SCENE"
 export const SELECT_ELEMENT = "SELECT_ELEMENT"
