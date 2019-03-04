@@ -22,7 +22,7 @@ class PipetteImage extends React.Component<ImageProps>
     }
 
     getImageSource = () => {
-        switch (this.props.item.property.liquid) {
+        switch (this.props.item.property.liquidType) {
             case 'water':
                 return "/images/pipette with fluid.svg";
             default:

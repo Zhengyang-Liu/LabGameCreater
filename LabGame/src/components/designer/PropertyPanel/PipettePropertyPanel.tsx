@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Control } from 'react-redux-form';
-import { Col, FormGroup, Label, Row } from 'reactstrap';
+import { FormGroup, Label } from 'reactstrap';
 
 import * as Types from '../../../types';
 
@@ -13,21 +13,37 @@ class PipettePropertyPanel extends React.Component<Props> {
         super(props);
     }
 
-    handleLiquidChanged = (event) => {
-        this.props.selectedItem.property.liquid = event.target.value;
+    handleLiquidTypeChange = (event) => {
+        this.props.selectedItem.property.liquidType = event.target.value;
+    }
+
+    handleVolumeChange = (event) => {
+        this.props.selectedItem.property.volume = event.target.value;
     }
 
     render = () => {
         return (
+            <>
             <FormGroup>
-                <Label>Liquid</Label>
+                <Label>Liquid Type</Label>
                 <Control.text
-                    model="selectedItem.property.liquid"
+                    model="selectedItem.property.liquidType"
                     className="form-control"
                     placeholder="Name"
-                    onChange={this.handleLiquidChanged}
+                    onChange={this.handleLiquidTypeChange}
                 ></Control.text>
             </FormGroup>
+
+            <FormGroup>
+                <Label>Volume</Label>
+                <Control.text
+                    model="selectedItem.property.volume"
+                    className="form-control"
+                    placeholder="volume"
+                    onChange={this.handleVolumeChange}
+                ></Control.text>
+            </FormGroup>
+            </>
         )
     }
 }

@@ -65,8 +65,8 @@ class Tube extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        if (this.props.selectedItem.property.liquid != "none" && this.props.item.property.liquid == "none") {
-            this.props.item.property.liquid = this.props.selectedItem.property.liquid;
+        if (this.props.selectedItem.property.liquidType != "none" && this.props.item.property.liquidType == "none") {
+            this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
         }
         this.forceUpdate();
     }

@@ -68,8 +68,8 @@ class Container extends React.Component<Props> {
     handleDrop = (e) => {
         switch (this.props.selectedItem.type) {
             case 'pipette':
-                if (this.props.item.property.liquid != 'none') {
-                    this.props.selectedItem.property.liquid = this.props.item.property.liquid;
+                if (this.props.item.property.liquidType != 'none') {
+                    this.props.selectedItem.property.liquidType = this.props.item.property.liquidType;
                 }
         }
         this.forceUpdate();
