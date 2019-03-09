@@ -5,7 +5,7 @@ import { Button, FormGroup, Label } from 'reactstrap';
 
 import { removeItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
-import { ItemPropertyPanelDictionary } from './ItemPropertyDictionary';
+import { ItemPropertyPanelDictionary } from './ItemPropertyPanelDictionary';
 
 interface Props {
     removeItem: Function,
@@ -53,7 +53,7 @@ class ItemPropertyPanel extends React.Component<Props> {
     render = () => {
         if (this.props.selectedItem != null) {
             let itemPanelProps = {
-                selectedItem: this.props.selectedItem
+                itemProperty: this.props.selectedItem.property
             }
             let itemPropertyPanel = React.createElement(ItemPropertyPanelDictionary[this.props.selectedItem.type], itemPanelProps);
             return (

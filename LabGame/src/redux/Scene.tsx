@@ -1,6 +1,6 @@
 import * as Types from '../types';
 import * as ActionTypes from './ActionTypes';
-import { ItemPropertyDictionary } from './ItemPropertyDictionary';
+import { ItemDataPropertyDictionary } from './ItemDataPropertyDictionary';
 
 let id = -1;
 
@@ -56,7 +56,7 @@ export const sceneInfo = (state = {
                     y: 0,
                     angle: 0
                 },
-                property: ItemPropertyDictionary[action.payload]
+                property: ItemDataPropertyDictionary[action.payload]
             }
             return {
                 ...state, scene: {

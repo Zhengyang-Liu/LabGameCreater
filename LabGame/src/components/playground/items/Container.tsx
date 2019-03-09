@@ -4,7 +4,6 @@ import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
-import { selectedElement } from 'src/redux/SelectedItem';
 
 type ImageProps = {
     item: Types.Item

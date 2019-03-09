@@ -18,7 +18,7 @@ class TubeImage extends React.Component<ImageProps>
     }
 
     getImageSource = () => {
-        switch (this.props.item.property.liquid) {
+        switch (this.props.item.property.liquidType) {
             case 'water':
                 return "/images/open centrifuge tube with fluid.svg";
             default:
@@ -67,6 +67,7 @@ class Tube extends React.Component<Props> {
     handleDrop = (e) => {
         if (this.props.selectedItem.property.liquidType != "none" && this.props.item.property.liquidType == "none") {
             this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
+
         }
         this.forceUpdate();
     }

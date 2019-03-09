@@ -1,9 +1,8 @@
 import classnames from 'classnames';
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Control } from 'react-redux-form';
+
 import {
-    Button, Col, FormGroup, Label, Nav, NavItem, NavLink, Row, TabContent, TabPane
+    FormGroup, Nav, NavItem, NavLink, Row, TabContent, TabPane
 } from 'reactstrap';
 
 import * as Types from '../../../types';

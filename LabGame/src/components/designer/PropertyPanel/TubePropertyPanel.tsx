@@ -5,7 +5,7 @@ import { Col, FormGroup, Label, Row } from 'reactstrap';
 import * as Types from '../../../types';
 
 interface Props {
-    selectedItem: Types.Item
+    itemProperty: Types.PipetteDataProperty
 }
 
 class TubePropertyPanel extends React.Component<Props> {
@@ -14,11 +14,11 @@ class TubePropertyPanel extends React.Component<Props> {
     }
 
     handleLiquidTypeChange = (event) => {
-        this.props.selectedItem.property.liquidType = event.target.value;
+        this.props.itemProperty.liquidType = event.target.value;
     }
 
     handleVolumeChange = (event) => {
-        this.props.selectedItem.property.volume = event.target.value;
+        this.props.itemProperty.volume = parseInt(event.target.value);
     }
 
     render = () => {

@@ -1,14 +1,14 @@
-export const ItemPropertyDictionary = {
+export const ItemDataPropertyDictionary = {
     "pipette": {
         liquidType: 'none',
-        volumen: '0',
+        volume: 0,
     },
     "container": {
         liquidType: 'none',
-        volumen: '0',
+        volume: 0,
     },
     "tube": {
         liquidType: 'none',
-        volumen: '0',
+        volume: 0,
     }
 };
