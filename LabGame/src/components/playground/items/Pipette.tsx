@@ -18,9 +18,6 @@ class PipetteImage extends React.Component<ImageProps>
         super(props);
     }
 
-    handleClick = () => {
-    }
-
     getImageSource = () => {
         let type = "";
         let volume = "";
@@ -35,7 +32,7 @@ class PipetteImage extends React.Component<ImageProps>
         }
 
         switch (this.props.item.property.volume) {
-            case '5':
+            case 5:
                 volume = '5';
                 break;
             default:
@@ -46,14 +43,13 @@ class PipetteImage extends React.Component<ImageProps>
         if (type == '' || volume == '') {
             return '/images/pipette without fluid.svg';
         } else {
-            return '/images/pipette with ' + type + ' ' + volume;
+            return '/images/pipette with ' + type + ' ' + volume + '.svg';
         }
     }
 
     render = () => {
         return (
             <div
-                onClick={() => this.handleClick()}
                 style={{
                     position: 'relative',
                     left: this.props.item.transform.x,
@@ -97,6 +93,25 @@ class Pipette extends React.Component<Props> {
         this.forceUpdate();
     }
 
+    public takeLiquid = (liquidType: string, volume: number): boolean => {
+        if ((this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == liquidType) && volume >= 5) {
+            this.props.item.property.liquidType = liquidType;
+            this.props.item.property.volume = 5;
+            this.forceUpdate();
+            return true;
+        }
+        return false;
+    }
+
+    public dropLiquid = (targetLiquidType: string): boolean => {
+        if ((this.props.item.property.liquidType == targetLiquidType || targetLiquidType == 'none') && this.props.item.property.volume != 0) {
+            this.props.item.property.volume = 0;
+            this.forceUpdate();
+            return true;
+        }
+        return false;
+    }
+
     componentDidMount() {
         store.subscribe(this.handleChange.bind(this))
     }
@@ -108,7 +123,6 @@ class Pipette extends React.Component<Props> {
     render() {
         return (
             <ReactablePipette
-                id="yes-drop"
                 draggable
                 onDragMove={this.handleDragMove}
                 item={this.props.item}

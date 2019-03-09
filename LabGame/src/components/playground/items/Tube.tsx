@@ -48,6 +48,7 @@ const ReactableChild = reactable(TubeImage);
 interface Props {
     item: Types.Item,
     selectedItem: Types.Item,
+    selectedElement: any,
     selectItem: Function,
 }
 
@@ -65,11 +66,11 @@ class Tube extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        if (this.props.selectedItem.property.liquidType != "none" && this.props.item.property.liquidType == "none") {
+        if (this.props.selectedElement.dropLiquid(this.props.item.property.liquidType) == true) {
             this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
-
+            this.props.item.property.volume = 5;
+            this.forceUpdate();
         }
-        this.forceUpdate();
     }
 
     render() {
@@ -88,7 +89,8 @@ class Tube extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => ({
-    selectedItem: state.selectedItem
+    selectedItem: state.selectedItem,
+    selectedElement: state.selectedElement,
 })
 
 const mapDispatchToProps = (dispatch) => ({
