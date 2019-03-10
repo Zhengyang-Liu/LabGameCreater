@@ -49,10 +49,10 @@ class PlaygroundScene extends React.Component<Props, State> {
         if (this.state.winState == true)
             return;
         this.props.scene.items.forEach((item) => {
-            let objectivePropertyName = this.props.scene.objective.property.name;
-            let objectivePropertyValue = this.props.scene.objective.property.value;
+            let objectivePropertyName = this.props.scene.objective[0].property.name;
+            let objectivePropertyValue = this.props.scene.objective[0].property.value;
             let itemPropertyValue = item.property[objectivePropertyName];
-            if (this.props.scene.objective.item == item.name && itemPropertyValue == objectivePropertyValue) {
+            if (this.props.scene.objective[0].item == item.name && itemPropertyValue == objectivePropertyValue) {
                 this.showSuccess();
                 this.setState({
                     winState: true
@@ -72,7 +72,7 @@ class PlaygroundScene extends React.Component<Props, State> {
         return (
             <div className="container">
                 <div>
-                    <Instruction text={this.props.scene.objective.description}></Instruction>
+                    <Instruction text={this.props.scene.objective[0].description}></Instruction>
                 </div>
                 {JSXItems}
             </div>

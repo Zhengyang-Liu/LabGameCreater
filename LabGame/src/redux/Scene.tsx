@@ -7,14 +7,7 @@ let id = -1;
 export const sceneInfo = (state = {
     scene: {
         items: new Array<Types.Item>(),
-        objective: {
-            item: '',
-            description: '',
-            property: {
-                name: '',
-                value: ''
-            }
-        }
+        objective: new Array<Types.Step>(),
     },
     isLoading: true
 }, action) => {
@@ -23,14 +16,7 @@ export const sceneInfo = (state = {
             state = {
                 scene: {
                     items: new Array<Types.Item>(),
-                    objective: {
-                        item: '',
-                        description: '',
-                        property: {
-                            name: '',
-                            value: ''
-                        }
-                    }
+                    objective: []
                 },
                 isLoading: false
             }
@@ -69,6 +55,21 @@ export const sceneInfo = (state = {
                 return item.id != action.payload;
             })
             return { ...state };
+        case ActionTypes.ADD_STEP:
+            let step: Types.Step = {
+                "item": "",
+                "description": "",
+                "property": {
+                    "name": "",
+                    "value": ""
+                }
+            }
+            return {
+                ...state, scene: {
+                    items: state.scene.items,
+                    objective: state.scene.objective.concat(step)
+                }, isLoading: false
+            };
         default:
             return state;
     }

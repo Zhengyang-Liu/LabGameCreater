@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Control } from 'react-redux-form';
-import { Col, FormGroup, Label, Row } from 'reactstrap';
+import { FormGroup, Label } from 'reactstrap';
 
+import { LiquidList } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
 
 interface Props {
@@ -22,16 +23,23 @@ class ContainerPropertyPanel extends React.Component<Props> {
     }
 
     render = () => {
+        const LiquidTypes = LiquidList.map(item => {
+            return (
+                <option>{item}</option>
+            );
+        })
         return (
             <>
             <FormGroup>
                 <Label>Liquid Type</Label>
-                <Control.text
+                <Control.select
                     model="selectedItem.property.liquidType"
                     className="form-control"
                     placeholder="Name"
                     onChange={this.handleLiquidTypeChange}
-                ></Control.text>
+                >
+                 {LiquidTypes}
+                </Control.select>
             </FormGroup>
 
             <FormGroup>

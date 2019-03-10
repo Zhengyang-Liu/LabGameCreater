@@ -20,13 +20,21 @@ class Scene extends React.Component<Props> {
         super(props);
     }
     render() {
-        return (
-            <div>
-                {this.props.scene.items.map((item) =>
-                    <RenderItem item={item}></RenderItem>
-                )}
-            </div>
-        )
+        if (this.props.scene != null) {
+            return (
+                <div>
+                    {this.props.scene.items.map((item) =>
+                        <RenderItem key={item.id} item={item}></RenderItem>
+                    )}
+                </div>
+            )
+        }
+        else {
+            return (
+                <div></div>
+            )
+        }
+
     }
 }
 

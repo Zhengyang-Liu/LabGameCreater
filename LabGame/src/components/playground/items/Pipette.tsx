@@ -112,14 +112,6 @@ class Pipette extends React.Component<Props> {
         return false;
     }
 
-    componentDidMount() {
-        store.subscribe(this.handleChange.bind(this))
-    }
-
-    handleChange() {
-        this.forceUpdate()
-    }
-
     render() {
         return (
             <ReactablePipette

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Control } from 'react-redux-form';
-import { Col, FormGroup, Label, Row } from 'reactstrap';
+import { FormGroup, Label } from 'reactstrap';
 
+import { LiquidList } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
 
 interface Props {
@@ -22,27 +23,34 @@ class TubePropertyPanel extends React.Component<Props> {
     }
 
     render = () => {
+        const LiquidTypes = LiquidList.map(item => {
+            return (
+                <option>{item}</option>
+            );
+        })
         return (
             <>
-            <FormGroup>
-                <Label>Liquid Type</Label>
-                <Control.text
-                    model="selectedItem.property.liquidType"
-                    className="form-control"
-                    placeholder="Name"
-                    onChange={this.handleLiquidTypeChange}
-                ></Control.text>
-            </FormGroup>
+                <FormGroup>
+                    <Label>Liquid Type</Label>
+                    <Control.select
+                        model="selectedItem.property.liquidType"
+                        className="form-control"
+                        placeholder="Liquid Type"
+                        onChange={this.handleLiquidTypeChange}
+                    >
+                        {LiquidTypes}
+                    </Control.select>
+                </FormGroup>
 
-            <FormGroup>
-                <Label>Volume</Label>
-                <Control.text
-                    model="selectedItem.property.volume"
-                    className="form-control"
-                    placeholder="volume"
-                    onChange={this.handleVolumeChange}
-                ></Control.text>
-            </FormGroup>
+                <FormGroup>
+                    <Label>Volume</Label>
+                    <Control.text
+                        model="selectedItem.property.volume"
+                        className="form-control"
+                        placeholder="Volume"
+                        onChange={this.handleVolumeChange}
+                    ></Control.text>
+                </FormGroup>
             </>
         )
     }

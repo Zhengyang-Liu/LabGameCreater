@@ -71,3 +71,7 @@ export const removeItem = (itemId: number) => ({
     type: ActionTypes.REMOVE_ITEM,
     payload: itemId
 })
+
+export const addStep = () => ({
+    type: ActionTypes.ADD_STEP,
+})
