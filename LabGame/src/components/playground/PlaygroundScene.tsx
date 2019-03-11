@@ -23,7 +23,8 @@ interface Props {
 
 interface State {
     winState: boolean,
-    items: any[]
+    items: any[],
+    currentStepNumber: number,
 }
 
 class PlaygroundScene extends React.Component<Props, State> {
@@ -33,7 +34,8 @@ class PlaygroundScene extends React.Component<Props, State> {
 
         this.state = {
             winState: false,
-            items: []
+            items: [],
+            currentStepNumber: 0,
         }
     }
 
@@ -48,17 +50,30 @@ class PlaygroundScene extends React.Component<Props, State> {
     checkWin = () => {
         if (this.state.winState == true)
             return;
-        this.props.scene.items.forEach((item) => {
-            let objectivePropertyName = this.props.scene.objective[0].property.name;
-            let objectivePropertyValue = this.props.scene.objective[0].property.value;
-            let itemPropertyValue = item.property[objectivePropertyName];
-            if (this.props.scene.objective[0].item == item.name && itemPropertyValue == objectivePropertyValue) {
+
+        if (this.checkStep(this.props.scene.objective[this.state.currentStepNumber])) {
+            if (this.state.currentStepNumber == this.props.scene.objective.length - 1) {
                 this.showSuccess();
                 this.setState({
                     winState: true
                 })
+            } else {
+                this.setState({ currentStepNumber: this.state.currentStepNumber + 1 })
+            }
+        }
+    }
+
+    checkStep = (step: Types.Step): boolean => {
+        let returnValue: boolean = false;
+        this.props.scene.items.forEach((item) => {
+            let objectivePropertyName = step.property.name;
+            let objectivePropertyValue = step.property.value;
+            let itemPropertyValue = item.property[objectivePropertyName];
+            if (step.item == item.name && itemPropertyValue == objectivePropertyValue) {
+                returnValue = true;
             }
         })
+        return returnValue;
     }
 
     showSuccess = () => {
@@ -66,13 +81,18 @@ class PlaygroundScene extends React.Component<Props, State> {
     }
 
     render = () => {
+        if(this.props.scene.objective.length == 0)
+        {
+            return<div></div>
+        }
+
         let JSXItems = this.props.scene.items.map((item) =>
             <RenderItem item={item}></RenderItem>
         )
         return (
             <div className="container">
                 <div>
-                    <Instruction text={this.props.scene.objective[0].description}></Instruction>
+                    <Instruction text={this.props.scene.objective[this.state.currentStepNumber].description}></Instruction>
                 </div>
                 {JSXItems}
             </div>

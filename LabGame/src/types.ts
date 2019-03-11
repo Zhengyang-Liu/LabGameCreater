@@ -20,13 +20,7 @@ export type Transform = {
 
 export type Scene = {
     items: Array<Item>,
-    objective: Array<Objective>
-}
-
-export type Objective = {
-    item: string,
-    description: string,
-    property: Property
+    objective: Array<Step>
 }
 
 export type Property = {
