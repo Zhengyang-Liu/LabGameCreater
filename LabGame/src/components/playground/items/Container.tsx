@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -32,7 +33,7 @@ class ContainerImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={100} />
+                <img src="/images/container with fluid.svg" height={ItemProperty.container.height} />
             </div>
         );
     }
@@ -83,7 +84,6 @@ class Container extends React.Component<Props> {
         )
     }
 }
-
 const mapStateToProps = (state) => ({
     selectedItem: state.selectedItem,
     selectedElement: state.selectedElement,

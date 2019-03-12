@@ -58,6 +58,7 @@ export const sceneInfo = (state = {
         case ActionTypes.ADD_STEP:
             let step: Types.Step = {
                 "item": "",
+                "title": "",
                 "description": "",
                 "property": {
                     "name": "",

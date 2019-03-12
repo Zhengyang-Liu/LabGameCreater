@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -37,7 +38,7 @@ class TubeImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src={this.getImageSource()} height={100} />
+                <img src={this.getImageSource()} height={ItemProperty.tube.height} />
             </div>
         );
     }

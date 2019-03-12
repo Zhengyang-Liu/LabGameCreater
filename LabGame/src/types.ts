@@ -8,6 +8,7 @@ export type Item = {
 
 export type Step = {
     item: string,
+    title: string,
     description: string,
     property: Property
 }

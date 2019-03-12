@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { actions, Control } from 'react-redux-form';
+import { Control } from 'react-redux-form';
 import {
-    Button, Card, CardHeader, Col, Collapse, FormGroup, Label, Row, UncontrolledCollapse
+    Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
 } from 'reactstrap';
-import CardBody from 'reactstrap/lib/CardBody';
 
-import * as types from '../../../types';
 import { addStep } from '../../../redux/ActionCreators';
+import * as Types from '../../../types';
 
 interface Props {
-    scene: types.Scene,
+    scene: Types.Scene,
     addStep: Function,
 }
 
@@ -24,6 +23,10 @@ class SceneProperty extends React.Component<Props, State> {
 
     handleItemChange = (stepNumber: number, event) => {
         this.props.scene.objective[stepNumber].item = event.target.value;
+    }
+
+    handleTitleChange = (stepNumber: number, event) => {
+        this.props.scene.objective[stepNumber].title = event.target.value;
     }
 
     handleDescriptionChange = (stepNumber: number, event) => {
@@ -89,14 +92,25 @@ class SceneProperty extends React.Component<Props, State> {
                                 </Row>
                             </FormGroup>
                             <FormGroup>
-                                <Label>Description</Label>
+                                <Label>Title</Label>
                                 <Control.text
-                                    model={"sceneInfo.scene.objective[" + stepNumber + "].description"}
+                                    model={"sceneInfo.scene.objective[" + stepNumber + "].title"}
                                     className="form-control"
-                                    placeholder="description of the object"
-                                    onChange={(e) => this.handleDescriptionChange(stepNumber, e)}
+                                    placeholder="title of this objective"
+                                    onChange={(e) => this.handleTitleChange(stepNumber, e)}
                                     updateOn="change"
                                 ></Control.text>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label>Description</Label>
+                                <Control.textarea
+                                    rows={3}
+                                    model={"sceneInfo.scene.objective[" + stepNumber + "].description"}
+                                    className="form-control"
+                                    placeholder="description of this objective"
+                                    onChange={(e) => this.handleDescriptionChange(stepNumber, e)}
+                                    updateOn="change"
+                                ></Control.textarea>
                             </FormGroup>
                         </CardBody>
                     </UncontrolledCollapse >

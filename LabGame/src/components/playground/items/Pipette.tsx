@@ -2,11 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
-import { selectItem } from '../../../redux/ActionCreators';
-import { selectElement } from '../../../redux/ActionCreators';
-
+import { selectElement, selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
-import { store } from '../../../App';
 
 type ImageProps = {
     item: Types.Item,
@@ -59,7 +57,7 @@ class PipetteImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src={this.getImageSource()} height={300} />
+                <img src={this.getImageSource()} height={ItemProperty.pipette.height} />
             </div>
         );
     }
