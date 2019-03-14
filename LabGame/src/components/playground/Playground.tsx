@@ -52,15 +52,29 @@ class Playground extends React.Component<Props, State> {
     }
 
     checkStep = (step: Types.Step): boolean => {
-        let returnValue: boolean = false;
+        if (step == undefined)
+            return false;
+
+        let returnValue: boolean = true;
+        let checkList: Array<boolean> = [];
+        for(var i = 0; i < step.property.length; i++) {
+            checkList.push(false);
+        }
         this.props.scene.items.forEach((item) => {
-            let objectivePropertyName = step.property[0].name;
-            let objectivePropertyValue = step.property[0].value;
-            let itemPropertyValue = item.property[objectivePropertyName];
-            if (step.property[0].item == item.name && itemPropertyValue == objectivePropertyValue) {
-                returnValue = true;
-            }
+            step.property.forEach((property, index) => {
+                let objectivePropertyName = property.name;
+                let objectivePropertyValue = property.value;
+                let itemPropertyValue = item.property[objectivePropertyName];
+                if (property.item == item.name && itemPropertyValue == objectivePropertyValue) {
+                    checkList[index] = true;
+                }
+            })
         })
+        checkList.forEach((item) => {
+            if (item == false)
+                returnValue = false;
+        })
+
         return returnValue;
     }
 
