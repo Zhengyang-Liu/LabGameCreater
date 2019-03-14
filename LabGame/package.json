@@ -27,6 +27,8 @@
     "react-thunk": "^1.0.0",
     "reactablejs": "^0.0.3",
     "reactstrap": "^7.0.2",
+    "reduce-reducers": "^0.4.3",
+    "redux-create-reducer": "^1.2.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },

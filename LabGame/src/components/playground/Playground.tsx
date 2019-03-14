@@ -54,10 +54,10 @@ class Playground extends React.Component<Props, State> {
     checkStep = (step: Types.Step): boolean => {
         let returnValue: boolean = false;
         this.props.scene.items.forEach((item) => {
-            let objectivePropertyName = step.property.name;
-            let objectivePropertyValue = step.property.value;
+            let objectivePropertyName = step.property[0].name;
+            let objectivePropertyValue = step.property[0].value;
             let itemPropertyValue = item.property[objectivePropertyName];
-            if (step.item == item.name && itemPropertyValue == objectivePropertyValue) {
+            if (step.property[0].item == item.name && itemPropertyValue == objectivePropertyValue) {
                 returnValue = true;
             }
         })

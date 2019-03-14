@@ -11,3 +11,4 @@ export const NEW_SCENE = "NEW_SCENE";
 export const LOADING_SCENE = "LOADING_SCENE";
 export const SELECT_ELEMENT = "SELECT_ELEMENT";
 export const ADD_STEP = "ADD_STEP";
+export const ADD_PROPERTY = "ADD_PROPERTY";

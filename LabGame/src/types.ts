@@ -6,13 +6,6 @@ export type Item = {
     property: any
 }
 
-export type Step = {
-    item: string,
-    title: string,
-    description: string,
-    property: Property
-}
-
 export type Transform = {
     x: number,
     y: number,
@@ -24,7 +17,14 @@ export type Scene = {
     objective: Array<Step>
 }
 
+export type Step = {
+    title: string,
+    description: string,
+    property: Array<Property>,
+}
+
 export type Property = {
+    item: string,
     name: string,
     value: string
 }

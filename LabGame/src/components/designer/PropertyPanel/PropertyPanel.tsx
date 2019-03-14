@@ -8,7 +8,7 @@ import {
 import * as Types from '../../../types';
 import { Loading } from '../../LoadingComponent';
 import ItemPropertyPanel from './ItemPropertyPanel';
-import SceneProperty from './ScenePropertyPanel';
+import ScenePropertyPanel from './ScenePropertyPanel';
 
 interface State {
     activeTab: string,
@@ -72,7 +72,7 @@ class PropertyPanel extends React.Component<Props, State>{
                             </FormGroup>
                         </TabPane>
                         <TabPane tabId="2">
-                            <SceneProperty scene={this.props.scene} />
+                            <ScenePropertyPanel scene={this.props.scene} />
                         </TabPane>
                     </TabContent>
                 </div>

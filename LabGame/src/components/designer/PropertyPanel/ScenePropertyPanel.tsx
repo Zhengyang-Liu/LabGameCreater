@@ -5,24 +5,21 @@ import {
     Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
 } from 'reactstrap';
 
-import { addStep } from '../../../redux/ActionCreators';
+import { addStep, addProperty } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 
 interface Props {
     scene: Types.Scene,
     addStep: Function,
+    addProperty: Function,
 }
 
 interface State {
 }
 
-class SceneProperty extends React.Component<Props, State> {
+class ScenePropertyPanel extends React.Component<Props, State> {
     constructor(props) {
         super(props);
-    }
-
-    handleItemChange = (stepNumber: number, event) => {
-        this.props.scene.objective[stepNumber].item = event.target.value;
     }
 
     handleTitleChange = (stepNumber: number, event) => {
@@ -33,12 +30,16 @@ class SceneProperty extends React.Component<Props, State> {
         this.props.scene.objective[stepNumber].description = event.target.value;
     }
 
-    handlePropertyNameChange = (stepNumber: number, event) => {
-        this.props.scene.objective[stepNumber].property.name = event.target.value;
+    handleItemChange = (stepNumber: number, propertyNumber: number, event) => {
+        this.props.scene.objective[stepNumber].property[propertyNumber].item = event.target.value;
     }
 
-    handlePropertyValueChange = (stepNumber: number, event) => {
-        this.props.scene.objective[stepNumber].property.value = event.target.value;
+    handlePropertyNameChange = (stepNumber: number, propertyNumber: number, event) => {
+        this.props.scene.objective[stepNumber].property[propertyNumber].name = event.target.value;
+    }
+
+    handlePropertyValueChange = (stepNumber: number, propertyNumber: number, event) => {
+        this.props.scene.objective[stepNumber].property[propertyNumber].value = event.target.value;
     }
 
     getItems = () => {
@@ -51,7 +52,43 @@ class SceneProperty extends React.Component<Props, State> {
         return items;
     }
 
+    singleProperty = (stepNumber: number, propertyNumber: number) => {
+        return (
+            <>
+                <Control.select
+                    model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].item"}
+                    className="form-control"
+                    onChange={(e) => this.handleItemChange(stepNumber, propertyNumber, e)}
+                >
+                    {this.getItems()}
+                </Control.select>
+                <Row>
+                    <Col md={{ size: 6 }}>
+                        <Control.text
+                            model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].name"}
+                            className="form-control"
+                            placeholder="Name"
+                            onChange={(e) => this.handlePropertyNameChange(stepNumber, propertyNumber, e)}
+                        ></Control.text>
+                    </Col>
+                    <Col md={{ size: 6 }}>
+                        <Control.text
+                            model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].value"}
+                            className="form-control"
+                            placeholder="Value"
+                            onChange={(e) => this.handlePropertyValueChange(stepNumber, propertyNumber, e)}
+                        ></Control.text>
+                    </Col>
+                </Row>
+            </>
+        )
+    }
+
     singleStep = (stepNumber: number) => {
+        const properties = this.props.scene.objective[stepNumber].property.map((property, index) => {
+            return (this.singleProperty(stepNumber, index))
+        })
+
         return (
             <div>
                 <Card>
@@ -61,35 +98,14 @@ class SceneProperty extends React.Component<Props, State> {
                     <UncontrolledCollapse toggler={"#toggler" + stepNumber}>
                         <CardBody style={{ padding: "5px" }}>
                             <FormGroup>
-                                <Label>Item</Label>
-                                <Control.select
-                                    model={"sceneInfo.scene.objective[" + stepNumber + "].item"}
-                                    className="form-control"
-                                    onChange={(e) => this.handleItemChange(stepNumber, e)}
-                                >
-                                    {this.getItems()}
-                                </Control.select>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label>Property</Label>
-                                <Row>
-                                    <Col md={{ size: 6 }}>
-                                        <Control.text
-                                            model={"sceneInfo.scene.objective[" + stepNumber + "].property.name"}
-                                            className="form-control"
-                                            placeholder="Name"
-                                            onChange={(e) => this.handlePropertyNameChange(stepNumber, e)}
-                                        ></Control.text>
-                                    </Col>
-                                    <Col md={{ size: 6 }}>
-                                        <Control.text
-                                            model={"sceneInfo.scene.objective[" + stepNumber + "].property.value"}
-                                            className="form-control"
-                                            placeholder="Value"
-                                            onChange={(e) => this.handlePropertyValueChange(stepNumber, e)}
-                                        ></Control.text>
-                                    </Col>
-                                </Row>
+                                <Label>Item Property</Label>
+                                <Button className="fa fa-plus float-sm-right"
+                                    onClick={() => {
+                                        this.props.addProperty(stepNumber);
+                                        this.forceUpdate();
+                                    }}
+                                />
+                                {properties}
                             </FormGroup>
                             <FormGroup>
                                 <Label>Title</Label>
@@ -139,7 +155,8 @@ class SceneProperty extends React.Component<Props, State> {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addStep: () => dispatch(addStep())
+    addStep: () => dispatch(addStep()),
+    addProperty: (stepNumber: number) => dispatch(addProperty(stepNumber)),
 })
 
-export default connect(null, mapDispatchToProps)(SceneProperty);
+export default connect(null, mapDispatchToProps)(ScenePropertyPanel);
