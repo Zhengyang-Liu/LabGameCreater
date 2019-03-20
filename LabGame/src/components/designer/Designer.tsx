@@ -1,13 +1,26 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import Scene from '../../container/Scene';
-import ToolBox from '../../container/ToolBox';
+import { fetchScene } from '../../redux/ActionCreators';
+import * as Types from '../../types';
 import Menu from './Menu';
 import PropertyPanel from './propertyPanel/PropertyPanel';
+import Scene from './Scene';
+import ToolBox from './ToolBox';
 
-class Designer extends React.Component {
-    constructor(props) {
+interface Props {
+    fetchScene: Function,
+    scene: Types.Scene,
+    isLoading: boolean,
+}
+
+class Designer extends React.Component<Props> {
+    constructor(props: Props) {
         super(props);
+    }
+
+    componentDidMount = () => {
+        this.props.fetchScene();
     }
 
     render = () => {
@@ -21,10 +34,10 @@ class Designer extends React.Component {
                         <ToolBox />
                     </div>
                     <div className="col-7 border">
-                        <Scene />
+                        <Scene scene={this.props.scene}/>
                     </div>
                     <div className="col-3 border">
-                        <PropertyPanel />
+                        <PropertyPanel scene={this.props.scene} loadingScene={this.props.isLoading}/>
                     </div>
                 </div>
             </div>
@@ -32,4 +45,14 @@ class Designer extends React.Component {
     }
 }
 
-export default Designer
+
+const mapStateToProps = (state) => ({
+    scene: state.sceneInfo.scene,
+    isLoading: state.sceneInfo.isLoading,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchScene: () => dispatch(fetchScene())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Designer);

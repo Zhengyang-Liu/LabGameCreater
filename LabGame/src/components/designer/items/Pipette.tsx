@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
 
 type State = {}
@@ -34,7 +35,7 @@ class PipetteImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/pipette without fluid.svg" height={300} />
+                <img src="/images/pipette without fluid.svg" height={ItemProperty.pipette.height} />
             </div>
         );
     }

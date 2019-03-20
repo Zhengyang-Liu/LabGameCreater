@@ -1,7 +1,6 @@
 import * as React from 'react';
-
-import { ComponentDictionary } from './items/ComponentDictionary';
 import * as Types from '../../types';
+import { ComponentDictionary } from './items/ComponentDictionary';
 
 function RenderItem({ item }) {
     let props = {
@@ -13,25 +12,30 @@ function RenderItem({ item }) {
 }
 
 interface Props {
-    fetchScene: Function,
-    scene: Types.Scene
+    scene: Types.Scene,
 }
 
 class Scene extends React.Component<Props> {
     constructor(props) {
         super(props);
-        this.props.fetchScene();
     }
-    
     render() {
-        return (
-            <div>
-                {this.props.scene.items.map((item) =>
-                    <RenderItem item={item}></RenderItem>
-                )}
-            </div>
-        )
+        if (this.props.scene != null) {
+            return (
+                <div>
+                    {this.props.scene.items.map((item) =>
+                        <RenderItem key={item.id} item={item}></RenderItem>
+                    )}
+                </div>
+            )
+        }
+        else {
+            return (
+                <div></div>
+            )
+        }
+
     }
 }
 
-export default (Scene);
+export default Scene;

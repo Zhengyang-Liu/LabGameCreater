@@ -48,7 +48,7 @@ class Menu extends React.Component<Props> {
 
 
 const mapStateToProps = (state) => ({
-    scene: state.scene
+    scene: state.sceneInfo.scene
 })
 
 const mapDispatchToProps = (dispatch) => ({

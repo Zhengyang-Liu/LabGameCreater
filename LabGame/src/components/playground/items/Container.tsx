@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -32,7 +33,7 @@ class ContainerImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={170} />
+                <img src="/images/container with fluid.svg" height={ItemProperty.container.height} />
             </div>
         );
     }
@@ -65,14 +66,8 @@ class Container extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        switch (this.props.selectedItem.type) {
-            case 'pipette':
-                if (this.props.item.property.liquid != 'none') {
-                    this.props.selectedItem.property.liquid = this.props.item.property.liquid;
-                }
-        }
+        this.props.selectedElement.takeLiquid(this.props.item.property.liquidType, this.props.item.property.volume);
         this.forceUpdate();
-        this.props.selectedElement.update();
     }
 
     render() {
@@ -89,10 +84,9 @@ class Container extends React.Component<Props> {
         )
     }
 }
-
 const mapStateToProps = (state) => ({
     selectedItem: state.selectedItem,
-    selectedElement: state.selectedElement
+    selectedElement: state.selectedElement,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -18,7 +19,7 @@ class TubeImage extends React.Component<ImageProps>
     }
 
     getImageSource = () => {
-        switch (this.props.item.property.liquid) {
+        switch (this.props.item.property.liquidType) {
             case 'water':
                 return "/images/open centrifuge tube with fluid.svg";
             default:
@@ -37,7 +38,7 @@ class TubeImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src={this.getImageSource()} height={100} />
+                <img src={this.getImageSource()} height={ItemProperty.tube.height} />
             </div>
         );
     }
@@ -48,6 +49,7 @@ const ReactableChild = reactable(TubeImage);
 interface Props {
     item: Types.Item,
     selectedItem: Types.Item,
+    selectedElement: any,
     selectItem: Function,
 }
 
@@ -65,10 +67,11 @@ class Tube extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        if (this.props.selectedItem.property.liquid != "none" && this.props.item.property.liquid == "none") {
-            this.props.item.property.liquid = this.props.selectedItem.property.liquid;
+        if (this.props.selectedElement.dropLiquid(this.props.item.property.liquidType) == true) {
+            this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
+            this.props.item.property.volume = 5;
+            this.forceUpdate();
         }
-        this.forceUpdate();
     }
 
     render() {
@@ -87,7 +90,8 @@ class Tube extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => ({
-    selectedItem: state.selectedItem
+    selectedItem: state.selectedItem,
+    selectedElement: state.selectedElement,
 })
 
 const mapDispatchToProps = (dispatch) => ({

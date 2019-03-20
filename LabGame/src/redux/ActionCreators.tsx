@@ -15,13 +15,15 @@ export const addItem = (type: string) => ({
 export const newScene = () => ({
     type: ActionTypes.NEW_SCENE
 })
- 
+
 export const loadScene = (scene) => ({
     type: ActionTypes.LOAD_SCENE,
     payload: scene
 })
 
 export const fetchScene = () => (dispatch) => {
+    dispatch(loadingScene());
+
     return fetch(baseUrl + 'scene')
         .then(response => {
             if (response.ok) {
@@ -46,6 +48,10 @@ export const itemsFailed = (errmess) => ({
     payload: errmess
 })
 
+export const loadingScene = () => ({
+    type: ActionTypes.LOADING_SCENE,
+})
+
 export const saveScene = (scene) => ({
     type: ActionTypes.SAVE_SCENE,
     payload: scene
@@ -64,4 +70,13 @@ export const selectElement = (element: any) => ({
 export const removeItem = (itemId: number) => ({
     type: ActionTypes.REMOVE_ITEM,
     payload: itemId
+})
+
+export const addStep = () => ({
+    type: ActionTypes.ADD_STEP,
+})
+
+export const addProperty = (stepNumber: number) =>({
+    type: ActionTypes.ADD_PROPERTY,
+    payload: stepNumber,
 })

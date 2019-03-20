@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
-import { addItem } from '../redux/ActionCreators';
 import Designer from './designer/Designer';
 import Header from './Header';
 import Playground from './playground/Playground';

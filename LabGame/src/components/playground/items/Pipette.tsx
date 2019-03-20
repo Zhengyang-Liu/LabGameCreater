@@ -2,11 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
-import { selectItem } from '../../../redux/ActionCreators';
-import { selectElement } from '../../../redux/ActionCreators';
-
+import { selectElement, selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
-import { store } from '../../../App';
 
 type ImageProps = {
     item: Types.Item,
@@ -18,22 +16,38 @@ class PipetteImage extends React.Component<ImageProps>
         super(props);
     }
 
-    handleClick = () => {
-    }
-
     getImageSource = () => {
-        switch (this.props.item.property.liquid) {
+        let type = "";
+        let volume = "";
+
+        switch (this.props.item.property.liquidType) {
             case 'water':
-                return "/images/pipette with fluid.svg";
+                type = "regular";
+                break;
             default:
-                return "/images/pipette without fluid.svg";
+                type = "";
+                break;
+        }
+
+        switch (this.props.item.property.volume) {
+            case 5:
+                volume = '5';
+                break;
+            default:
+                volume = '';
+                break;
+        }
+
+        if (type == '' || volume == '') {
+            return '/images/pipette without fluid.svg';
+        } else {
+            return '/images/pipette with ' + type + ' ' + volume + '.svg';
         }
     }
 
     render = () => {
         return (
             <div
-                onClick={() => this.handleClick()}
                 style={{
                     position: 'relative',
                     left: this.props.item.transform.x,
@@ -43,7 +57,7 @@ class PipetteImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src={this.getImageSource()} height={300} />
+                <img src={this.getImageSource()} height={ItemProperty.pipette.height} />
             </div>
         );
     }
@@ -77,18 +91,28 @@ class Pipette extends React.Component<Props> {
         this.forceUpdate();
     }
 
-    componentDidMount() {
-        store.subscribe(this.handleChange.bind(this))
+    public takeLiquid = (liquidType: string, volume: number): boolean => {
+        if ((this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == liquidType) && volume >= 5) {
+            this.props.item.property.liquidType = liquidType;
+            this.props.item.property.volume = 5;
+            this.forceUpdate();
+            return true;
+        }
+        return false;
     }
 
-    handleChange() {
-        this.forceUpdate()
+    public dropLiquid = (targetLiquidType: string): boolean => {
+        if ((this.props.item.property.liquidType == targetLiquidType || targetLiquidType == 'none') && this.props.item.property.volume != 0) {
+            this.props.item.property.volume = 0;
+            this.forceUpdate();
+            return true;
+        }
+        return false;
     }
 
     render() {
         return (
             <ReactablePipette
-                id="yes-drop"
                 draggable
                 onDragMove={this.handleDragMove}
                 item={this.props.item}

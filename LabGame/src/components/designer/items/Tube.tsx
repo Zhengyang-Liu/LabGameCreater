@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
+import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
 import * as Types from '../../../types';
 
 type State = {}
@@ -35,7 +36,7 @@ class TubeImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/open centrifuge tube without fluid.svg" height={100} />
+                <img src="/images/open centrifuge tube without fluid.svg" height={ItemProperty.tube.height} />
             </div>
         );
     }
