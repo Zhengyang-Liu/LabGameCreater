@@ -4,7 +4,6 @@ import { FormGroup, Label } from 'reactstrap';
 
 import { LiquidList } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
-import { LiquidList } from './LiquidList';
 
 interface Props {
     itemProperty: Types.PipetteDataProperty
