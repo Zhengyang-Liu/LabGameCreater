@@ -30,16 +30,18 @@ export type Property = {
 }
 
 export type PipetteDataProperty = {
-    liquidType: string,
-    volume: number
+    liquid: LiquidList,
 }
 
 export type ContainerDataProperty = {
-    liquidType: string,
-    volume: number
+    liquid: LiquidList,
 }
 
 export type TubeDataProperty = {
-    liquidType: string,
-    volume: number
+    liquide: LiquidList,
 }
+
+export type LiquidList = Array<{
+    type: string,
+    volume: number
+}>;

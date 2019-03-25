@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Control } from 'react-redux-form';
-import {
-    Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
-} from 'reactstrap';
-
-import { addStep, addProperty } from '../../../redux/ActionCreators';
+import { Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse } from 'reactstrap';
+import { addProperty, addStep } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
+
 
 interface Props {
     scene: Types.Scene,
