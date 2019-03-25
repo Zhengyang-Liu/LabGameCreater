@@ -30,6 +30,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
 
     handleItemChange = (stepNumber: number, propertyNumber: number, event) => {
         this.props.scene.objective[stepNumber].property[propertyNumber].item = event.target.value;
+        this.forceUpdate();
     }
 
     handlePropertyNameChange = (stepNumber: number, propertyNumber: number, event) => {
@@ -51,6 +52,11 @@ class ScenePropertyPanel extends React.Component<Props, State> {
     }
 
     singleProperty = (stepNumber: number, propertyNumber: number) => {
+        const properties = Object.keys(this.props.scene.items[0].property).map(item => {
+            return (
+                <option key={item}>{item}</option>
+            );
+        })
         return (
             <>
                 <Control.select
@@ -62,12 +68,14 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                 </Control.select>
                 <Row>
                     <Col md={{ size: 6 }}>
-                        <Control.text
+                        <Control.select
                             model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].name"}
                             className="form-control"
                             placeholder="Name"
                             onChange={(e) => this.handlePropertyNameChange(stepNumber, propertyNumber, e)}
-                        ></Control.text>
+                        >
+                            {properties}
+                        </Control.select>
                     </Col>
                     <Col md={{ size: 6 }}>
                         <Control.text
