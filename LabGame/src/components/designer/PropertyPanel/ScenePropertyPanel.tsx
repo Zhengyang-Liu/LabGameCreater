@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Control } from 'react-redux-form';
-import { Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse } from 'reactstrap';
+import {
+    Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
+} from 'reactstrap';
+
 import { addProperty, addStep } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
-
+import LiquidPanelComponent from './sharedPanelComponent/LiquidPanelComponent';
 
 interface Props {
     scene: Types.Scene,
@@ -13,11 +16,15 @@ interface Props {
 }
 
 interface State {
+    currentItem: Types.Item,
 }
 
 class ScenePropertyPanel extends React.Component<Props, State> {
     constructor(props) {
         super(props);
+        this.state = {
+            currentItem: this.props.scene.items[0],
+        }
     }
 
     handleTitleChange = (stepNumber: number, event) => {
@@ -30,6 +37,15 @@ class ScenePropertyPanel extends React.Component<Props, State> {
 
     handleItemChange = (stepNumber: number, propertyNumber: number, event) => {
         this.props.scene.objective[stepNumber].property[propertyNumber].item = event.target.value;
+        let currentItem = this.props.scene.items[0];
+        this.props.scene.items.forEach(function (element) {
+            if (element.name == event.target.value) {
+                currentItem = element;
+            }
+        });
+        this.setState({
+            currentItem: currentItem,
+        })
         this.forceUpdate();
     }
 
@@ -52,7 +68,8 @@ class ScenePropertyPanel extends React.Component<Props, State> {
     }
 
     singleProperty = (stepNumber: number, propertyNumber: number) => {
-        const properties = Object.keys(this.props.scene.items[0].property).map(item => {
+
+        const properties = Object.keys(this.state.currentItem.property).map(item => {
             return (
                 <option key={item}>{item}</option>
             );
@@ -77,14 +94,15 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                             {properties}
                         </Control.select>
                     </Col>
-                    <Col md={{ size: 6 }}>
+                    <LiquidPanelComponent liquidList={this.state.currentItem.property.liquid} />
+                    {/* <Col md={{ size: 6 }}>
                         <Control.text
                             model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].value"}
                             className="form-control"
                             placeholder="Value"
                             onChange={(e) => this.handlePropertyValueChange(stepNumber, propertyNumber, e)}
                         ></Control.text>
-                    </Col>
+                    </Col> */}
                 </Row>
             </>
         )
