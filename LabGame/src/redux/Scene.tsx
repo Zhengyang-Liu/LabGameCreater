@@ -2,7 +2,8 @@ import * as Types from '../types';
 import * as ActionTypes from './ActionTypes';
 import { ItemDataPropertyDictionary } from './ItemDataPropertyDictionary';
 import { combineReducers } from 'redux';
-import reduceReducers from 'reduce-reducers'
+import reduceReducers from 'reduce-reducers';
+import { PanelComponentDictionary } from './PropertyInitStateDictionary';
 
 let id = -1;
 
@@ -97,7 +98,7 @@ function objective(state: Array<Types.Step> = [], action) {
             let newProperty = {
                 item: "",
                 name: "",
-                value: "",
+                value: null,
             }
             state[action.payload].property = state[action.payload].property.concat(newProperty);
             return state;

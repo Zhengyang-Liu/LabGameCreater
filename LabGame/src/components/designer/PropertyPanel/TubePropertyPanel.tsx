@@ -13,7 +13,7 @@ class TubePropertyPanel extends React.Component<Props> {
     }
     render = () => {
         return (
-            <LiquidPanelComponent liquidList={this.props.itemProperty.liquid} />
+            <LiquidPanelComponent value={this.props.itemProperty.liquid} />
         )
     }
 }
