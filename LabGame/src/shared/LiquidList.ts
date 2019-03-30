@@ -1,1 +1,1 @@
-export const LiquidList = ['none', 'water'];
+export const LiquidList = ['none', 'Water', 'Trypan Blue'];

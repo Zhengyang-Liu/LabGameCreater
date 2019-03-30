@@ -20,7 +20,7 @@ class TubeImage extends React.Component<ImageProps>
 
     getImageSource = () => {
         switch (this.props.item.property.liquidType) {
-            case 'water':
+            case 'Water':
                 return "/images/open centrifuge tube with fluid.svg";
             default:
                 return "/images/open centrifuge tube without fluid.svg";

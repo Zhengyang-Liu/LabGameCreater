@@ -21,7 +21,7 @@ class PipetteImage extends React.Component<ImageProps>
         let volume = "";
 
         switch (this.props.item.property.liquidType) {
-            case 'water':
+            case 'Water':
                 type = "regular";
                 break;
             default:
