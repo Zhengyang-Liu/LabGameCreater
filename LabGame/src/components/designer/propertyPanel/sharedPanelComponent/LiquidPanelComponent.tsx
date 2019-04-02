@@ -1,12 +1,16 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Control } from 'react-redux-form';
 import { Button, Col, Container, Label, Row } from 'reactstrap';
-import FormGroup from 'reactstrap/lib/FormGroup';
+import { addLiquid } from '../../../../redux/ActionCreators';
 import { LiquidList } from '../../../../shared/LiquidList';
 import * as Types from '../../../../types';
+import FormGroup from 'reactstrap/lib/FormGroup';
 
 interface Props {
     liquidList: Types.LiquidList,
+    addLiquid: Function,
+    itemId: Number,
 }
 
 class LiquidPanelComponent extends React.Component<Props> {
@@ -20,14 +24,6 @@ class LiquidPanelComponent extends React.Component<Props> {
 
     handleVolumeChange = (index: number, event) => {
         this.props.liquidList[index].volume = parseInt(event.target.value);
-    }
-
-    handleAddLiquid = (event) => {
-        this.props.liquidList.push({
-            type: "",
-            volume: 0
-        })
-        this.forceUpdate();
     }
 
     singleLiquid = (index: number) => {
@@ -81,7 +77,10 @@ class LiquidPanelComponent extends React.Component<Props> {
                         Lequid
                 </strong>
                     <Button className="fa fa-plus float-sm-right" size="sm"
-                        onClick={(e) => this.handleAddLiquid(e)}
+                        onClick={() => {
+                            this.props.addLiquid(this.props.itemId);
+                            this.forceUpdate();
+                        }}
                     />
                 </FormGroup>
                 {liquidList}
@@ -90,4 +89,12 @@ class LiquidPanelComponent extends React.Component<Props> {
     }
 }
 
-export default LiquidPanelComponent;
+const mapDispatchToProps = (dispatch) => ({
+    addLiquid: (selectedItemId: number) => dispatch(addLiquid(selectedItemId)),
+})
+
+const mapStateToProps = (state) => ({
+    itemId: state.selectedItem.id
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LiquidPanelComponent);
