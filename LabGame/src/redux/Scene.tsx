@@ -73,7 +73,7 @@ function items(state: Array<Types.Item> = [], action) {
             state = state.filter(function (item: Types.Item) {
                 return item.id != action.payload;
             })
-            return { ...state };
+            return state;
         default:
             return state;
     }
