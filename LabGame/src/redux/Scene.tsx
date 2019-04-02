@@ -74,21 +74,10 @@ function items(state: Array<Types.Item> = [], action) {
                 return item.id != action.payload;
             })
             return { ...state };
-        case ActionTypes.ADD_LIQUID:
-            state.forEach(element => {
-                if (element.id == action.payload) {
-                    let initLiquid = {
-                        type: "",
-                        volume: 0,
-                    }
-                    element.property.liquid.push(initLiquid);
-                }
-            });
-            return state;
         default:
             return state;
     }
-};
+}
 
 function objective(state: Array<Types.Step> = [], action) {
     switch (action.type) {

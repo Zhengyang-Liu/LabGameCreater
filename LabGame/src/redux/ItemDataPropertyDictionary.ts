@@ -1,14 +1,14 @@
 export const ItemDataPropertyDictionary = {
     "pipette": {
-        liquid: [
-        ]
+        liquidType: 'none',
+        volume: 0,
     },
     "container": {
-        liquid: [
-        ]
+        liquidType: 'none',
+        volume: 0,
     },
     "tube": {
-        liquid: [
-        ]
+        liquidType: 'none',
+        volume: 0,
     }
 };
