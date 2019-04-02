@@ -6,7 +6,7 @@ import { LiquidList } from '../../../../shared/LiquidList';
 import * as Types from '../../../../types';
 
 interface Props {
-    value: Types.LiquidList,
+    liquidList: Types.LiquidList,
 }
 
 class LiquidPanelComponent extends React.Component<Props> {
@@ -15,15 +15,15 @@ class LiquidPanelComponent extends React.Component<Props> {
     }
 
     handleLiquidTypeChange = (index: number, event) => {
-        this.props.value[index].type = event.target.value;
+        this.props.liquidList[index].type = event.target.value;
     }
 
     handleVolumeChange = (index: number, event) => {
-        this.props.value[index].volume = parseInt(event.target.value);
+        this.props.liquidList[index].volume = parseInt(event.target.value);
     }
 
     handleAddLiquid = (event) => {
-        this.props.value.push({
+        this.props.liquidList.push({
             type: "",
             volume: 0
         })
@@ -71,7 +71,7 @@ class LiquidPanelComponent extends React.Component<Props> {
     }
 
     render = () => {
-        const liquidList = this.props.value.map((liquid, index) => {
+        const liquidList = this.props.liquidList.map((liquid, index) => {
             return (this.singleLiquid(index))
         })
         return (

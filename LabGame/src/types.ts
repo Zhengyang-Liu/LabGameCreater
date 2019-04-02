@@ -26,7 +26,7 @@ export type Step = {
 export type Property = {
     item: string,
     name: string,
-    value: any
+    value: string
 }
 
 export type PipetteDataProperty = {

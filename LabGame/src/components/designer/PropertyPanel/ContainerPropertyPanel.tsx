@@ -13,7 +13,7 @@ class ContainerPropertyPanel extends React.Component<Props> {
 
     render = () => {
         return (
-            <LiquidPanelComponent value={this.props.itemProperty.liquid} />
+            <LiquidPanelComponent liquidList={this.props.itemProperty.liquid} />
         )
     }
 }

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Control } from 'react-redux-form';
-import { Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse } from 'reactstrap';
+import {
+    Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
+} from 'reactstrap';
+
 import { addProperty, addStep } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 import LiquidPanelComponent from './sharedPanelComponent/LiquidPanelComponent';
-import { PanelComponentDictionary } from './sharedPanelComponent/PanelComponentDictionary';
-
 
 interface Props {
     scene: Types.Scene,
@@ -62,7 +63,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                 <option key={item.name}>{item.name}</option>
             );
         })
-        items.unshift(<option key={"empty"}>{""}</option>)
+
         return items;
     }
 
@@ -73,16 +74,6 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                 <option key={item}>{item}</option>
             );
         })
-        properties.unshift(<option key={"empty"}>{""}</option>)
-
-        let PanelProps = {
-            value: this.props.scene.objective[stepNumber].property[propertyNumber].value
-        }
-        let propertyPanel = <div></div>;
-        let propertyName = this.props.scene.objective[stepNumber].property[propertyNumber].name;
-        if (propertyName != "") {
-            propertyPanel = React.createElement(PanelComponentDictionary[propertyName], PanelProps);
-        }
         return (
             <>
                 <Control.select
@@ -103,7 +94,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                             {properties}
                         </Control.select>
                     </Col>
-                    {propertyPanel}
+                    <LiquidPanelComponent liquidList={this.state.currentItem.property.liquid} />
                     {/* <Col md={{ size: 6 }}>
                         <Control.text
                             model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].value"}
