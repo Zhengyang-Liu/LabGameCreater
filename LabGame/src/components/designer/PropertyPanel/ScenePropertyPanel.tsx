@@ -146,7 +146,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
 
         return (
             <div>
-                <h5>Objective Setttings</h5>
+                <h5>Objective Settings</h5>
                 {steps}
                 <Button onClick={() => this.props.addStep()}>Add Step</Button>
             </div>
