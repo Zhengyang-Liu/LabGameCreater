@@ -1,9 +1,5 @@
 import LiquidPanelComponent from './LiquidPanelComponent';
 
-export const PropertyPanelComponentDictionary = {
+export const PanelComponentDictionary = {
     'liquid': LiquidPanelComponent
-}
-
-export const PropertyValueComponentDictionary = {
-    'liquid': []
 }

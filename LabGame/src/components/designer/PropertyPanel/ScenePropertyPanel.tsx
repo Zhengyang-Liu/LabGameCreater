@@ -5,7 +5,7 @@ import { Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, Uncontr
 import { addProperty, addStep } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 import LiquidPanelComponent from './sharedPanelComponent/LiquidPanelComponent';
-import { PropertyPanelComponentDictionary, PropertyValueComponentDictionary } from './sharedPanelComponent/PanelComponentDictionary';
+import { PanelComponentDictionary } from './sharedPanelComponent/PanelComponentDictionary';
 
 
 interface Props {
@@ -68,24 +68,20 @@ class ScenePropertyPanel extends React.Component<Props, State> {
 
     singleProperty = (stepNumber: number, propertyNumber: number) => {
 
-        const propertyArray = Array<JSX.Element>();
-        propertyArray.push(<option key={"empty"}>{""}</option>)
+        const properties = Object.keys(this.state.currentItem.property).map(item => {
+            return (
+                <option key={item}>{item}</option>
+            );
+        })
+        properties.unshift(<option key={"empty"}>{""}</option>)
 
-        if (this.state.currentItem != undefined) {
-            for (var property in this.state.currentItem.property) {
-                propertyArray.push(<option key={property}>{property}</option>);
-            }
-        }
-
-        let selectedPropertyName = this.props.scene.objective[stepNumber].property[propertyNumber].name;
-        this.props.scene.objective[stepNumber].property[propertyNumber].value = PropertyValueComponentDictionary[selectedPropertyName];
         let PanelProps = {
             value: this.props.scene.objective[stepNumber].property[propertyNumber].value
         }
         let propertyPanel = <div></div>;
-
-        if (selectedPropertyName != "") {
-            propertyPanel = React.createElement(PropertyPanelComponentDictionary[selectedPropertyName], PanelProps);
+        let propertyName = this.props.scene.objective[stepNumber].property[propertyNumber].name;
+        if (propertyName != "") {
+            propertyPanel = React.createElement(PanelComponentDictionary[propertyName], PanelProps);
         }
         return (
             <>
@@ -104,7 +100,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                             placeholder="Name"
                             onChange={(e) => this.handlePropertyNameChange(stepNumber, propertyNumber, e)}
                         >
-                            {propertyArray}
+                            {properties}
                         </Control.select>
                     </Col>
                     {propertyPanel}

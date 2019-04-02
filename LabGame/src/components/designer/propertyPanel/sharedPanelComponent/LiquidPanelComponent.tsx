@@ -78,7 +78,7 @@ class LiquidPanelComponent extends React.Component<Props> {
             <>
                 <FormGroup>
                     <strong>
-                        Liquid
+                        Lequid
                 </strong>
                     <Button className="fa fa-plus float-sm-right" size="sm"
                         onClick={(e) => this.handleAddLiquid(e)}
