@@ -80,8 +80,3 @@ export const addProperty = (stepNumber: number) =>({
     type: ActionTypes.ADD_PROPERTY,
     payload: stepNumber,
 })
-
-export const addLiquid = (itemId: number) => ({
-    type: ActionTypes.ADD_LIQUID,
-    payload: itemId,
-})
