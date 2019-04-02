@@ -73,7 +73,7 @@ function items(state: Array<Types.Item> = [], action) {
             state = state.filter(function (item: Types.Item) {
                 return item.id != action.payload;
             })
-            return state;
+            return { ...state };
         case ActionTypes.ADD_LIQUID:
             state.forEach(element => {
                 if (element.id == action.payload) {
