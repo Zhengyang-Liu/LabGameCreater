@@ -4,6 +4,7 @@ import reactable from 'reactablejs';
 
 import { selectElement, selectItem } from '../../../redux/ActionCreators';
 import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
+import {LiquidList, LiquidColorDictionary} from '../../../shared/LiquidList';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -20,29 +21,18 @@ class PipetteImage extends React.Component<ImageProps>
         let type = "";
         let volume = "";
 
-        switch (this.props.item.property.liquidType) {
-            case 'water':
-                type = "regular";
-                break;
-            default:
-                type = "";
-                break;
-        }
+        type = LiquidColorDictionary[this.props.item.property.liquidType];
 
-        switch (this.props.item.property.volume) {
-            case 5:
-                volume = '5';
-                break;
-            default:
-                volume = '';
-                break;
-        }
+        // switch (this.props.item.property.volume) {
+        //     case 5:
+        //         volume = '5';
+        //         break;
+        //     default:
+        //         volume = '';
+        //         break;
+        // }
 
-        if (type == '' || volume == '') {
-            return '/images/pipette without fluid.svg';
-        } else {
-            return '/images/pipette with ' + type + ' ' + volume + '.svg';
-        }
+        return '/images/pipette' + type + '.svg';
     }
 
     render = () => {

@@ -4,6 +4,7 @@ import reactable from 'reactablejs';
 
 import { selectItem } from '../../../redux/ActionCreators';
 import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
+import { LiquidColorDictionary } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -20,6 +21,11 @@ class ContainerImage extends React.Component<ImageProps>
     handleClick = () => {
     }
 
+    getImageSource = () => {
+        let type = LiquidColorDictionary[this.props.item.property.liquidType];
+        return '/images/container' + type + '.svg';
+    }
+
     render = () => {
         return (
             <div
@@ -33,7 +39,7 @@ class ContainerImage extends React.Component<ImageProps>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/container with fluid.svg" height={ItemProperty.container.height} />
+                <img src={this.getImageSource()} height={ItemProperty.container.height} />
             </div>
         );
     }

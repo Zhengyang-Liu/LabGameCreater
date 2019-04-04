@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import reactable from 'reactablejs';
-
 import { selectItem } from '../../../redux/ActionCreators';
 import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
+import { LiquidColorDictionary } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
+
 
 type ImageProps = {
     selectItem: Function,
@@ -19,13 +20,10 @@ class TubeImage extends React.Component<ImageProps>
     }
 
     getImageSource = () => {
-        switch (this.props.item.property.liquidType) {
-            case 'water':
-                return "/images/open centrifuge tube with fluid.svg";
-            default:
-                return "/images/open centrifuge tube without fluid.svg";
-        }
+        let type = LiquidColorDictionary[this.props.item.property.liquidType];
+        return '/images/open tube' + type + '.svg';
     }
+    
     render() {
         return (
             <div
