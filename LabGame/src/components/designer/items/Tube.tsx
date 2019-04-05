@@ -36,7 +36,7 @@ class TubeImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/open centrifuge tube without fluid.svg" height={ItemProperty.tube.height} />
+                <img src="/images/open tube.svg" height={ItemProperty.tube.height} />
             </div>
         );
     }

@@ -72,7 +72,11 @@ class Container extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        this.props.selectedElement.takeLiquid(this.props.item.property.liquidType, this.props.item.property.volume);
+        let param = {
+            liquidType: this.props.item.property.liquidType,
+            volume: this.props.item.property.volume,
+        }
+        this.props.selectedElement.interact(this.props.item.type, param);
         this.forceUpdate();
     }
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import reactable from 'reactablejs';
 import { selectItem } from '../../../redux/ActionCreators';
 import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
-import { LiquidColorDictionary } from '../../../shared/LiquidList';
+import { LiquidColorDictionary, LiquidMixer } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
 
 
@@ -23,7 +23,7 @@ class TubeImage extends React.Component<ImageProps>
         let type = LiquidColorDictionary[this.props.item.property.liquidType];
         return '/images/open tube' + type + '.svg';
     }
-    
+
     render() {
         return (
             <div
@@ -65,11 +65,23 @@ class Tube extends React.Component<Props> {
     }
 
     handleDrop = (e) => {
-        if (this.props.selectedElement.dropLiquid(this.props.item.property.liquidType) == true) {
-            this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
-            this.props.item.property.volume = 5;
-            this.forceUpdate();
+        let param = {
+            liquidType: this.props.item.property.liquidType,
+            volume: this.props.item.property.volume,
         }
+
+        let interactResult = this.props.selectedElement.interact(this.props.item.type, param);
+        if (interactResult == "drop") {
+            if (this.props.item.property.liquidType == "none") {
+                this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
+            } else {
+                this.props.item.property.liquidType = LiquidMixer.Mix(this.props.item.property.liquidType, this.props.selectedItem.property.liquidType)
+            }
+            this.props.item.property.volume = 5;
+        } else if (interactResult == "take") {
+            //do nothing for now
+        }
+        this.forceUpdate();
     }
 
     render() {

@@ -2,19 +2,19 @@ export const TOOLS =
     [
         {
             name: "pipette",
-            img: "/images/pipette without fluid.svg",
+            img: "/images/pipette.svg",
             width: 100,
             height: 200
         },
         {
             name: "container",
-            img: "/images/container with fluid.svg",
+            img: "/images/container regular.svg",
             width: 100,
             height: 200
         },
         {
             name: "tube",
-            img: "/images/open centrifuge tube without fluid.svg",
+            img: "/images/open tube.svg",
             width: 100,
             height: 200
         }

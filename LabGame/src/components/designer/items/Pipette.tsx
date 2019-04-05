@@ -35,7 +35,7 @@ class PipetteImage extends React.Component<Props, State>
                     transform: `rotate(${this.props.item.transform.angle}deg)`,
                 }}
                 ref={this.props.getRef}>
-                <img src="/images/pipette without fluid.svg" height={ItemProperty.pipette.height} />
+                <img src="/images/pipette.svg" height={ItemProperty.pipette.height} />
             </div>
         );
     }

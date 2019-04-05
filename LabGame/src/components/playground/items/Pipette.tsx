@@ -4,7 +4,7 @@ import reactable from 'reactablejs';
 
 import { selectElement, selectItem } from '../../../redux/ActionCreators';
 import * as ItemProperty from '../../../shared/ItemDefinitePropertyDictionary';
-import {LiquidList, LiquidColorDictionary} from '../../../shared/LiquidList';
+import { LiquidList, LiquidColorDictionary, LiquidMixer } from '../../../shared/LiquidList';
 import * as Types from '../../../types';
 
 type ImageProps = {
@@ -81,21 +81,29 @@ class Pipette extends React.Component<Props> {
         this.forceUpdate();
     }
 
-    public takeLiquid = (liquidType: string, volume: number): boolean => {
-        if ((this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == liquidType) && volume >= 5) {
-            this.props.item.property.liquidType = liquidType;
-            this.props.item.property.volume = 5;
-            this.forceUpdate();
-            return true;
-        }
-        return false;
-    }
-
-    public dropLiquid = (targetLiquidType: string): boolean => {
-        if ((this.props.item.property.liquidType == targetLiquidType || targetLiquidType == 'none') && this.props.item.property.volume != 0) {
-            this.props.item.property.volume = 0;
-            this.forceUpdate();
-            return true;
+    public interact = (itemType: string, param: any): any => {
+        switch (itemType) {
+            case "container":
+                if ((this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == param.liquidType) && param.volume >= 5) {
+                    this.props.item.property.liquidType = param.liquidType;
+                    this.props.item.property.volume = 5;
+                    this.forceUpdate();
+                    return true;
+                };
+                break;
+            case "tube":
+                if (this.props.item.property.volume != 0) {
+                    this.props.item.property.volume = 0;
+                    this.forceUpdate();
+                    return "drop";
+                } else {
+                    this.props.item.property.liquidType = param.liquidType;
+                    this.props.item.property.volume = 5;
+                    this.forceUpdate();
+                    return "take";
+                }
+                break;
+            default: return false;
         }
         return false;
     }
