@@ -75,7 +75,12 @@ class Tube extends React.Component<Props> {
             if (this.props.item.property.liquidType == "none") {
                 this.props.item.property.liquidType = this.props.selectedItem.property.liquidType;
             } else {
-                this.props.item.property.liquidType = LiquidMixer.Mix(this.props.item.property.liquidType, this.props.selectedItem.property.liquidType)
+                if (this.props.item.property.liquidType != this.props.selectedItem.property.liquidType) {
+                    let mixResult = LiquidMixer.Mix(this.props.item.property.liquidType, this.props.selectedItem.property.liquidType);
+                    if (mixResult != "") {
+                        this.props.item.property.liquidType = mixResult;
+                    }
+                }
             }
             this.props.item.property.volume = 5;
         } else if (interactResult == "take") {

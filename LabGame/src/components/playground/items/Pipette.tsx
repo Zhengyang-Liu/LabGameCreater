@@ -18,10 +18,8 @@ class PipetteImage extends React.Component<ImageProps>
     }
 
     getImageSource = () => {
-        let type = "";
-        let volume = "";
-
-        type = LiquidColorDictionary[this.props.item.property.liquidType];
+        let volume = this.props.item.property.volume;
+        let type = LiquidColorDictionary[this.props.item.property.liquidType];
 
         // switch (this.props.item.property.volume) {
         //     case 5:
@@ -31,8 +29,10 @@ class PipetteImage extends React.Component<ImageProps>
         //         volume = '';
         //         break;
         // }
-
-        return '/images/pipette' + type + '.svg';
+        if (volume != 0) {
+            return '/images/pipette' + type + '.svg';
+        }
+        else return '/images/pipette.svg';
     }
 
     render = () => {
@@ -93,14 +93,19 @@ class Pipette extends React.Component<Props> {
                 break;
             case "tube":
                 if (this.props.item.property.volume != 0) {
-                    this.props.item.property.volume = 0;
-                    this.forceUpdate();
-                    return "drop";
+                    let mixResult = LiquidMixer.Mix(this.props.item.property.liquidType, param.liquidType);
+                    if (mixResult != "") {
+                        this.props.item.property.volume = 0;
+                        this.forceUpdate();
+                        return "drop";
+                    }
                 } else {
-                    this.props.item.property.liquidType = param.liquidType;
-                    this.props.item.property.volume = 5;
-                    this.forceUpdate();
-                    return "take";
+                    if (this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == param.liquidType) {
+                        this.props.item.property.liquidType = param.liquidType;
+                        this.props.item.property.volume = 5;
+                        this.forceUpdate();
+                        return "take";
+                    }
                 }
                 break;
             default: return false;
