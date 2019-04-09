@@ -20,15 +20,7 @@ class PipetteImage extends React.Component<ImageProps>
     getImageSource = () => {
         let volume = this.props.item.property.volume;
         let type = LiquidColorDictionary[this.props.item.property.liquidType];
-
-        // switch (this.props.item.property.volume) {
-        //     case 5:
-        //         volume = '5';
-        //         break;
-        //     default:
-        //         volume = '';
-        //         break;
-        // }
+        
         if (volume != 0) {
             return '/images/pipette' + type + '.svg';
         }
