@@ -1,4 +1,7 @@
-export const LiquidList = ['none', 'water', 'trypan blue', 'trypan blue -1', 'trypan blue -2', 'trypan blue -3', 'trypan blue -4'];
+export const LiquidList = ['none', 'water',
+    'trypan blue', 'trypan blue -1', 'trypan blue -2', 'trypan blue -3', 'trypan blue -4',
+    'red solution', 'red solution -1', 'red solution -2', 'red solution -3', 'red solution -4',
+];
 
 export const LiquidColorDictionary = {
     "": "",
@@ -9,6 +12,12 @@ export const LiquidColorDictionary = {
     "trypan blue -2": " blue3",
     "trypan blue -3": " blue4",
     "trypan blue -4": " blue5",
+    "red solution": " red1",
+    "red solution -1": " red2",
+    "red solution -2": " red3",
+    "red solution -3": " red4",
+    "red solution -4": " red5",
+
 }
 
 export const LiquidMixDictionary = {
@@ -17,6 +26,11 @@ export const LiquidMixDictionary = {
     "trypan blue -2+water": "trypan blue -3",
     "trypan blue -3+water": "trypan blue -4",
     "trypan blue -4+water": "trypan blue -5",
+    "red solution+water": "red solution -1",
+    "red solution -1+water": "red solution -2",
+    "red solution -2+water": "red solution -3",
+    "red solution -3+water": "red solution -4",
+    "red solution -4+water": "red solution -5",
 }
 
 export class LiquidMixer {
