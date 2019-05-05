@@ -52,6 +52,28 @@ class ScenePropertyPanel extends React.Component<Props, State> {
         return items;
     }
 
+    getProperties = (stepNumber: number, propertyNumber: number) => {
+        let selectedItem;
+
+        this.props.scene.items.forEach(item => {
+            if (item.name == this.props.scene.objective[stepNumber].property[propertyNumber].item) {
+                selectedItem = item;
+            }
+        });
+
+        if (selectedItem != undefined) {
+            let keys = Object.keys(selectedItem.property);
+            const properties = keys.map(property => {
+                return (
+                    <option key={property}>{property}</option>
+                );
+            })
+            return properties;
+        }else{
+            return [];
+        }
+    }
+
     singleProperty = (stepNumber: number, propertyNumber: number) => {
         return (
             <>
@@ -64,12 +86,14 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                 </Control.select>
                 <Row>
                     <Col md={{ size: 6 }}>
-                        <Control.text
+                        <Control.select
                             model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].name"}
                             className="form-control"
                             placeholder="Name"
                             onChange={(e) => this.handlePropertyNameChange(stepNumber, propertyNumber, e)}
-                        ></Control.text>
+                        >
+                            {this.getProperties(stepNumber, propertyNumber)}
+                        </Control.select>
                     </Col>
                     <Col md={{ size: 6 }}>
                         <Control.text
