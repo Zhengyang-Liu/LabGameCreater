@@ -30,13 +30,13 @@ class Designer extends React.Component<Props> {
                     <Menu></Menu>
                 </div>
                 <div className="row">
-                    <div className="col-2 border">
+                    <div className="col-1 border" style={{ padding: "0px", height: "700px" }}>
                         <ToolBox />
                     </div>
-                    <div className="col-7 border">
+                    <div className="col-7 border" style={{ padding: "0px" }}>
                         <Scene scene={this.props.scene}/>
                     </div>
-                    <div className="col-3 border">
+                    <div className="col-4 border">
                         <PropertyPanel scene={this.props.scene} loadingScene={this.props.isLoading}/>
                     </div>
                 </div>
