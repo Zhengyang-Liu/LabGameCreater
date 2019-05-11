@@ -5,8 +5,9 @@ import {
     Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
 } from 'reactstrap';
 
-import { addStep, addProperty } from '../../../redux/ActionCreators';
+import { addProperty, addStep } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
+import { PropertyComponentDictionary } from './PropertyComponentDictionary';
 
 interface Props {
     scene: Types.Scene,
@@ -32,10 +33,13 @@ class ScenePropertyPanel extends React.Component<Props, State> {
 
     handleItemChange = (stepNumber: number, propertyNumber: number, event) => {
         this.props.scene.objective[stepNumber].property[propertyNumber].item = event.target.value;
+        this.forceUpdate();
     }
 
     handlePropertyNameChange = (stepNumber: number, propertyNumber: number, event) => {
         this.props.scene.objective[stepNumber].property[propertyNumber].name = event.target.value;
+        this.props.scene.objective[stepNumber].property[propertyNumber].value = "";
+        this.forceUpdate();
     }
 
     handlePropertyValueChange = (stepNumber: number, propertyNumber: number, event) => {
@@ -48,7 +52,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                 <option key={item.name}>{item.name}</option>
             );
         })
-
+        items.unshift(<option key={""}>{""}</option>);
         return items;
     }
 
@@ -68,13 +72,27 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                     <option key={property}>{property}</option>
                 );
             })
+            properties.unshift(<option key={""}>{""}</option>);
             return properties;
-        }else{
+        } else {
             return [];
         }
     }
 
     singleProperty = (stepNumber: number, propertyNumber: number) => {
+
+        let propertyComponentProps = {
+            onChangeHander: (e) => this.handlePropertyValueChange(stepNumber, propertyNumber, e),
+            model: "sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].value"
+        }
+        let propertyName = this.props.scene.objective[stepNumber].property[propertyNumber].name
+        let propertyComponent;
+        if (propertyName != "") {
+            propertyComponent = React.createElement(PropertyComponentDictionary[propertyName].component, propertyComponentProps);
+        } else {
+            propertyComponent = null;
+        }
+
         return (
             <>
                 <Control.select
@@ -96,12 +114,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                         </Control.select>
                     </Col>
                     <Col md={{ size: 6 }}>
-                        <Control.text
-                            model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].value"}
-                            className="form-control"
-                            placeholder="Value"
-                            onChange={(e) => this.handlePropertyValueChange(stepNumber, propertyNumber, e)}
-                        ></Control.text>
+                        {propertyComponent}
                     </Col>
                 </Row>
             </>
