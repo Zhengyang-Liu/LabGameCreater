@@ -1,8 +1,9 @@
+import reduceReducers from 'reduce-reducers';
+import { combineReducers } from 'redux';
+
 import * as Types from '../types';
 import * as ActionTypes from './ActionTypes';
 import { ItemDataPropertyDictionary } from './ItemDataPropertyDictionary';
-import { combineReducers } from 'redux';
-import reduceReducers from 'reduce-reducers'
 
 let id = -1;
 
@@ -81,7 +82,7 @@ function items(state: Array<Types.Item> = [], action) {
 
 function objective(state: Array<Types.Step> = [], action) {
     switch (action.type) {
-        case ActionTypes.ADD_STEP:
+        case ActionTypes.ADD_OBJECTIVE_STEP:
             return [
                 ...state, {
                     title: "",
@@ -93,13 +94,19 @@ function objective(state: Array<Types.Step> = [], action) {
                     }],
                 },
             ];
-        case ActionTypes.ADD_PROPERTY:
+        case ActionTypes.REMOVE_OBJECTIVE_STEP:
+            state.splice(action.stepNumber, 1);
+            return state;
+        case ActionTypes.ADD_OBJECTIVE_PROPERTY:
             let newProperty = {
                 item: "",
                 name: "",
                 value: "",
             }
             state[action.payload].property = state[action.payload].property.concat(newProperty);
+            return state;
+        case ActionTypes.REMOVE_OBJECTIVE_PROPERTY:
+            state[action.stepNumber].property.splice(action.propertyNumber, 1);
             return state;
         default:
             return state;

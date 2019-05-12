@@ -5,14 +5,18 @@ import {
     Button, Card, CardBody, CardHeader, Col, FormGroup, Label, Row, UncontrolledCollapse
 } from 'reactstrap';
 
-import { addProperty, addStep } from '../../../redux/ActionCreators';
+import {
+    addObjectiveProperty, addObjectiveStep, removeObjectiveProperty, removeObjectiveStep
+} from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 import { PropertyComponentDictionary } from './PropertyComponentDictionary';
 
 interface Props {
     scene: Types.Scene,
-    addStep: Function,
-    addProperty: Function,
+    addObjectiveStep: Function,
+    removeObjectiveStep: Function,
+    addObjectiveProperty: Function,
+    removeObjectiveProperty: Function,
 }
 
 interface State {
@@ -95,13 +99,25 @@ class ScenePropertyPanel extends React.Component<Props, State> {
 
         return (
             <>
-                <Control.select
-                    model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].item"}
-                    className="form-control"
-                    onChange={(e) => this.handleItemChange(stepNumber, propertyNumber, e)}
-                >
-                    {this.getItems()}
-                </Control.select>
+                <Row>
+                    <Col>
+                        <Control.select
+                            model={"sceneInfo.scene.objective[" + stepNumber + "].property[" + propertyNumber + "].item"}
+                            className="form-control"
+                            onChange={(e) => this.handleItemChange(stepNumber, propertyNumber, e)}
+                        >
+                            {this.getItems()}
+                        </Control.select>
+                    </Col>
+                    <Col>
+                        <Button close
+                            onClick={() => {
+                                this.props.removeObjectiveProperty(stepNumber, propertyNumber);
+                                this.forceUpdate();
+                            }}
+                        />
+                    </Col>
+                </Row>
                 <Row>
                     <Col md={{ size: 6 }}>
                         <Control.select
@@ -131,17 +147,26 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                 <Card>
                     <CardHeader id={"toggler" + stepNumber} tag="p" style={{ cursor: 'pointer', padding: "5px" }}>
                         Step {stepNumber}
+                        <Button close
+                            onClick={() => {
+                                this.props.removeObjectiveStep(stepNumber);
+                                this.forceUpdate();
+                            }}
+                        >
+                        </Button>
                     </CardHeader>
                     <UncontrolledCollapse toggler={"#toggler" + stepNumber}>
                         <CardBody style={{ padding: "5px" }}>
                             <FormGroup>
                                 <Label>Item Property</Label>
-                                <Button className="fa fa-plus float-sm-right"
+                                <Button close aria-label="Add"
                                     onClick={() => {
-                                        this.props.addProperty(stepNumber);
+                                        this.props.addObjectiveProperty(stepNumber);
                                         this.forceUpdate();
                                     }}
-                                />
+                                >
+                                    <span aria-hidden>+</span>
+                                </Button>
                                 {properties}
                             </FormGroup>
                             <FormGroup>
@@ -185,15 +210,17 @@ class ScenePropertyPanel extends React.Component<Props, State> {
             <div>
                 <h5>Objective Settings</h5>
                 {steps}
-                <Button onClick={() => this.props.addStep()}>Add Step</Button>
+                <Button onClick={() => this.props.addObjectiveStep()}>Add Step</Button>
             </div>
         )
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addStep: () => dispatch(addStep()),
-    addProperty: (stepNumber: number) => dispatch(addProperty(stepNumber)),
+    addObjectiveStep: () => dispatch(addObjectiveStep()),
+    removeObjectiveStep: (stepNumber: number) => dispatch(removeObjectiveStep(stepNumber)),
+    addObjectiveProperty: (stepNumber: number) => dispatch(addObjectiveProperty(stepNumber)),
+    removeObjectiveProperty: (stepNumber: number, propertyNumber: number) => dispatch(removeObjectiveProperty(stepNumber, propertyNumber)),
 })
 
 export default connect(null, mapDispatchToProps)(ScenePropertyPanel);

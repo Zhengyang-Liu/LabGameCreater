@@ -72,11 +72,22 @@ export const removeItem = (itemId: number) => ({
     payload: itemId
 })
 
-export const addStep = () => ({
-    type: ActionTypes.ADD_STEP,
+export const addObjectiveStep = () => ({
+    type: ActionTypes.ADD_OBJECTIVE_STEP,
 })
 
-export const addProperty = (stepNumber: number) =>({
-    type: ActionTypes.ADD_PROPERTY,
+export const removeObjectiveStep = (stepNumber: number) => ({
+    type: ActionTypes.REMOVE_OBJECTIVE_STEP,
+    stepNumber: stepNumber,
+})
+
+export const addObjectiveProperty = (stepNumber: number) => ({
+    type: ActionTypes.ADD_OBJECTIVE_PROPERTY,
     payload: stepNumber,
+})
+
+export const removeObjectiveProperty = (stepNumber: number, propertyNumber: number) => ({
+    type: ActionTypes.REMOVE_OBJECTIVE_PROPERTY,
+    stepNumber: stepNumber,
+    propertyNumber: propertyNumber,
 })
