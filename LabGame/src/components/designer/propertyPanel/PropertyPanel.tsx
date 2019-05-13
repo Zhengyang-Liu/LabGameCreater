@@ -66,12 +66,12 @@ class PropertyPanel extends React.Component<Props, State>{
                         </Col>
                     </Row>
                     <TabContent activeTab={this.state.activeTab}>
-                        <TabPane tabId="1">
+                        <TabPane tabId="1" style={{ padding: "5px" }}>
                             <FormGroup>
                                 <ItemPropertyPanel />
                             </FormGroup>
                         </TabPane>
-                        <TabPane tabId="2">
+                        <TabPane tabId="2" style={{ padding: "5px" }}>
                             <ScenePropertyPanel scene={this.props.scene} />
                         </TabPane>
                     </TabContent>

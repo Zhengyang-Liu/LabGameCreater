@@ -143,7 +143,7 @@ class ScenePropertyPanel extends React.Component<Props, State> {
         })
 
         return (
-            <div>
+            <div style={{ paddingBottom: "5px" }}>
                 <Card>
                     <CardHeader id={"toggler" + stepNumber} tag="p" style={{ cursor: 'pointer', padding: "5px" }}>
                         Step {stepNumber}
