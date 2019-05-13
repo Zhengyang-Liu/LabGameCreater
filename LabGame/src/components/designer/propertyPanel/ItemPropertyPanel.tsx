@@ -50,16 +50,21 @@ class ItemPropertyPanel extends React.Component<Props> {
         return removeButton;
     }
 
+    renderPropertyPanel = () => {
+        let itemPanelProps = {
+            itemProperty: this.props.selectedItem.property
+        }
+        let itemPropertyPanel = React.createElement(ItemPropertyPanelDictionary[this.props.selectedItem.type], itemPanelProps);
+        return itemPropertyPanel;
+    }
+
     render = () => {
         if (this.props.selectedItem != null) {
-            let itemPanelProps = {
-                itemProperty: this.props.selectedItem.property
-            }
-            let itemPropertyPanel = React.createElement(ItemPropertyPanelDictionary[this.props.selectedItem.type], itemPanelProps);
+
             return (
                 <div>
                     {this.renderNamePanel()}
-                    {itemPropertyPanel}
+                    {this.renderPropertyPanel()}
                     {this.renderRemoveButton()}
                 </div>
             );

@@ -36,7 +36,7 @@ class Designer extends React.Component<Props> {
                     <div className="col-7 border" style={{ padding: "0px" }}>
                         <Scene scene={this.props.scene}/>
                     </div>
-                    <div className="col-4 border">
+                    <div className="col-4 border" style={{ padding: "0px" }}>
                         <PropertyPanel scene={this.props.scene} loadingScene={this.props.isLoading}/>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
-import LiquidType from './propertyComponents/LiquidType';
-import Volume from './propertyComponents/Volume';
+import LiquidType from './propertyComponents/LiquidTypeComponent';
+import Volume from './propertyComponents/VolumeComponent';
 
 export const PropertyComponentDictionary = {
     "liquidType": {

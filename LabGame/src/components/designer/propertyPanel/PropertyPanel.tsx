@@ -1,9 +1,7 @@
 import classnames from 'classnames';
 import * as React from 'react';
-
-import {
-    FormGroup, Nav, NavItem, NavLink, Row, TabContent, TabPane
-} from 'reactstrap';
+import { FormGroup, Nav, NavItem, NavLink, Row, TabContent, TabPane } from 'reactstrap';
+import Col from 'reactstrap/lib/Col';
 
 import * as Types from '../../../types';
 import { Loading } from '../../LoadingComponent';
@@ -46,24 +44,26 @@ class PropertyPanel extends React.Component<Props, State>{
             return (
                 <div>
                     <Row>
-                        <Nav className="nav-tabs">
-                            <NavItem>
-                                <NavLink
-                                    className={classnames({ active: this.state.activeTab === '1' })}
-                                    onClick={() => { this.toggle('1'); }}
-                                >
-                                    <span className="fa fa-cube fa-lg"></span> Item
+                        <Col>
+                            <Nav className="nav-tabs">
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === '1' })}
+                                        onClick={() => { this.toggle('1'); }}
+                                    >
+                                        <span className="fa fa-cube fa-lg"></span> Item
                             </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink
-                                    className={classnames({ active: this.state.activeTab === '2' })}
-                                    onClick={() => { this.toggle('2'); }}
-                                >
-                                    <span className="fa fa-file fa-lg"></span> Scene
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === '2' })}
+                                        onClick={() => { this.toggle('2'); }}
+                                    >
+                                        <span className="fa fa-file fa-lg"></span> Scene
                             </NavLink>
-                            </NavItem>
-                        </Nav>
+                                </NavItem>
+                            </Nav>
+                        </Col>
                     </Row>
                     <TabContent activeTab={this.state.activeTab}>
                         <TabPane tabId="1">
