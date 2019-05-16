@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Control } from 'react-redux-form';
+import { actions, Control } from 'react-redux-form';
 
 interface Props {
-    onChangeHander: any,
     model: string,
 }
 
@@ -11,13 +10,18 @@ class Volume extends React.Component<Props> {
         super(props);
     }
 
+    toInt = (value) => {
+        return parseInt(value) || 0;
+    }
+
     render = () => {
         return (
             <Control.text
-                model= {this.props.model}
+                model={this.props.model}
+                type="number"
                 className="form-control"
                 placeholder="Volume"
-                onChange={this.props.onChangeHander}
+                parser={this.toInt}
             />
         )
     }

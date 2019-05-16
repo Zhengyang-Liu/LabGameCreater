@@ -52,7 +52,7 @@ class ItemPropertyPanel extends React.Component<Props> {
 
     renderPropertyPanel = () => {
         let itemPanelProps = {
-            itemProperty: this.props.selectedItem.property
+            item: this.props.selectedItem
         }
         let itemPropertyPanel = React.createElement(ItemPropertyPanelDictionary[this.props.selectedItem.type], itemPanelProps);
         return itemPropertyPanel;

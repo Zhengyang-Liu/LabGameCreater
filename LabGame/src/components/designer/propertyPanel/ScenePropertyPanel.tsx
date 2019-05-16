@@ -26,15 +26,6 @@ class ScenePropertyPanel extends React.Component<Props, State> {
     constructor(props) {
         super(props);
     }
-
-    handleTitleChange = (stepNumber: number, event) => {
-        this.props.scene.objective[stepNumber].title = event.target.value;
-    }
-
-    handleDescriptionChange = (stepNumber: number, event) => {
-        this.props.scene.objective[stepNumber].description = event.target.value;
-    }
-
     handleItemChange = (stepNumber: number, propertyNumber: number, event) => {
         this.props.scene.objective[stepNumber].property[propertyNumber].item = event.target.value;
         this.forceUpdate();
@@ -175,7 +166,6 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                                     model={"sceneInfo.scene.objective[" + stepNumber + "].title"}
                                     className="form-control"
                                     placeholder="title of this objective"
-                                    onChange={(e) => this.handleTitleChange(stepNumber, e)}
                                     updateOn="change"
                                 ></Control.text>
                             </FormGroup>
@@ -186,7 +176,6 @@ class ScenePropertyPanel extends React.Component<Props, State> {
                                     model={"sceneInfo.scene.objective[" + stepNumber + "].description"}
                                     className="form-control"
                                     placeholder="description of this objective"
-                                    onChange={(e) => this.handleDescriptionChange(stepNumber, e)}
                                     updateOn="change"
                                 ></Control.textarea>
                             </FormGroup>

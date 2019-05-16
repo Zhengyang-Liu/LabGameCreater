@@ -4,8 +4,7 @@ import { Control } from 'react-redux-form';
 import { LiquidList } from '../../../../shared/LiquidList';
 
 interface Props {
-    onChangeHander: any,
-    model: string,
+    model: string
 }
 
 class LiquidType extends React.Component<Props> {
@@ -23,7 +22,6 @@ class LiquidType extends React.Component<Props> {
             model={this.props.model}
             className="form-control"
             placeholder="Liquid Type"
-            onChange={this.props.onChangeHander}
         >
             {LiquidTypes}
         </Control.select>)

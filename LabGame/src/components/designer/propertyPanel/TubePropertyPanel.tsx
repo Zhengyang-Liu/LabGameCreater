@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { FormGroup, Label } from 'reactstrap';
 
 import * as Types from '../../../types';
 import { PropertyComponentDictionary } from './PropertyComponentDictionary';
 
 interface Props {
-    itemProperty: Types.PipetteDataProperty
+    item: Types.Item
+    items: Array<Types.Item>
 }
 
 class TubePropertyPanel extends React.Component<Props> {
@@ -13,24 +15,20 @@ class TubePropertyPanel extends React.Component<Props> {
         super(props);
     }
 
-    handleLiquidTypeChange = (event) => {
-        this.props.itemProperty.liquidType = event.target.value;
-    }
-
-    handleVolumeChange = (event) => {
-        this.props.itemProperty.volume = parseInt(event.target.value);
-    }
-
     render = () => {
+        let i = 0;
+        for (; i < this.props.items.length; i++) {
+            if (this.props.items[i].id == this.props.item.id) {
+                break;
+            }
+        }
         let liquidTypeComponentProps = {
-            onChangeHander: this.handleLiquidTypeChange,
-            model: "selectedItem.property.liquidType"
+            model: "sceneInfo.scene.items[" + i + "].property.liquidType"
         }
         let liquidTypeComponent = React.createElement(PropertyComponentDictionary["liquidType"].component, liquidTypeComponentProps)
 
         let volumeComponentProps = {
-            onChangeHander: this.handleVolumeChange,
-            model: "selectedItem.property.volume"
+            model: "sceneInfo.scene.items[" + i + "].property.volume"
         }
         let VolumeComponent = React.createElement(PropertyComponentDictionary["volume"].component, volumeComponentProps)
         return (
@@ -49,4 +47,8 @@ class TubePropertyPanel extends React.Component<Props> {
     }
 }
 
-export default TubePropertyPanel;
+const mapStateToProps = (state) => ({
+    items: state.sceneInfo.scene.items
+})
+
+export default connect(mapStateToProps)(TubePropertyPanel);
