@@ -22,8 +22,8 @@ class ObjectivePanel extends React.Component<Props, State> {
 
     singleStep = (stepNumber: number) => {
         return (
-            <div>
-                <Card outline color='info'>
+            <div style={{ padding: "5px" }}>
+                <Card outline color={stepNumber > this.props.currentStepNumber - 1 ? 'danger' : 'info'}>
                     <CardHeader tag="p" style={{ padding: "5px" }}>
                         {this.props.scene.objective[stepNumber].title}
                     </CardHeader>
