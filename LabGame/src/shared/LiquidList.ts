@@ -1,4 +1,4 @@
-export const LiquidList = ['none', 'water',
+export const LiquidList = ['', 'none', 'water',
     'trypan blue', 'trypan blue -1', 'trypan blue -2', 'trypan blue -3', 'trypan blue -4',
     'red solution', 'red solution -1', 'red solution -2', 'red solution -3', 'red solution -4',
 ];

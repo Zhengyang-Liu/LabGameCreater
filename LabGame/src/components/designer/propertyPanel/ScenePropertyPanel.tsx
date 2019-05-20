@@ -6,7 +6,9 @@ import {
 } from 'reactstrap';
 
 import {
-    addObjectiveProperty, addObjectiveStep, removeObjectiveProperty, removeObjectiveStep
+    addObjectiveProperty, addObjectiveStep, handleObjectiveItemChange,
+    handleObjectivePropertyNameChange, handleObjectivePropertyValueChange, removeObjectiveProperty,
+    removeObjectiveStep
 } from '../../../redux/ActionCreators';
 import * as Types from '../../../types';
 import { PropertyComponentDictionary } from './PropertyComponentDictionary';
@@ -17,6 +19,9 @@ interface Props {
     removeObjectiveStep: Function,
     addObjectiveProperty: Function,
     removeObjectiveProperty: Function,
+    handleObjectiveItemChange: Function,
+    handleObjectivePropertyNameChange: Function,
+    handleObjectivePropertyValueChange: Function,
 }
 
 interface State {
@@ -27,18 +32,15 @@ class ScenePropertyPanel extends React.Component<Props, State> {
         super(props);
     }
     handleItemChange = (stepNumber: number, propertyNumber: number, event) => {
-        this.props.scene.objective[stepNumber].property[propertyNumber].item = event.target.value;
-        this.forceUpdate();
+        this.props.handleObjectiveItemChange(stepNumber, propertyNumber, event.target.value);
     }
 
     handlePropertyNameChange = (stepNumber: number, propertyNumber: number, event) => {
-        this.props.scene.objective[stepNumber].property[propertyNumber].name = event.target.value;
-        this.props.scene.objective[stepNumber].property[propertyNumber].value = "";
-        this.forceUpdate();
+        this.props.handleObjectivePropertyNameChange(stepNumber, propertyNumber, event.target.value);
     }
 
     handlePropertyValueChange = (stepNumber: number, propertyNumber: number, event) => {
-        this.props.scene.objective[stepNumber].property[propertyNumber].value = event.target.value;
+        this.props.handleObjectivePropertyValueChange(stepNumber, propertyNumber, event.target.value);
     }
 
     getItems = () => {
@@ -210,6 +212,13 @@ const mapDispatchToProps = (dispatch) => ({
     removeObjectiveStep: (stepNumber: number) => dispatch(removeObjectiveStep(stepNumber)),
     addObjectiveProperty: (stepNumber: number) => dispatch(addObjectiveProperty(stepNumber)),
     removeObjectiveProperty: (stepNumber: number, propertyNumber: number) => dispatch(removeObjectiveProperty(stepNumber, propertyNumber)),
+    handleObjectiveItemChange: (stepNumber: number, propertyNumber: number, value: string) => dispatch(handleObjectiveItemChange(stepNumber, propertyNumber, value)),
+    handleObjectivePropertyNameChange: (stepNumber: number, propertyNumber: number, value: string) => dispatch(handleObjectivePropertyNameChange(stepNumber, propertyNumber, value)),
+    handleObjectivePropertyValueChange: (stepNumber: number, propertyNumber: number, value: string) => dispatch(handleObjectivePropertyValueChange(stepNumber, propertyNumber, value)),
 })
 
-export default connect(null, mapDispatchToProps)(ScenePropertyPanel);
+const mapStateToProps = (state) => ({
+    scene: state.sceneInfo.scene
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScenePropertyPanel);

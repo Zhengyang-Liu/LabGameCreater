@@ -108,6 +108,39 @@ function objective(state: Array<Types.Step> = [], action) {
         case ActionTypes.REMOVE_OBJECTIVE_PROPERTY:
             state[action.stepNumber].property.splice(action.propertyNumber, 1);
             return state;
+        case ActionTypes.HANDLE_OBJECTIVE_ITEM_CHANGE:
+            return state.map(
+                (step, i) => i === action.stepNumber ? {
+                    ...step, property: step.property.map(
+                        (singleProperty, j) => j === action.propertyNumber ? {
+                            ...singleProperty, item: action.value
+                        } : singleProperty
+                    )
+                } : step
+            )
+        case ActionTypes.HANDLE_OBJECTIVE_PROPERTY_NAME_CHANGE:
+            return state.map(
+                (step, i) => i === action.stepNumber ? {
+                    ...step, property: step.property.map(
+                        (singleProperty, j) => j === action.propertyNumber ? {
+                            ...singleProperty,
+                            name: action.value,
+                            value: ""
+                        } : singleProperty
+                    )
+                } : step
+            )
+        case ActionTypes.HANDLE_OBJECTIVE_PROPERTY_VALUE_CHANGE:
+            return state.map(
+                (step, i) => i === action.stepNumber ? {
+                    ...step, property: step.property.map(
+                        (singleProperty, j) => j === action.propertyNumber ? {
+                            ...singleProperty,
+                            value: action.value,
+                        } : singleProperty
+                    )
+                } : step
+            )
         default:
             return state;
     }

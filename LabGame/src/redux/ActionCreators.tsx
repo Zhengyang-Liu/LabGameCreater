@@ -91,3 +91,24 @@ export const removeObjectiveProperty = (stepNumber: number, propertyNumber: numb
     stepNumber: stepNumber,
     propertyNumber: propertyNumber,
 })
+
+export const handleObjectiveItemChange = (stepNumber: number, propertyNumber: number, value: string) => ({
+    type: ActionTypes.HANDLE_OBJECTIVE_ITEM_CHANGE,
+    stepNumber: stepNumber,
+    propertyNumber: propertyNumber,
+    value: value,
+})
+
+export const handleObjectivePropertyNameChange = (stepNumber: number, propertyNumber: number, value: string) => ({
+    type: ActionTypes.HANDLE_OBJECTIVE_PROPERTY_NAME_CHANGE,
+    stepNumber: stepNumber,
+    propertyNumber: propertyNumber,
+    value: value,
+})
+
+export const handleObjectivePropertyValueChange = (stepNumber: number, propertyNumber: number, value: string) => ({
+    type: ActionTypes.HANDLE_OBJECTIVE_PROPERTY_VALUE_CHANGE,
+    stepNumber: stepNumber,
+    propertyNumber: propertyNumber,
+    value: value,
+})
