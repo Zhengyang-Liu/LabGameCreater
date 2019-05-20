@@ -36,7 +36,12 @@ export const LiquidMixDictionary = {
 export class LiquidMixer {
     static Mix(liquid1: string, liquid2: string) {
         let result = "";
-        if (LiquidMixDictionary[liquid1 + "+" + liquid2] != undefined) {
+
+        if (liquid1 == "none") {
+            result = liquid2;
+        } else if (liquid2 == "none") {
+            result = liquid1;
+        } else if (LiquidMixDictionary[liquid1 + "+" + liquid2] != undefined) {
             result = LiquidMixDictionary[liquid1 + "+" + liquid2];
         } else if (LiquidMixDictionary[liquid2 + "+" + liquid1] != undefined) {
             result = LiquidMixDictionary[liquid2 + "+" + liquid1];
