@@ -10,6 +10,7 @@ import { ItemPropertyPanelDictionary } from './ItemPropertyPanelDictionary';
 interface Props {
     removeItem: Function,
     selectedItem: Types.Item,
+    items: Array<Types.Item>,
 }
 
 class ItemPropertyPanel extends React.Component<Props> {
@@ -17,23 +18,24 @@ class ItemPropertyPanel extends React.Component<Props> {
         super(props);
     }
 
-    handleNameChange = (event) => {
-        this.props.selectedItem.name = event.target.value;
-    }
-
     handleRemoveItem = () => {
         this.props.removeItem(this.props.selectedItem.id);
     }
 
     renderNamePanel = () => {
+        let i = 0;
+        for (; i < this.props.items.length; i++) {
+            if (this.props.items[i].id == this.props.selectedItem.id) {
+                break;
+            }
+        }
         let namePanel =
             <FormGroup>
                 <Label>Item Name</Label>
                 <Control.text
-                    model="selectedItem.name"
+                    model={"sceneInfo.scene.items[" + i + "].name"}
                     className="form-control"
                     placeholder="Name"
-                    onChange={this.handleNameChange}
                 ></Control.text>
             </FormGroup>
         return namePanel;
@@ -60,7 +62,6 @@ class ItemPropertyPanel extends React.Component<Props> {
 
     render = () => {
         if (this.props.selectedItem != null) {
-
             return (
                 <div>
                     {this.renderNamePanel()}
@@ -76,11 +77,12 @@ class ItemPropertyPanel extends React.Component<Props> {
 }
 
 const mapStateToProps = (state) => ({
-    selectedItem: state.selectedItem
+    selectedItem: state.selectedItem,
+    items: state.sceneInfo.scene.items,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    removeItem: (itemId: number) => dispatch(removeItem(itemId))
+    removeItem: (itemId: number) => dispatch(removeItem(itemId)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemPropertyPanel);
