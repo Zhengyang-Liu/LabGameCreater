@@ -20,7 +20,7 @@ class PipetteImage extends React.Component<ImageProps>
     getImageSource = () => {
         let volume = this.props.item.property.volume;
         let type = LiquidColorDictionary[this.props.item.property.liquidType];
-        
+
         if (volume != 0) {
             return '/images/pipette' + type + '.svg';
         }
@@ -92,12 +92,12 @@ class Pipette extends React.Component<Props> {
                         return "drop";
                     }
                 } else {
-                    if (this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == param.liquidType) {
-                        this.props.item.property.liquidType = param.liquidType;
-                        this.props.item.property.volume = 5;
-                        this.forceUpdate();
-                        return "take";
-                    }
+                    //if (this.props.item.property.liquidType == 'none' || this.props.item.property.liquidType == param.liquidType) {
+                    this.props.item.property.liquidType = param.liquidType;
+                    this.props.item.property.volume = 5;
+                    this.forceUpdate();
+                    return "take";
+                    //}
                 }
                 break;
             default: return false;
