@@ -18,7 +18,8 @@ class Main extends React.Component{
                 <Switch>
                     <Route path="/playground" component={Playground} />
                     <Route path="/designer" component={Designer} />
-                    <Route exact path="/contactus" />} />
+                    <Route path="/" component={Playground} />
+                    <Route exact path="/contactus" />
                 </Switch>
             </div>
         );
