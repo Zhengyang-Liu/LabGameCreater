@@ -23,7 +23,7 @@ class ContainerImage extends React.Component<ImageProps>
 
     getImageSource = () => {
         let type = LiquidColorDictionary[this.props.item.property.liquidType];
-        return '/images/container' + ' ' + type + '.svg';
+        return '/images/container' + type + '.svg';
     }
 
     render = () => {
