@@ -5,7 +5,7 @@ export const LiquidList = ['', 'none', 'water',
 
 export const LiquidColorDictionary = {
     "": "",
-    "none": "",
+    "none": "regular",
     "water": " regular",
     "trypan blue": " blue1",
     "trypan blue -1": " blue2",

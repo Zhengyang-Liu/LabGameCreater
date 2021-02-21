@@ -20,9 +20,16 @@ class TubeImage extends React.Component<ImageProps>
     }
 
     getImageSource = () => {
-        let type = LiquidColorDictionary[this.props.item.property.liquidType];
-        let volume = this.props.item.property.volume == 10 ? 'full' : 'half';
-        return '/images/open tube' + type + ' ' + volume + '.svg';
+        let imagePath = '/images/open tube.svg';
+        if(this.props.item.property.volume != 0)
+        {
+
+            let type = LiquidColorDictionary[this.props.item.property.liquidType];
+            let volume = this.props.item.property.volume == 10 ? 'full' : 'half';
+            imagePath = '/images/open tube' + type + ' ' + volume + '.svg';
+        }
+
+        return imagePath;
     }
 
     render() {
