@@ -19,7 +19,8 @@ class Main extends React.Component{
                     <Route path="/playground" component={Playground} />
                     <Route path="/designer" component={Designer} />
 		    <Route path="/" component={Playground} />
-                    <Route exact path="/contactus" />} />
+                    <Route path="/" component={Playground} />
+                    <Route exact path="/contactus" />
                 </Switch>
             </div>
         );
